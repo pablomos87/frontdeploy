@@ -1,0 +1,18 @@
+.footerContainer {
+    padding-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.textTitleFooter {
+    
+    font-weight: bold;
+}
+
+
+.listFooter {
+    
+    text-decoration: underline;
+}
+
