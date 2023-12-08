@@ -11,7 +11,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:9000/courses');
+        const response = await axios.get('https://back-proyecto-utn.onrender.com/courses');
         console.log(response.data); 
         setCourses(response.data.courses);
       } catch (error) {

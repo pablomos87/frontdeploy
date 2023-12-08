@@ -11,7 +11,7 @@ const UsersAdmin = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:9000/users');
+        const response = await axios.get('https://back-proyecto-utn.onrender.com/users');
         console.log(response.data); 
         setUsers(response.data.users);
       } catch (error) {
@@ -28,7 +28,7 @@ const UsersAdmin = () => {
       const confirmation = window.confirm('¿Estás seguro de que quieres eliminar este usuario?');
   
       if (confirmation) {
-        const response = await axios.delete('http://localhost:9000/users/delete', {
+        const response = await axios.delete('https://back-proyecto-utn.onrender.com/users/delete', {
           data: { userId }
         });
   

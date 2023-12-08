@@ -13,7 +13,7 @@ const UserCourses = ({ loggedInUsername, isAuthenticated }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:9000/users/byusername?username=${loggedInUsername}`);
+        const response = await axios.get(`https://back-proyecto-utn.onrender.com/users/byusername?username=${loggedInUsername}`);
         console.log(response.data);
         setUser(response.data.user);
         
@@ -21,7 +21,7 @@ const UserCourses = ({ loggedInUsername, isAuthenticated }) => {
 
         const coursesDetails = await Promise.all(response.data.user.registeredCourses.map(async courseId => {
           try {
-            const courseResponse = await axios.get(`http://localhost:9000/courses/detail?courseId=${courseId}`);
+            const courseResponse = await axios.get(`https://back-proyecto-utn.onrender.com/courses/detail?courseId=${courseId}`);
             if (courseResponse.data) {
               return courseResponse.data;
             } else {

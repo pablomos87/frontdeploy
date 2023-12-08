@@ -30,7 +30,7 @@ const NewCourse = () => {
         e.preventDefault();
     
         try {
-            const response = await axios.post('http://localhost:9000/courses/newcourse', formData, {
+            const response = await axios.post('https://back-proyecto-utn.onrender.com/courses/newcourse', formData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },

@@ -30,7 +30,7 @@ const EditCourse = () => {
     if (id) {
       const fetchCourse = async () => {
         try {
-          const response = await axios.get(`http://localhost:9000/courses/detail?courseId=${id}`);
+          const response = await axios.get(`https://back-proyecto-utn.onrender.com/courses/detail?courseId=${id}`);
           setCourse(response.data.course);
         } catch (error) {
           console.error('Error al obtener detalles del curso:', error);
@@ -46,7 +46,7 @@ const EditCourse = () => {
   const handleUpdateCourse = async () => {
     console.log('ID capturado de la URL:', id);
     try {
-      const response = await axios.post('http://localhost:9000/courses/edit', {
+      const response = await axios.post('https://back-proyecto-utn.onrender.com/courses/edit', {
         ...course,
         id,
       });
@@ -74,7 +74,7 @@ const EditCourse = () => {
       const confirmation = window.confirm('¿Estás seguro de que quieres eliminar este curso?');
   
       if (confirmation) {
-        const response = await axios.delete('http://localhost:9000/courses/delete', {
+        const response = await axios.delete('https://back-proyecto-utn.onrender.com/courses/delete', {
           data: { courseId: id }
         });
   

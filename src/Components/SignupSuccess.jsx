@@ -20,7 +20,7 @@ const SignupSuccess = () => {
       <Row className='justify-content-center pt-5'>
         <Col md={6} className='text-center pt-5'>
           <FaCheckCircle style={{ fontSize: '4.5em'}} />
-          <h3 className='mt-4'>¡Signup exitoso!</h3>
+          <h3 className='mt-4'>¡Registro exitoso!</h3>
           <p className='lead'>Muchas gracias por registrarte. Procede a iniciar sesión.</p>
         </Col>
       </Row>

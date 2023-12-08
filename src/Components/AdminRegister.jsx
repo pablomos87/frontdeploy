@@ -17,7 +17,7 @@ const AdminRegister = () => {
   const handleAdminRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:9000/admin/register', {
+      const response = await axios.post('https://back-proyecto-utn.onrender.com/admin/register', {
         name,
         password,
         confirmPassword

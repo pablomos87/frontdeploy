@@ -21,7 +21,7 @@ const AdminPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:9000/courses');
+        const response = await axios.get('https://back-proyecto-utn.onrender.com/courses');
         console.log(response.data);
         setCourses(response.data.courses);
       } catch (error) {
@@ -36,7 +36,7 @@ const AdminPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:9000/users');
+        const response = await axios.get('https://back-proyecto-utn.onrender.com/users');
         console.log(response.data);
         setUsers(response.data.users);
       } catch (error) {
@@ -62,7 +62,7 @@ const AdminPage = () => {
 
   useEffect(() => {
 
-    axios.get('http://localhost:9000/counter')
+    axios.get('https://back-proyecto-utn.onrender.com/counter')
       .then(response => {
         setVisits(response.data.count);
       })
@@ -74,7 +74,7 @@ const AdminPage = () => {
 
   useEffect(() => {
 
-    axios.get('http://localhost:9000/users/count')
+    axios.get('https://back-proyecto-utn.onrender.com/users/count')
       .then(response => {
         setContadorUsuarios(response.data.count);
       })
@@ -86,7 +86,7 @@ const AdminPage = () => {
 
   useEffect(() => {
 
-    axios.get('http://localhost:9000/courses/count')
+    axios.get('https://back-proyecto-utn.onrender.com/courses/count')
       .then(response => {
         setContadorCursos(response.data.count);
       })
@@ -97,7 +97,7 @@ const AdminPage = () => {
 
   useEffect(() => {
 
-    axios.get('http://localhost:9000/admin/count')
+    axios.get('https://back-proyecto-utn.onrender.com/admin/count')
       .then(response => {
         setContadorAdmin(response.data.count);
       })

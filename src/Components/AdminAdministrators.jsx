@@ -13,7 +13,7 @@ const AdminAdministrators = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:9000/admin');
+        const response = await axios.get('https://back-proyecto-utn.onrender.com/admin');
         console.log(response.data); 
         setAdmins(response.data.admins);
       } catch (error) {
@@ -28,7 +28,7 @@ const AdminAdministrators = () => {
     const confirmation = window.confirm('¿Estás seguro de que quieres eliminar este administrador?');
 
     if (confirmation) {
-      const response = await axios.delete('http://localhost:9000/admin/delete', {
+      const response = await axios.delete('https://back-proyecto-utn.onrender.com/admin/delete', {
         data: { adminId }
       });
 

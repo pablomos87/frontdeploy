@@ -28,8 +28,6 @@ const Header = ({ isAuthenticated, adminIsAuthenticated, name, username, logout 
                   <Dropdown.Item as= {Link} to='/user-courses'>
                     Cursos
                     </Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">Something</Dropdown.Item>
-                  <Dropdown.Divider />
                   <Dropdown.Item onClick={logout}>Cerrar sesión</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>

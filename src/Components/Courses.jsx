@@ -23,7 +23,7 @@ const Courses = () => {
 
     const fetchCourse = async () => {
       try {
-        const response = await axios.get(`http://localhost:9000/courses/detail?courseId=${courseId}`);
+        const response = await axios.get(`https://back-proyecto-utn.onrender.com/courses/detail?courseId=${courseId}`);
         console.log('data:', response.data);
         setCourse(response.data.course);
       } catch (error) {
@@ -39,7 +39,7 @@ const Courses = () => {
   useEffect(() => {
     const fetchRandomCourses = async () => {
       try {
-        const response = await axios.get('http://localhost:9000/courses/random');
+        const response = await axios.get('https://back-proyecto-utn.onrender.com/courses/random');
         setRandomCourses(response.data.randomCourses);
       } catch (error) {
         console.error('Error al obtener cursos aleatorios:', error);

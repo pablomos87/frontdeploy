@@ -11,7 +11,7 @@ const AdminCourseRegistration = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:9000/users');
+        const response = await axios.get('https://back-proyecto-utn.onrender.com/users');
         console.log(response.data);
         setUsers(response.data.users);
       } catch (error) {
@@ -26,7 +26,7 @@ const AdminCourseRegistration = () => {
       const confirmation = window.confirm('¿Estás seguro de que quieres eliminar esta inscripción?');
 
       if (confirmation) {
-        const response = await axios.delete(`http://localhost:9000/courses/inscripcion/${userId}/${courseId}`);
+        const response = await axios.delete(`https://back-proyecto-utn.onrender.com/courses/inscripcion/${userId}/${courseId}`);
 
         if (response.data.message === 'Usuario eliminado correctamente del curso') {
           alert('Inscripción eliminada correctamente.');

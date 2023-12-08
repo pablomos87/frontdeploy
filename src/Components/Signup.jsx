@@ -23,7 +23,7 @@ const Signup = () => {
 
   const handleSignup = async () => {
     try {
-      const response = await axios.post('http://localhost:9000/users/register', {
+      const response = await axios.post('https://back-proyecto-utn.onrender.com/users/register', {
         username,
         password,
         confirmPassword,
