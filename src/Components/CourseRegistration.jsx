@@ -20,7 +20,7 @@ const CourseRegistration = ({ userId, isAuthenticated }) => {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const response = await axios.get(`https://back-proyecto-utn.onrender.com/detail?courseId=${courseId}`);
+        const response = await axios.get(`https://back-proyecto-utn.onrender.com/courses/detail?courseId=${courseId}`);
         console.log('data:', response.data);
         setCourse(response.data.course);
       } catch (error) {
@@ -76,7 +76,7 @@ const CourseRegistration = ({ userId, isAuthenticated }) => {
     }
 
     try {
-      const response = await axios.post(`http://localhost:9000/courses/inscripcion/${userId}/${courseId}`);
+      const response = await axios.post(`https://back-proyecto-utn.onrender.com/courses/inscripcion/${userId}/${courseId}`);
       console.log(response.data.message);
       
 

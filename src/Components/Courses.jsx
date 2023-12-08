@@ -100,7 +100,7 @@ const Courses = () => {
             </Col>
             <Col md={6} className="mx-autor">
               <Card className="border-2 w-75 me-4 ms-4 text-center">
-                <Card.Body>
+               <Card.Body>
                   <Card.Title className="fw-bold">Requisitos para inscribirte al curso </Card.Title>
                   <hr/>
                   <Card.Text className="pt-3 pb-3 fs-6 fw-medium">
