@@ -3,6 +3,7 @@ import React from 'react';
 import { Navbar, Nav, Container, Button, Form, Dropdown } from 'react-bootstrap';
 import "./CSS/Header.css";
 import { Link } from 'react-router-dom';
+import logo from './Images/OIG.png'
 
 import "./CSS/Header.css";
 
@@ -13,7 +14,9 @@ const Header = ({ isAuthenticated, adminIsAuthenticated, name, username, logout 
     <Navbar expand="lg" className="bg-body-tertiary p-4 ">
       <Container fluid>
         <div className="d-flex align-items-center w-100 justify-content-between ">
-          <Navbar.Brand as={Link} to="/" className="fs-4">Cursos Online</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/" className="fs-4"> 
+          <img src={logo}  alt="logo" fluid style={{ width:"5.5rem", height:"5.5rem" }} />
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" className="custom-toggler m-3" />
           <div className="d-flex flex-row">
           {isAuthenticated ? (
@@ -49,8 +52,8 @@ const Header = ({ isAuthenticated, adminIsAuthenticated, name, username, logout 
                 </Dropdown>
               ) : (
                 <>
-                  <Nav.Link as={Link} to="/signup" className="me-3 fs-6"> <FaUserPlus/> Sign Up</Nav.Link>
-                  <Nav.Link as={Link} to="/login" className="me-3 fs-6"> <FaSignInAlt/> Login</Nav.Link>
+                  <Nav.Link as={Link} to="/signup" className="me-3" title="Sign Up"> <FaUserPlus/> <span className="d-none d-sm-inline">Sign Up</span></Nav.Link>
+                  <Nav.Link as={Link} to="/login" className="me-3" title="Login"> <FaSignInAlt/> <span className="d-none d-sm-inline">Login</span></Nav.Link>
                 </>
               )
             )}
@@ -59,7 +62,7 @@ const Header = ({ isAuthenticated, adminIsAuthenticated, name, username, logout 
 
         <Navbar.Collapse id="navbarScroll">
           <Nav
-            className="ms-auto my-2 my-lg-0 align-se"
+            className="mx-auto  d-block"
             style={{ maxHeight: '400px' }}
             navbarScroll
           >
