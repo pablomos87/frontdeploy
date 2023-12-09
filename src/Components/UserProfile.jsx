@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment-timezone';
 import 'moment/locale/es';
+import './CSS/UserProfile.css'
 
 
 const UserProfile = ({ loggedInUsername }) => {
@@ -77,6 +78,8 @@ const UserProfile = ({ loggedInUsername }) => {
     const timeAgo = date.fromNow();
     return `${timeAgo}`;
   };
+
+  const [showAll, setShowAll] = useState(false);
 
   return (
 
@@ -211,36 +214,32 @@ const UserProfile = ({ loggedInUsername }) => {
       </Col >
 
       <hr />
-      <Container fluid className="ps-5 pe-5">
-        <div className="d-flex justify-content-between align-items-center mb-2 ps-3 pe-3 pb-4">
+      <Container fluid>
+        <Col xs="12" className="d-flex justify-content-between  align-items-center mb-2  pb-4">
           <p className="mt-3 fw-normal mb-0 fw-bold">Actividad reciente</p>
-          <p className="mb-0 mt-5">
-            <a href="#!" className="text-muted">
-              Show all
-            </a>
-          </p>
-        </div>
+          <p className="mb-0 mt-3 text-muted link-text" onClick={() => setShowAll(!showAll)}>
+          {showAll ? 'Mostrar menos' : 'Mostrar más'}
+        </p>
+        </Col>
         <Row>
           <Col className="mb-2">
             <div className="mb-5 pb-5">
-              {courseDetails.length > 0 ? (
-                courseDetails.map((courseDetail, index) => (
-                  <div key={index} className="mt-4 text-center">
-                    <p className="fst-italic">Hace {convertToBuenosAiresTime(courseDetail.course.fechaInscripcion)} te inscribiste al curso: {courseDetail.course.nombre} que comienza el {courseDetail.course.inicio} </p>
-                  </div>
-                ))
-              ) : (
-                <p>No hay actividad reciente para mostrar.</p>
-              )}
-
+          {courseDetails.length > 0 ? (
+              courseDetails.slice(0, showAll ? courseDetails.length : 3).map((courseDetail, index) => (
+                <div key={index} className="mt-4 text-center">
+                  <p className="fst-italic">Hace {convertToBuenosAiresTime(courseDetail.course.fechaInscripcion)} te inscribiste al curso: {courseDetail.course.nombre} que comienza el {courseDetail.course.inicio} </p>
+                </div>
+              ))
+            ) : (
+              <p>No hay actividad reciente para mostrar.</p>
+            )}
             </div>
 
             <div>
-              <p className="text-center fw-bold pt-3">Puedes explorar nuestras secciones más populares</p>
+              <p className="text-center fw-bold pt-3">Puedes explorar otras secciones</p>
               <Col className="optionsContainer text-center mt-">
                 <li><Link to="/home" >Home</Link> </li>
-                <li>  <Link to="/peliculas">Peliculas</Link></li>
-                <li><Link to="/ranking">Ranking</Link> </li>
+                <li>  <Link to="/">Mis Cursos </Link></li>
               </Col>
             </div>
 

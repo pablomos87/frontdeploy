@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import axios from "axios";
-import { Container, Col, Form, FormControl, FormGroup, Button } from 'react-bootstrap';
+import { Container, Col, Form, FormControl, FormGroup, Button, Row } from 'react-bootstrap';
 import { faLock, faUserShield } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -44,11 +44,12 @@ const AdminLogin = ({ setAdminIsAuthenticated, setName: setParentName }) => {
         <h3 className="display-6 fw-bold pb-0">ADMIN LOGIN</h3>
       </div>
 
-      <Form onSubmit={handleAdminLogin} className="mt-5 bg-light pt-4 pb-4 mb-5 ms-5 me-5">
+      <Form onSubmit={handleAdminLogin} className="mt-5 bg-light pt-4 pb-5 mb-4 ps-2 pe-2">
 
-        <FormGroup className="mb-4 w-75 mx-auto pt-5" >
-        <Col md={12} className="d-flex align-items-center mb-3">
-          <FontAwesomeIcon icon={faUserShield} className="me-2" />
+      <FormGroup className="mb-4 w-100 text-center pt-4 container-lg" >
+<Row className="mb-3">
+<Col md={8} sm={12} xs={12} className="d-flex align-items-center mx-auto">
+            <FontAwesomeIcon icon={faUserShield} className="me-2" />
             <FormControl
               type="text"
               id="name"
@@ -56,9 +57,11 @@ const AdminLogin = ({ setAdminIsAuthenticated, setName: setParentName }) => {
               placeholder="Ingresa el nombre de usuario"
               value={localName}
               onChange={(e) => setLocalName(e.target.value)}
-              required />
+              required 
+              className="w-100 mb-3" />
+              
           </Col>
-          <Col md={12} className="d-flex align-items-center">
+          <Col md={8} sm={12} xs={12} className="d-flex align-items-center mx-auto">
     <FontAwesomeIcon icon={faLock} className="me-2" />
             <FormControl
               type="password"
@@ -67,15 +70,16 @@ const AdminLogin = ({ setAdminIsAuthenticated, setName: setParentName }) => {
               placeholder="Ingresa tu password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              required />
+              required 
+              className="w-100"/>
           </Col>
+        </Row>
         </FormGroup>
-        <div className="d-flex justify-content-center pb-4">
-          <Button variant="secondary" className="w-25 h-50" type='submit'>
-            Ingresa
+        <Col lg={4} md={6} sm={10} xs={10} className="d-flex justify-content-center container-sm">
+          <Button variant="secondary" className="w-100 h-50" type='submit'>
+            Ingresar
           </Button>
-        </div>
-
+        </Col>
 
       </Form>
     </Container >

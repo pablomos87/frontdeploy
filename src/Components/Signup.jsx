@@ -52,20 +52,20 @@ const Signup = () => {
 
   return (
 
-    <Container className="d-flex flex-column justify-content-center m-1">
+    <Container className="d-flex flex-column justify-content-center ms-1 me-1 mt-4 mb-4 pb-3">
   
-      <div className="d-flex flex-column justify-content-center align-items-left container-fluid w-100">
+      <div className="d-flex flex-column justify-content-center align-items-left container-fluid w-100 pb-4 pt-2">
         <h3 className="display-6 fw-bold pb-0">SIGN UP</h3>
         <p className="fw-normal"> Crea una cuenta y se parte de nuestra comunidad</p>
       </div>
 
-      <Form className="mt-5 bg-light p-4 w-100 mx-auto">
+      <Form className="bg-light p-4 w-100 mx-auto">
         <Row>
-          <Col className="mb-4" md={12}>
+          <Col className="mb-4" md={12} xs={12}>
             <FormGroup className="mb-4">
               <Row>
-                <Col className="justify-content-center">
-                  <FormLabel htmlFor="nombreUsuario" className="me-3">Nombre: </FormLabel>
+                <Col xs={6} className="justify-content-center">
+                  <FormLabel htmlFor="nombreUsuario" className="me-3 fs-6 fs-sm-7 fs-xs-8">Nombre: </FormLabel>
                   <FormControl
                     type="text"
                     id="firstName"
@@ -73,11 +73,13 @@ const Signup = () => {
                     placeholder="Ingresa tu nombre"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
+                    className="form-control form-control-sm"    
+                    style={{ fontSize: '15px', '@media (max-width: 762px)': { fontSize: '12px' }, '@media (max-width: 576px)': { fontSize: '8px' } }}
                     required
                   />
                 </Col>
-                <Col>
-                  <FormLabel htmlFor="apellidoUsuario" className="me-3 align-items-center justify-content-center">Apellido:</FormLabel>
+                <Col  xs={6}>
+                  <FormLabel htmlFor="apellidoUsuario" className="me-3 fs-6 fs-sm-7 fs-xs-8">Apellido:</FormLabel>
                   <FormControl
                     type="text"
                     id="lastName"
@@ -85,6 +87,8 @@ const Signup = () => {
                     placeholder="Ingresa tu apellido"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
+                    className="form-control form-control-sm"  
+                    style={{ fontSize: '15px',  '@media (max-width: 762px)': { fontSize: '12px' }, '@media (max-width: 576px)': { fontSize: '8px' } }}
                     required
                   />
                 </Col>
@@ -100,13 +104,14 @@ const Signup = () => {
         <Row className="w-50">        
           <Form.Label htmlFor="username" className="me-3">Usuario:</Form.Label>
         <FormControl
-          className="w-100"
           type="text"
           id="username"
           name="username"
           placeholder="Ingresa tu usuario"
           required
           value={username}
+          className="form-control form-control-sm"    
+                    style={{ fontSize: '15px',  '@media (max-width: 762px)': { fontSize: '12px' }, '@media (max-width: 576px)': { fontSize: '8px' } }}
           onChange={(e) => setUsername(e.target.value)}
         />
         </Row>
@@ -127,7 +132,8 @@ const Signup = () => {
                     id="city"
                     name="city"
                     placeholder="Ingresa tu ciudad"
-                    className="form-control"
+                    className="form-control form-control-sm"    
+                    style={{ fontSize: '15px',  '@media (max-width: 762px)': { fontSize: '12px' },'@media (max-width: 576px)': { fontSize: '8px' } }}
                     required
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
@@ -140,7 +146,8 @@ const Signup = () => {
                     id="country"
                     name="country"
                     placeholder="Ingresa tu pais"
-                    className="form-control"
+                    className="form-control form-control-sm"    
+                    style={{ fontSize: '15px',  '@media (max-width: 762px)': { fontSize: '12px' }, '@media (max-width: 576px)': { fontSize: '8px' } }}
                     required
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
@@ -154,25 +161,27 @@ const Signup = () => {
           <Col className="mb-4" md={12}>
             <FormGroup className="mb-4">
               <Row>
-                <Col className="justify-content-center">
+                <Col md={6} sm={12} xs={12} className="justify-content-center mb-4">
                   <FormLabel htmlFor="brthDat">Fecha de nacimiento</FormLabel>
                   <FormControl
                     type="date"
                     id="brthDat"
                     name="brthDate"
                     placeholder="Ingresa tu fecha de nacimiento"
-                    className="form-control"
+                    className="form-control form-control-sm"    
+                    style={{ fontSize: '15px',  '@media (max-width: 762px)': { fontSize: '12px' },'@media (max-width: 576px)': { fontSize: '8px' } }}
                     required
                     value={birthDate}
                     onChange={(e) => setBirthDate(e.target.value)} />
                 </Col>
 
-                  <Col className="justify-content-center">
+                  <Col  md={6}  sm={12} xs={12} className="justify-content-center">
                     <FormLabel htmlFor="gender">Género</FormLabel>
                     <Form.Select
                       id="gender"
                       name="gender"
-                      className="form-control"
+                      className="form-control form-control-sm"    
+                    style={{ fontSize: '15px',  '@media (max-width: 762px)': { fontSize: '12px' }, '@media (max-width: 576px)': { fontSize: '8px' } }}
                       value={gender}
                       onChange={(e) => setGender(e.target.value)}
                       required
@@ -199,7 +208,8 @@ const Signup = () => {
                 id="email"
                 name="email"
                 placeholder="Ingresa tu email"
-                className="form-control"
+                className="form-control form-control-sm"    
+                style={{ fontSize: '15px',  '@media (max-width: 762px)': { fontSize: '12px' },'@media (max-width: 576px)': { fontSize: '8px' } }}
                 autocomplete="current-password"
                 required
                 value={email}
@@ -214,7 +224,8 @@ const Signup = () => {
                 id="confirmEmail"
                 name="confirmEmail"
                 placeholder="Confirma tu email"
-                className="form-control"
+                className="form-control form-control-sm"    
+                style={{ fontSize: '16px',  '@media (max-width: 762px)': { fontSize: '12px' }, '@media (max-width: 576px)': { fontSize: '8px' } }}
                 required
                 value={confirmEmail}
                 onChange={(e) => setConfirmEmail(e.target.value)}
@@ -228,31 +239,33 @@ const Signup = () => {
      
 
         <Row>
-          <Col className="mb-4" md={12}>
+          <Col md={12}>
             <FormGroup className="mb-4">
               <Row>
-                <Col className="justify-content-center">
+                <Col md={6} sm={12} xs={12} className="justify-content-center mb-4">
                   <FormLabel htmlFor="password">Contraseña</FormLabel>
                   <FormControl
                 type="password"
                 id="password"
                 name="password"
                 placeholder="Ingresa tu password"
-                className="form-control"
+                className="form-control form-control-sm"    
+                style={{ fontSize: '15px',  '@media (max-width: 762px)': { fontSize: '12px' }, '@media (max-width: 576px)': { fontSize: '8px' } }}
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
              </Col>
 
-<Col className="justify-content-center">
+<Col md={6} sm={12} xs={12} className="justify-content-center">
        <FormLabel htmlFor="confirmPassword">Confirmar contraseña</FormLabel>
                   <FormControl
                 type="password"
                 id="confirmPassword"
                 name="confirmPassword"
                 placeholder="Confirma tu password"
-                className="form-control"
+                className="form-control form-control-sm"    
+                style={{ fontSize: '15px',  '@media (max-width: 762px)': { fontSize: '12px' }, '@media (max-width: 576px)': { fontSize: '8px' } }}
                 required
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}

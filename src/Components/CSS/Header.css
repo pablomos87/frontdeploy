@@ -29,7 +29,7 @@
 };
 @media (min-width: 490px) {
   .hide-on-small-screen {
-    display: inline;
+    display: inline; /* o inline-block según lo que necesites */
   }
 }
 

@@ -4,7 +4,7 @@
     height: 100%; 
   }
   
-  img {
+  .img-portada {
     
     filter: opacity(75%);
     height: 450px;
@@ -12,19 +12,44 @@
     object-position: center;
   }
 
+  @media (max-width: 490px) {
+    .img-portada {
+      height: 350px;
+    }
+  }
+  
+
   .custom-image-1{
     
     height: 180px;
+    filter: opacity(75%);
     object-fit: cover;
     object-position: center;
   }
 
+  @media (max-width: 490px) {
+    .custom-image-1 {
+      height: 145px;
+      
+    }
+  }
+  
   .custom-image-2{
     
+
+    filter: opacity(75%);
     height: 120px;
     object-fit:cover;
     object-position:center;
   }
+
+  @media (max-width: 490px) {
+    .custom-image-2 {
+      height: 105px;
+      
+    }
+  }
+  
 
   .custom-link{
   text-decoration: none;

@@ -29,7 +29,7 @@ const Home = () => {
     <div className="justify-content-center align-self-center m-2 pb-5">
     <Row className="home-title-row mt-5 pb-5 mb-5 p-1 mx-auto">
   <Col className="image-container p-0">
-  <Card.Img variant="top" src={image} alt="foto-portada"/>
+  <Card.Img className="img-portada" variant="top" src={image} alt="foto-portada"/>
     <div className="text-overlay">
       <h1 className= "fw-bold fs-2">Cursos Online</h1>
       <p className="text-sm fs-4">Elige el curso para vos.</p>
@@ -45,10 +45,10 @@ const Home = () => {
       
       <Row className="card-container mt-2 mb-1 p-3 bg-light border border-tertiary container-sm mx-auto p-4">
         {lastThreeCourses.map((course)  => (
-        <Col lg={4} md={10} xs={12} key={course._id} className="justify-content-center d-flex mx-auto">
+        <Col lg={4} md={4} sm={12} xs={12} key={course._id} className="justify-content-center d-flex mx-auto">
           <Card className="text-center d-flex h-100 custom-card w-100">
           <Link to={`/courses/detail?courseId=${course._id}`} className="text-dark custom-link">
-            <Card.Img src={course.imagen}  className="custom-image-1" />
+            <Card.Img src={course.imagen}  className="custom-image-1 img-fluid" />
             <Card.Body className="d-flex flex-column justify-content-between">
               <div>
               <p className="text-sm fs-6 text-uppercase fw-bolder m-0 p-0 mt-1">{course.nombre}</p>
