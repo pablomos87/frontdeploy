@@ -62,26 +62,26 @@ const Courses = () => {
       <section className="my-5">
         <Container className="border-2">
           <Row >
-            <Col md={6} sm={6} xs={7} className="ps-3">
+            <Col md={6} sm={6} xs={6} className="ps-2 text-sm">
               <p className="mb-3 pb-2 h3 fw-bold">Detalles del curso</p>
               <p className="fw-bold"> Duración: {course.duracion}.</p> 
               <p className="fw-bold"> Rgularidad: {course.regularidad}.</p>
               <p className="fw-bold">Certificación: {course.certificacion}.</p>
               <p className="fw-bold"> Inicio del curso: {course.inicio}.</p> 
               <Row className="mt-4 mb-4">
-              <Link to={`/courses/registration?courseId=${course._id}`} className="text-dark custom-link">
-                  <Button variant="light border border-dark fw-bolder" className="w-50 mt-3">
+              <Link to={`/courses/registration?courseId=${course._id}`} className="text-dark custom-link ">
+                  <Button variant="light border border-dark fw-bolder small" className="w-100 mt-3">
                     Inscripción
                   </Button>
                 </Link>
               </Row>
             </Col>
             
-            <Col md={6} sm={6} xs={5} className="pt-3 mb-0 pb-0">
+            <Col md={6} sm={6} xs={6} className="pt-3 mb-0 pb-0 container-fluid">
               <img
                 src={course.imagen}
                 alt="Course"
-                className="img-fluid w-auto h-75"
+                className="img-fluid"
               />
             </Col>
           </Row>
@@ -115,17 +115,17 @@ const Courses = () => {
       </section>
       
 
-      <section className="mb-5">
-      <Container fluid>
-          <h4 className="mb-4">Visitá los cursos más populares</h4>
+      <section className="mb-5 container-fluid">
+      <Container fluid className="container-sm">
+          <h4 className="mb-4 text-sm">Visitá los cursos más populares</h4>
           <Row className="w-100 container-fluid">
             {randomCourses.map((course) => (
-              <Col key={course._id} xs={4} md={4} lg={4} sm={4} className="container-fluid">
+              <Col key={course._id} xs={8} md={4} lg={4} sm={4} className="container-fluid">
                  <Link to={`/courses/detail?courseId=${course._id}`}>
                 <Card className="h-100">
-                  <Card.Img variant="top" src={course.imagen} className="img-fluid custom-course-image-1" />
+                  <Card.Img variant="top" src={course.imagen} className="img-fluid custom-course-image-2" />
                   <Card.Body className="text-center">
-                  <Card.Text className="fw-bold" style={{ fontSize: '0.90rem' }}>{course.nombre}</Card.Text>
+                  <Card.Text className="fw-bold text-sm" style={{ fontSize: '0.95rem', lineHeight: '1.2' }}>{course.nombre}</Card.Text>
                   </Card.Body>
                 </Card>
                 </Link>
