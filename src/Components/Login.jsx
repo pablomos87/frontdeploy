@@ -24,11 +24,7 @@ const Login = ({ setIsAuthenticated, setUsername: setParentUsername, setUserId})
       password,
     }, { withCredentials: true });
     console.log('Respuesta del servidor:', response.data);
-    
-    const receivedCookies = response.headers['set-cookie'];
-    if (receivedCookies) {
-      console.log('Cookies recibidas desde el servidor:', receivedCookies);
-    }    
+      
     console.log('Cookies almacenadas en el cliente:', document.cookie);
 
     if (response.data && response.data.message === 'Logeado correctamente') {
