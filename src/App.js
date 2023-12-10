@@ -26,7 +26,7 @@ import NewCourse from './Components/NewCourse';
 import UserProfile from './Components/UserProfile';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'
 import { useLocation, Navigate } from 'react-router-dom';
 
 
@@ -45,6 +45,30 @@ function App() {
     setName('');
   };
 
+  useEffect(() => {
+    // Función para verificar la sesión al cargar la aplicación
+    const checkSession = () => {
+      const userSession = document.cookie
+        .split(';')
+        .find(cookie => cookie.trim().startsWith('userSession='));
+
+      if (userSession) {
+        setIsAuthenticated(true);
+        // Obtener otros datos del usuario si es necesario
+        // setUsername(...)
+        // setUserId(...)
+      } else {
+        setIsAuthenticated(false);
+        // Limpiar otros datos del usuario si es necesario
+        // setUsername('')
+        // setUserId('')
+      }
+    };
+
+    checkSession(); // Verificar la sesión al cargar la aplicación
+  }, []);
+
+
   return (
     <>
       <ScrollToTop />
@@ -57,9 +81,9 @@ function App() {
                 isAuthenticated={isAuthenticated}
                 username={username}
                 userId={userId}
-                logout={logoutFunction}
                 setUsername={setUsername}
                 setUserId={setUserId}
+                logout={logoutFunction}
                 adminIsAuthenticated={adminIsAuthenticated}
                 setName={setName}
                 name={name}
@@ -141,8 +165,8 @@ function App() {
               <Header
                 isAuthenticated={isAuthenticated}
                 username={username}
-                logout={logoutFunction}
                 setUsername={setUsername}
+                logout={logoutFunction}
                 adminIsAuthenticated={adminIsAuthenticated}
                 setName={setName}
                 name={name}
@@ -261,3 +285,7 @@ function App() {
 }
 
 export default App;
+
+
+
+
