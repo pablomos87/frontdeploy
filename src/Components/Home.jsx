@@ -48,7 +48,7 @@ const Home = () => {
         <Col lg={4} md={4} sm={12} xs={12} key={course._id} className="justify-content-center d-flex mx-auto">
           <Card className="text-center d-flex h-100 custom-card w-100">
           <Link to={`/courses/detail?courseId=${course._id}`} className="text-dark custom-link">
-            <Card.Img src={course.imagen}  className="custom-image-1 img-fluid" />
+            <Card.Img src={course.imagen}  className="custom-image-1" />
             <Card.Body className="d-flex flex-column justify-content-between">
               <div>
               <p className="text-sm fs-6 text-uppercase fw-bolder m-0 p-0 mt-1">{course.nombre}</p>
