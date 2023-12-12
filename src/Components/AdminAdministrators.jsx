@@ -13,7 +13,13 @@ const AdminAdministrators = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://back-proyecto-utn.onrender.com/admin');
+        const adminToken = localStorage.getItem('adminToken');
+        const response = await axios.get('https://back-proyecto-utn.onrender.com/admin', {
+          headers: {
+            Authorization: `Bearer ${adminToken}`
+          }
+        }
+      );
         console.log(response.data); 
         setAdmins(response.data.admins);
       } catch (error) {
@@ -24,12 +30,15 @@ const AdminAdministrators = () => {
   }, []);
   
  const handleDeleteAdmin = async (adminId) => {
-  try {
+   try {
     const confirmation = window.confirm('¿Estás seguro de que quieres eliminar este administrador?');
 
     if (confirmation) {
-      const response = await axios.delete('https://back-proyecto-utn.onrender.com/admin/delete', {
-        data: { adminId }
+      const adminToken = localStorage.getItem('adminToken');
+      const response = await axios.delete(`https://back-proyecto-utn.onrender.com/admin/delete/${adminId}`, {
+        headers: {
+          Authorization: `Bearer ${adminToken}`
+        }
       });
 
       if (response.data.message === `Administrador con ID ${adminId} eliminado exitosamente`) {

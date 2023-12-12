@@ -4,14 +4,21 @@ import axios from 'axios';
 import { Container, Row, Col, Table, Button } from 'react-bootstrap';
 
 
-const UsersAdmin = () => {
+const UsersAdmin = (adminIsAuthenticated, adminId) => {
   
   const [users, setUsers] = useState ([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://back-proyecto-utn.onrender.com/users');
+        const adminToken = localStorage.getItem('adminToken');
+        const response = await axios.get('https://back-proyecto-utn.onrender.com/users',
+        {
+          headers: {
+            Authorization: `Bearer ${adminToken}`
+          }
+        }
+      );
         console.log(response.data); 
         setUsers(response.data.users);
       } catch (error) {
@@ -28,9 +35,16 @@ const UsersAdmin = () => {
       const confirmation = window.confirm('¿Estás seguro de que quieres eliminar este usuario?');
   
       if (confirmation) {
+        const adminToken = localStorage.getItem('adminToken');
         const response = await axios.delete('https://back-proyecto-utn.onrender.com/users/delete', {
           data: { userId }
-        });
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${adminToken}`
+          }
+        }
+      );
   
         if (response.data.message === `Usuario con ID ${userId} eliminado exitosamente`) {
           alert('Usuario eliminado correctamente.');

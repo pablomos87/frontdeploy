@@ -1,0 +1,21 @@
+
+.custom-font-size-course-table{
+font-size: 0.7rem;
+}
+
+@media (min-width: 576px) {
+    .custom-font-size-course-table {
+    font-size: 0.7rem;
+    }
+}
+@media (min-width: 768px) {
+    .custom-font-size-course-table {
+    font-size: 0.8rem;
+    }
+}
+
+@media (min-width: 992px) { 
+    .custom-font-size-course-table {
+    font-size: 0.9rem;
+}
+}

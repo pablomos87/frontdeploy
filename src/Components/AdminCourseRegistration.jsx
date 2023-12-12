@@ -4,14 +4,21 @@ import axios from 'axios';
 import { Container, Row, Col, Table, Button } from 'react-bootstrap';
 
 
-const AdminCourseRegistration = () => {
+const AdminCourseRegistration = (adminIsAuthenticated) => {
 
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://back-proyecto-utn.onrender.com/users');
+        const adminToken = localStorage.getItem('adminToken');
+        const response = await axios.get('https://back-proyecto-utn.onrender.com/users',
+        {
+          headers: {
+            Authorization: `Bearer ${adminToken}`
+          }
+        }
+      );
         console.log(response.data);
         setUsers(response.data.users);
       } catch (error) {
@@ -26,8 +33,14 @@ const AdminCourseRegistration = () => {
       const confirmation = window.confirm('¿Estás seguro de que quieres eliminar esta inscripción?');
 
       if (confirmation) {
-        const response = await axios.delete(`https://back-proyecto-utn.onrender.com/courses/inscripcion/${userId}/${courseId}`);
-
+        const adminToken = localStorage.getItem('adminToken');
+        const response = await axios.delete(`https://back-proyecto-utn.onrender.com/courses/inscripcion/${userId}/${courseId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${adminToken}`
+          }
+        }
+      );
         if (response.data.message === 'Usuario eliminado correctamente del curso') {
           alert('Inscripción eliminada correctamente.');
           window.location.reload();

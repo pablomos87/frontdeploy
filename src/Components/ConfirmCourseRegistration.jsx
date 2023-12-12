@@ -22,7 +22,7 @@ const ConfirmCourseRegistration =  ({ userId, isAuthenticated, username }) => {
 
 
   return (
-    <ListGroup className="mt-5 pt-3 w-75 mx-auto">
+    <ListGroup className="mt-5 pt-3 w-75 mx-auto mb-5">
       <ListGroup.Item className="ms-4 me-4 bg-light">
         <Container className="pt-3 pb-3">
         <div className="d-flex w-100 flex-column">

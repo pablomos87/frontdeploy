@@ -1,0 +1,23 @@
+.custom-user-courses-image-2 {
+    height: 9rem;
+    object-fit: cover;
+    object-position: center;
+  }
+  @media (min-width: 576px) {
+    .custom-user-courses-image-2 {
+      height: 8rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .custom-user-courses-image-2 {
+      height: 9rem;
+    }
+  }
+  
+  @media (min-width: 992px) { 
+    .custom-user-courses-image-2 {
+    font-size: 11rem;
+  }
+  }
+  

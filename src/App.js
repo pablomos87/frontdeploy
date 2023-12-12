@@ -26,47 +26,83 @@ import NewCourse from './Components/NewCourse';
 import UserProfile from './Components/UserProfile';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import React, { useState, useEffect } from 'react'
-import { useLocation, Navigate } from 'react-router-dom';
+import React, { useState,  useEffect } from 'react'
+import { useLocation, Navigate, useNavigate } from 'react-router-dom';
 
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   const [adminIsAuthenticated, setAdminIsAuthenticated] = useState(false);
   const [username, setUsername] = useState('');
   const [name, setName] = useState('');
-  const [userId, setUserId] = useState('');
   const location = useLocation();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userId, setUserId] = useState('');
+  const [adminId, setAdminId] = useState('');
+  const navigate = useNavigate();
 
-  const logoutFunction = () => {
-    setIsAuthenticated(false);
-    setAdminIsAuthenticated(false);
-    setUsername('');
-    setName('');
-  };
+  
 
   useEffect(() => {
-    // Función para verificar la sesión al cargar la aplicación
-    const checkSession = () => {
-      const userSession = document.cookie
-        .split(';')
-        .find(cookie => cookie.trim().startsWith('userSession='));
-
-      if (userSession) {
-        setIsAuthenticated(true);
-        // Obtener otros datos del usuario si es necesario
-        // setUsername(...)
-        // setUserId(...)
-      } else {
-        setIsAuthenticated(false);
-        // Limpiar otros datos del usuario si es necesario
-        // setUsername('')
-        // setUserId('')
-      }
-    };
-
-    checkSession(); // Verificar la sesión al cargar la aplicación
+    const userToken = localStorage.getItem('userToken');
+    const storedUserId = localStorage.getItem('userId');
+    const storedUsername = localStorage.getItem('username');
+  
+    if (userToken) {
+      setIsAuthenticated(true);
+      setAdminIsAuthenticated(false);
+      setUserId(storedUserId);
+      setUsername(storedUsername);
+      setName('')
+      setAdminId('')
+      localStorage.removeItem('adminToken');
+    } else {
+      setIsAuthenticated(false);
+      setUserId('');
+      setUsername('');
+    }
   }, []);
+  
+  useEffect(() => {
+    const adminToken = localStorage.getItem('adminToken');
+    const storedAdminId = localStorage.getItem('adminId');
+    const storedName = localStorage.getItem('name');
+    
+  
+    if (adminToken) {
+      setAdminIsAuthenticated(true);
+      setIsAuthenticated(false);
+      setUserId('');
+      setUsername('');
+      setAdminId(storedAdminId);
+      setName(storedName);
+      localStorage.removeItem('userToken');
+    } else {
+      setAdminIsAuthenticated(false);
+      setAdminId('');
+      setName('');
+    }
+  }, []);
+
+  
+  const handleUserLogout = () => {
+    
+    localStorage.removeItem('userToken');
+    
+    setIsAuthenticated(false);
+    setUserId('');
+    setUsername('');
+  };
+
+  const handleAdminLogout = () => {
+    
+    localStorage.removeItem('adminToken');
+    
+    setAdminIsAuthenticated(false);
+    setAdminId('');
+    setName('');
+    navigate('/');   
+  };
 
 
   return (
@@ -78,15 +114,15 @@ function App() {
           element={
             <>
               <Header
-                isAuthenticated={isAuthenticated}
-                username={username}
-                userId={userId}
-                setUsername={setUsername}
-                setUserId={setUserId}
-                logout={logoutFunction}
-                adminIsAuthenticated={adminIsAuthenticated}
+                  isAuthenticated={isAuthenticated}
+                  adminIsAuthenticated={adminIsAuthenticated}
+                  name={name}
+                  username={username}
+                  userId={userId}
+                  adminId={adminId}
+                  handleUserLogout={handleUserLogout}
+                  handleAdminLogout={handleAdminLogout}
                 setName={setName}
-                name={name}
               />
 
               <div className='app'>
@@ -101,10 +137,10 @@ function App() {
                       path='/login'
                       element={
                         <Login
-                          setIsAuthenticated={setIsAuthenticated}
-                          setUsername={setUsername}
-                          setUserId={setUserId}
-                          location={location}
+                        setUsername={setUsername}
+                        location={location}
+                        setIsAuthenticated={setIsAuthenticated} 
+                        setUserId ={setUserId}
                         />
                       }
                     />
@@ -114,18 +150,23 @@ function App() {
                       path='/user-profile'
                       element={
                         isAuthenticated ? (
-                          <UserProfile loggedInUsername={username} />
-                        ) : (
-                          <Navigate to='/login' />
-                        )
+                          <UserProfile 
+                          
+                          loggedInUsername={username} />
+                          ) : (
+                            <Navigate to='/login' />
+                          )
                       }
                     />
-                    SignupSuccess
+                    
                     <Route
                       path='/user-courses'
                       element={
                         isAuthenticated ? (
-                          <UserCourses loggedInUsername={username} />
+                        <UserCourses
+                          
+                          loggedInUsername={username}
+                          />
                         ) : (
                           <Navigate to='/login' />
                         )
@@ -143,11 +184,15 @@ function App() {
                     <Route
                       path='/courses/registration/confirmation'
                       element={
+                        isAuthenticated ? (
                         <ConfirmCourseRegistration
                           userId={userId}
                           isAuthenticated={isAuthenticated}
                           username={username}
                         />
+                        ) : (
+                          <Navigate to='/login' />
+                        )
                       }
                     />
                   </Routes>
@@ -164,12 +209,14 @@ function App() {
             <>
               <Header
                 isAuthenticated={isAuthenticated}
-                username={username}
-                setUsername={setUsername}
-                logout={logoutFunction}
                 adminIsAuthenticated={adminIsAuthenticated}
-                setName={setName}
                 name={name}
+                username={username}
+                userId={userId}
+                adminId={adminId}
+                handleUserLogout={handleUserLogout}
+                handleAdminLogout={handleAdminLogout}
+                setName={setName}
               />
 
               {adminIsAuthenticated ? (
@@ -181,80 +228,58 @@ function App() {
                     <Routes>
                       <Route
                         index
+                        element={  
+                            <Admin/>
+                        }
+                      />
+                      <Route
+                        path='/crear-cursos'
                         element={
-                          adminIsAuthenticated ? (
-                            <Admin />
-                          ) : (
-                            <Navigate
-                              to='/admin/login'
-                              setAdminIsAuthenticated={setAdminIsAuthenticated}
-                              setName={setName}
-                            />
-                          )
+                          
+                          <NewCourse/>
                         }
                       />
 
                       <Route
-                        path='/crear-cursos'
-                        element={
-                          <NewCourse
-                            setAdminIsAuthenticated={setAdminIsAuthenticated}
-                            setName={setName}
-                          />
-                        }
-                      />
-                      <Route
                         path='/editcourse/'
                         element={
-                          <EditCourse
-                            setAdminIsAuthenticated={setAdminIsAuthenticated}
-                            setName={setName}
-                          />
+                          
+                          <EditCourse/>
                         }
                       />
                       <Route
                         path='/registro'
                         element={
-                          <AdminRegister
-                            setAdminIsAuthenticated={setAdminIsAuthenticated}
-                            setName={setName}
-                          />
+                          
+                          <AdminRegister />
                         }
                       />
                       <Route
                         path='/usuarios'
                         element={
-                          <AdminUsers
-                            setAdminIsAuthenticated={setAdminIsAuthenticated}
-                            setName={setName}
-                          />
+                          
+                          <AdminUsers/>
                         }
                       />
                       <Route
                         path='/cursos'
                         element={
-                          <AdminCourses
-                            setAdminIsAuthenticated={setAdminIsAuthenticated}
-                            setName={setName}
-                          />
+                          
+                          <AdminCourses/>
                         }
                       />
                       <Route
                         path='/administradores'
                         element={
-                          <AdminAdministrators
-                            setAdminIsAuthenticated={setAdminIsAuthenticated}
-                            setName={setName}
-                          />
+                        
+                          <AdminAdministrators/>
+                        
                         }
                       />
                       <Route
                         path='/course-registration'
                         element={
-                          <AdminCourseRegistration
-                            setAdminIsAuthenticated={setAdminIsAuthenticated}
-                            setName={setName}
-                          />
+                          <AdminCourseRegistration/>
                         }
                       />
                     </Routes>
@@ -269,6 +294,7 @@ function App() {
                       <AdminLogin
                         setAdminIsAuthenticated={setAdminIsAuthenticated}
                         setName={setName}
+                        setAdminId={setAdminId}
                       />
                     }
                   />
@@ -285,7 +311,3 @@ function App() {
 }
 
 export default App;
-
-
-
-

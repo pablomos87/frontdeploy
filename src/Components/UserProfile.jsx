@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment-timezone';
 import 'moment/locale/es';
-import './CSS/UserProfile.css'
+import './CSS/UserProfile.css';
 
 
 const UserProfile = ({ loggedInUsername }) => {
@@ -13,11 +13,22 @@ const UserProfile = ({ loggedInUsername }) => {
   const [courseDetails, setCourseDetails] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({});
+  const [showAll, setShowAll] = useState(false);
 
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://back-proyecto-utn.onrender.com/users/byusername?username=${loggedInUsername}`);
+        const userToken = localStorage.getItem('userToken');
+        const response = await axios.get(
+          `https://back-proyecto-utn.onrender.com/users/byusername?username=${loggedInUsername}`,
+          {
+            headers: {
+              Authorization: `Bearer ${userToken}`
+            }
+          }
+        );
+        
         console.log(response.data);
         setUser(response.data.user);
 
@@ -54,10 +65,14 @@ const UserProfile = ({ loggedInUsername }) => {
 
   const handleSave = async () => {
     try {
-      
+      const userToken = localStorage.getItem('userToken');
       await axios.post('https://back-proyecto-utn.onrender.com/users/edit', {
         ...formData,
         id: user._id
+      }, {
+        headers: {
+          Authorization: `Bearer ${userToken}`
+        }
       });
       setIsEditing(false);
       setUser(formData);
@@ -78,8 +93,6 @@ const UserProfile = ({ loggedInUsername }) => {
     const timeAgo = date.fromNow();
     return `${timeAgo}`;
   };
-
-  const [showAll, setShowAll] = useState(false);
 
   return (
 
@@ -231,7 +244,7 @@ const UserProfile = ({ loggedInUsername }) => {
                 </div>
               ))
             ) : (
-              <p>No hay actividad reciente para mostrar.</p>
+              <p className="text-center">No hay actividad reciente para mostrar.</p>
             )}
             </div>
 

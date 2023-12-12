@@ -3,7 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const NewCourse = () => {
+const NewCourse = (adminIsAuthenticated, adminId) => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         nombre: '',
@@ -49,9 +49,9 @@ const NewCourse = () => {
             <h1>Nuevo curso</h1>
             <div className="container">
                 <div className="row justify-content-center mt-5">
-                    <div className="col-md-6">
-                        <div className="card">
-                            <div className="card-body">
+                    <div className="col-md-6 mb-3">
+                        <div className="card bg-light mb-5">
+                            <div className="card-body bg-light">
                                 <Form onSubmit={handleSubmit}>
                                     <Form.Group controlId="nombre">
                                         <Form.Label>Nombre:</Form.Label>

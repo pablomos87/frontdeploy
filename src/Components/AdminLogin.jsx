@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 
-const AdminLogin = ({ setAdminIsAuthenticated, setName: setParentName }) => {
+const AdminLogin = ({ setAdminIsAuthenticated, setName: setParentName, setAdminId }) => {
 
   const navigate = useNavigate();
 
@@ -20,14 +20,24 @@ const AdminLogin = ({ setAdminIsAuthenticated, setName: setParentName }) => {
       const response = await axios.post("https://back-proyecto-utn.onrender.com/admin/login", {
         name: localName,
         password,
-      }, { withCredentials: true });
-      if (response.data && response.data.message === 'Administrador logeado correctamente') {
-        setAdminIsAuthenticated(true)
-        setParentName(localName)
+      });
+  
+      if (response.data && response.data.adminToken) {
+        const { adminToken, adminId } = response.data;
+  
+        console.log('El token es:', adminToken);
+        setAdminId(adminId);
+        setParentName(localName);
+        setAdminIsAuthenticated(true);
+  
+        localStorage.setItem('adminToken', adminToken);
+        localStorage.setItem('adminId', adminId);
+        localStorage.setItem('name', localName);
         navigate('/admin/');
-      } 
+      } else {
+        alert('Nombre de usuario o contraseña incorrectos');
+      }
     } catch (error) {
-      
       if (error.response && error.response.status === 401) {
         alert('Nombre de usuario o contraseña incorrectos');
       } else {
@@ -35,7 +45,7 @@ const AdminLogin = ({ setAdminIsAuthenticated, setName: setParentName }) => {
       }
     }
   };
-
+  
   return (
 
     <Container fluid className="d-flex flex-column justify-content-center m-2">
@@ -44,10 +54,10 @@ const AdminLogin = ({ setAdminIsAuthenticated, setName: setParentName }) => {
         <h3 className="display-6 fw-bold pb-0">ADMIN LOGIN</h3>
       </div>
 
-      <Form onSubmit={handleAdminLogin} className="mt-5 bg-light pt-4 pb-5 mb-4 ps-2 pe-2">
+      <Form onSubmit={handleAdminLogin} className="mt-3 bg-light pt-2 pb-5 mb-4 ps-2 pe-2">
 
-      <FormGroup className="mb-4 w-100 text-center pt-4 container-lg" >
-<Row className="mb-3">
+      <FormGroup className="mb-4 w-100 text-center pt-2 container-lg" >
+<Row className="mb-3 mt-5">
 <Col md={8} sm={12} xs={12} className="d-flex align-items-center mx-auto">
             <FontAwesomeIcon icon={faUserShield} className="me-2" />
             <FormControl

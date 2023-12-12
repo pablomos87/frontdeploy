@@ -6,7 +6,7 @@ import moment from 'moment-timezone';
 import 'moment/locale/es';
 
 
-const AdminPage = () => {
+const AdminPage = (adminIsAuthenticated) => {
   const [contadorUsuarios, setContadorUsuarios] = useState(0);
   const [contadorCursos, setContadorCursos] = useState(0);
   const [contadorAdmin, setContadorAdmin] = useState(0);
@@ -36,7 +36,13 @@ const AdminPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://back-proyecto-utn.onrender.com/users');
+        const adminToken = localStorage.getItem('adminToken');
+        const response = await axios.get('https://back-proyecto-utn.onrender.com/users', {
+          headers: {
+            Authorization: `Bearer ${adminToken}`
+          }
+        });
+        
         console.log(response.data);
         setUsers(response.data.users);
       } catch (error) {
@@ -61,20 +67,28 @@ const AdminPage = () => {
 
 
   useEffect(() => {
-
-    axios.get('https://back-proyecto-utn.onrender.com/counter')
-      .then(response => {
-        setVisits(response.data.count);
-      })
-      .catch(error => {
-        console.error('Error al obtener el contador de visitas:', error);
-      });
+    const adminToken = localStorage.getItem('adminToken');
+    axios.get('https://back-proyecto-utn.onrender.com/counter', {
+      headers: {
+        Authorization: `Bearer ${adminToken}`
+      }
+    })
+    .then(response => {
+      setVisits(response.data.count);
+    })
+    .catch(error => {
+      console.error('Error al obtener el contador de visitas:', error);
+    });
   }, []);
 
 
   useEffect(() => {
-
-    axios.get('https://back-proyecto-utn.onrender.com/users/count')
+    const adminToken = localStorage.getItem('adminToken');
+    axios.get('https://back-proyecto-utn.onrender.com/users/count', {
+      headers: {
+        Authorization: `Bearer ${adminToken}`
+      }
+    })
       .then(response => {
         setContadorUsuarios(response.data.count);
       })
@@ -85,8 +99,13 @@ const AdminPage = () => {
 
 
   useEffect(() => {
-
-    axios.get('https://back-proyecto-utn.onrender.com/courses/count')
+    const adminToken = localStorage.getItem('adminToken');
+    axios.get('https://back-proyecto-utn.onrender.com/courses/count',
+    {
+      headers: {
+        Authorization: `Bearer ${adminToken}`
+      }
+    })
       .then(response => {
         setContadorCursos(response.data.count);
       })
@@ -96,8 +115,13 @@ const AdminPage = () => {
   }, []);
 
   useEffect(() => {
-
-    axios.get('https://back-proyecto-utn.onrender.com/admin/count')
+    const adminToken = localStorage.getItem('adminToken');
+    axios.get('https://back-proyecto-utn.onrender.com/admin/count',
+    {
+      headers: {
+        Authorization: `Bearer ${adminToken}`
+      }
+    })
       .then(response => {
         setContadorAdmin(response.data.count);
       })

@@ -7,11 +7,11 @@ import logo from './Images/OIG.png'
 
 import "./CSS/Header.css";
 
-const Header = ({ isAuthenticated, adminIsAuthenticated, name, username, logout }) => {
+const Header = ({ isAuthenticated, adminIsAuthenticated, name, username, handleUserLogout, handleAdminLogout }) => {
 
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary p-4 ">
+    <Navbar expand="lg" className="bg-body-tertiary p-4 container-fluid">
       <Container fluid>
         <div className="d-flex align-items-center w-100 justify-content-between ">
           <Navbar.Brand as={Link} to="/" className="fs-4"> 
@@ -31,7 +31,7 @@ const Header = ({ isAuthenticated, adminIsAuthenticated, name, username, logout 
                   <Dropdown.Item as= {Link} to='/user-courses'>
                     Cursos
                     </Dropdown.Item>
-                  <Dropdown.Item onClick={logout}>Cerrar sesión</Dropdown.Item>
+                  <Dropdown.Item onClick={handleUserLogout }>Cerrar sesión</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             ) : (
@@ -47,7 +47,7 @@ const Header = ({ isAuthenticated, adminIsAuthenticated, name, username, logout 
                     <Dropdown.Item href="#/action-2">Admin Cursos</Dropdown.Item>
                     <Dropdown.Item href="#/action-3">Admin Something</Dropdown.Item>
                     <Dropdown.Divider />
-                    <Dropdown.Item onClick={logout}>Cerrar sesión Admin</Dropdown.Item>
+                    <Dropdown.Item onClick={handleAdminLogout}>Cerrar sesión</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               ) : (
@@ -77,12 +77,36 @@ const Header = ({ isAuthenticated, adminIsAuthenticated, name, username, logout 
                 <FaSearch />
               </Button>
             </Form>
-            <Nav className="hide-on-large bg-light w-50‹">
-              <Nav className="flex-column w-50">
+            <Nav className="hide-on-large bg-light w-50">
+  {adminIsAuthenticated ? (
+    <>
 
-                <div className="d-flex">
-                  <h4 className=" pt-5 text-start pb-3">Temáticas</h4>
-                </div>
+            <Nav.Link as={Link} to="/admin/" className="text-dark text-sm pb-3 mt-2 pt-4">
+          Panel de Administración
+            </Nav.Link>
+          <Nav.Link as={Link} to="/admin/crear-cursos" className="text-dark text-sm pb-3">
+              Añadir cursos
+            </Nav.Link>
+            <Nav.Link as={Link} to="/admin/cursos" className="text-dark text-sm pb-3">
+              Editar cursos
+            </Nav.Link>
+            <Nav.Link as={Link} to="/admin/usuarios" className="text-dark text-sm pb-3">
+              Administrar usuarios
+            </Nav.Link>
+            <Nav.Link as={Link} to="/admin/course-registration" className="text-dark text-sm pb-3">
+              Administrar inscripciones
+            </Nav.Link>
+            <Nav.Link as={Link} to="/admin/administradores" className="text-dark text-sm pb-3">
+              Administradores
+            </Nav.Link>
+                  </>
+                    ) : (
+                      <>
+                        <Nav className="flex-column w-50">
+
+<div className="d-flex">
+  <h4 className=" pt-5 text-start pb-3">Temáticas</h4>
+</div>
                 <Nav.Link className="text-dark text-sm">Naturaleza y Medio Ambiente</Nav.Link>
                 <Nav.Link className="text-dark text-sm">Política y Sociedad</Nav.Link>
                 <Nav.Link className="text-dark text-sm">Literatura</Nav.Link>
@@ -98,6 +122,7 @@ const Header = ({ isAuthenticated, adminIsAuthenticated, name, username, logout 
                 <Nav.Link className="text-dark text-sm">Habilidades de Estudio</Nav.Link>
                 <Nav.Link className="text-dark text-sm">Psicología y Salud Mental</Nav.Link>
                 <Nav.Link className="text-dark text-sm">Negocios y Administración</Nav.Link>
+              
               </Nav>
 
               <Nav className="flex-column">
@@ -109,9 +134,10 @@ const Header = ({ isAuthenticated, adminIsAuthenticated, name, username, logout 
                 <Nav.Link className="text-dark text-sm">Cursos gratuitos</Nav.Link>
                 <Nav.Link className="text-dark text-sm">Cursos más buscados</Nav.Link>
               </Nav>
-            </Nav>
-
-          </Nav>
+    </>
+  )}
+</Nav>
+</Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>

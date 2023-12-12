@@ -17,11 +17,20 @@ const AdminRegister = () => {
   const handleAdminRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://back-proyecto-utn.onrender.com/admin/register', {
-        name,
-        password,
-        confirmPassword
-      });
+      const adminToken = localStorage.getItem('adminToken');
+      const response = await axios.post(
+        'https://back-proyecto-utn.onrender.com/admin/register',
+        {
+          name,
+          password,
+          confirmPassword
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${adminToken}`
+          }
+        }
+      );
 
       if (response.data.message === 'Administrador registrado exitosamente') {
 

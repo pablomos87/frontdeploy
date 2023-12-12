@@ -21,18 +21,27 @@ const CourseRegistration = ({ userId, isAuthenticated }) => {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const response = await axios.get(`https://back-proyecto-utn.onrender.com/courses/detail?courseId=${courseId}`);
+        const token = localStorage.getItem('token');
+        const response = await axios.get(
+          `https://back-proyecto-utn.onrender.com/courses/detail?courseId=${courseId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }
+        );
         console.log('data:', response.data);
         setCourse(response.data.course);
       } catch (error) {
         console.error('Error al obtener detalles del curso:', error);
       }
     };
-
+  
     if (courseId) {
       fetchCourse();
     }
   }, [courseId]);
+
 
   useEffect(() => {
 
@@ -105,9 +114,6 @@ const CourseRegistration = ({ userId, isAuthenticated }) => {
         }
       }
     };
-
-
-
 
   return (
 

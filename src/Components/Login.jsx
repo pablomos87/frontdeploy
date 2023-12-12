@@ -4,10 +4,11 @@ import axios from "axios";
 import { Container, Col, Form, FormControl, FormGroup, Button, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+import './CSS/Login.css'
 
 
 
-const Login = ({ setIsAuthenticated, setUsername: setParentUsername, setUserId}) => {
+const Login = ({ setUsername: setParentUsername, setUserId, setIsAuthenticated}) => {
   
   const location = useLocation();
   const navigate = useNavigate();
@@ -16,32 +17,39 @@ const Login = ({ setIsAuthenticated, setUsername: setParentUsername, setUserId})
 
   axios.defaults.withCredentials = true;
   
- const handleLogin = async (e) => {
-  e.preventDefault();
-  try {
-    const response = await axios.post("https://back-proyecto-utn.onrender.com/users/login", {
-      username: localUsername,
-      password,
-    }, { withCredentials: true });
-    console.log('Respuesta del servidor:', response.data);
-      
-    console.log('Cookies almacenadas en el cliente:', document.cookie);
-
-    if (response.data && response.data.message === 'Logeado correctamente') {
-      setIsAuthenticated(true)
-      setParentUsername(localUsername)
-      setUserId(response.data.userId);
-      console.log('Username actualizado:', localUsername);
-      console.log('userId:', response.data.userId);
-      
-      navigate(location.state?.from || '/')
-      
+  const handleLogin = async (e) => {
+    e.preventDefault();
+  
+    try {
+      const response = await axios.post("https://back-proyecto-utn.onrender.com/users/login", {
+        username: localUsername,
+        password,
+      });
+  
+      if (response.data && response.data.userToken) {
+        const { userToken, userId } = response.data;
+        
+        console.log('El userToken es:', userToken);
+        setUserId(userId);
+        setParentUsername(localUsername);
+        setIsAuthenticated(true);
+  
+        localStorage.setItem('userToken', userToken);
+        localStorage.setItem('userId', userId);
+        localStorage.setItem('username', localUsername);
+  
+        console.log('Username actualizado:', localUsername);
+        console.log('userId:', userId);
+  
+        navigate(location.state?.from || '/');
+      } else {
+        alert('Inicio de sesión fallido. Usuario o contraseña incorrectos.');
+      }
+    } catch (error) {
+      console.error("Error al iniciar sesión:", error);
+      alert('Inicio de sesión fallido. Usuario o contraseña incorrectos.');
     }
-  } catch (error) {
-    console.error("Error al iniciar sesión:", error);
-    alert('Inicio de sesión fallido. Usuario o password incorrectos.');
-  }
-};
+  };
 
 console.log('location.state:',  location.state);
   return (
