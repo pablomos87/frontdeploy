@@ -21,7 +21,9 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleSignup = async () => {
+  const handleSignup = async (e) => {
+
+    e.preventDefault();
     try {
       const response = await axios.post('https://back-proyecto-utn.onrender.com/users/register', {
         username,
@@ -59,7 +61,7 @@ const Signup = () => {
         <p className="fw-normal"> Crea una cuenta y se parte de nuestra comunidad</p>
       </div>
 
-      <Form className="bg-light p-4 w-100 mx-auto">
+      <Form onSubmit={handleSignup} className="bg-light p-4 w-100 mx-auto">
         <Row>
           <Col className="mb-4" md={12} xs={12}>
             <FormGroup className="mb-4">
@@ -275,13 +277,11 @@ const Signup = () => {
             </FormGroup>
           </Col>
         </Row>
-
-        <Row className="d-flex justify-content-center">
-  <Button variant="secondary" className="w-25 h-50" onClick={handleSignup}>
-    Registrarse
-  </Button>
-</Row>
-
+<Col lg={4} md={6} sm={10} xs={10} className="d-flex justify-content-center container-sm">
+          <Button variant="secondary" className="w-100 h-50" type='submit'>
+          Registrarse
+          </Button>
+        </Col>
       </Form>
     </Container >
   );

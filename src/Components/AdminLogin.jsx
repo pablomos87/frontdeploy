@@ -4,10 +4,12 @@ import axios from "axios";
 import { Container, Col, Form, FormControl, FormGroup, Button, Row } from 'react-bootstrap';
 import { faLock, faUserShield } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useAuth } from '../AuthContext';
 
 
+const AdminLogin = () => {
 
-const AdminLogin = ({ setAdminIsAuthenticated, setName: setParentName, setAdminId }) => {
+  const { setAdminIsAuthenticated, setName: setParentName, setAdminId } = useAuth();
 
   const navigate = useNavigate();
 
@@ -29,10 +31,10 @@ const AdminLogin = ({ setAdminIsAuthenticated, setName: setParentName, setAdminI
         setAdminId(adminId);
         setParentName(localName);
         setAdminIsAuthenticated(true);
-  
         localStorage.setItem('adminToken', adminToken);
         localStorage.setItem('adminId', adminId);
         localStorage.setItem('name', localName);
+        alert('Inicio existoso');
         navigate('/admin/');
       } else {
         alert('Nombre de usuario o contraseña incorrectos');

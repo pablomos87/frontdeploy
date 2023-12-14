@@ -4,11 +4,14 @@ import axios from "axios";
 import { Container, Col, Form, FormControl, FormGroup, Button, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
-import './CSS/Login.css'
+import './CSS/Login.css';
+import { useAuth } from '../AuthContext';
 
 
 
-const Login = ({ setUsername: setParentUsername, setUserId, setIsAuthenticated}) => {
+const Login = () => {
+
+  const { setUsername: setParentUsername, setUserId, setIsAuthenticated } = useAuth();
   
   const location = useLocation();
   const navigate = useNavigate();

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Container, Row, Col, Table, Button } from 'react-bootstrap';
 
 
-const UsersAdmin = (adminIsAuthenticated, adminId) => {
+const UsersAdmin = () => {
   
   const [users, setUsers] = useState ([]);
 

@@ -3,8 +3,8 @@ import { React, useState, useEffect } from 'react';
 import axios from 'axios';
 import { Container, Row, Col, Table, Button } from 'react-bootstrap';
 
+const AdminCourseRegistration = () => {
 
-const AdminCourseRegistration = (adminIsAuthenticated) => {
 
   const [users, setUsers] = useState([]);
 

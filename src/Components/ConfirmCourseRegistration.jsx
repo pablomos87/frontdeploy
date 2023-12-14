@@ -1,23 +1,25 @@
 import { ListGroup, Container } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
+import { useAuth } from '../AuthContext';
 
 
-const ConfirmCourseRegistration =  ({ userId, isAuthenticated, username }) => {
+const ConfirmCourseRegistration =  () => {
 
+  const { userId, isAuthenticated, username } = useAuth();
   const location = useLocation();
   const { courseId, selectedPaymentMethod, selectedCourseName, selectedCoursePrice } = location.state || {};
 
   
   console.log('Location State:', location.state);
 
-  // Verifica los valores de cada variable esperada
+  
   console.log('User ID:', userId);
   console.log('Course ID:', courseId);
   console.log('Selected Payment Method:', selectedPaymentMethod);
   console.log('Selected Course Name:', selectedCourseName);
 
   if (!isAuthenticated) {
-    return null; // Si el usuario no está autenticado, no se renderiza nada
+    return null; 
   }
 
 

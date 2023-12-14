@@ -5,8 +5,11 @@ import axios from 'axios';
 import TermsModal from './TermsModal';
 import { useNavigate } from 'react-router-dom';
 import "./CSS/CourseRegistration.css";
+import { useAuth } from '../AuthContext'
 
-const CourseRegistration = ({ userId, isAuthenticated }) => {
+const CourseRegistration = () => {
+
+  const { isAuthenticated, userId } = useAuth();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const courseId = searchParams.get('courseId');
@@ -21,15 +24,8 @@ const CourseRegistration = ({ userId, isAuthenticated }) => {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const token = localStorage.getItem('token');
         const response = await axios.get(
-          `https://back-proyecto-utn.onrender.com/courses/detail?courseId=${courseId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          }
-        );
+          `https://back-proyecto-utn.onrender.com/courses/detail?courseId=${courseId}`);
         console.log('data:', response.data);
         setCourse(response.data.course);
       } catch (error) {
@@ -86,10 +82,15 @@ const CourseRegistration = ({ userId, isAuthenticated }) => {
     }
 
     try {
-      const response = await axios.post(`https://back-proyecto-utn.onrender.com/courses/inscripcion/${userId}/${courseId}`);
-      console.log(response.data.message);
-      
-
+      const userToken = localStorage.getItem('userToken');
+      console.log('userToken:', userToken);
+      const response = await axios.post(`https://back-proyecto-utn.onrender.com/courses/inscripcion/${userId}/${courseId}`, null, {
+            headers: {
+              Authorization: `Bearer ${userToken}`
+            }
+          });
+        
+          console.log(response.data.message);
 
       if (response.status === 200) {
         alert ('Incripción exitosa')
@@ -106,20 +107,27 @@ const CourseRegistration = ({ userId, isAuthenticated }) => {
         });
       }
     } catch (error) {
-        if (error.response && error.response.status === 400) {
-          alert('Ya estás inscrito en este curso');
-        } else {
-          console.error('Error al inscribirse en el curso:', error);
+      if (error.response && error.response.status === 400) {
+        alert('Ya estás inscrito en este curso');
+      } else {
+        console.error('Error al inscribirse en el curso:', error);
+  
+        if (error.response) {
           console.error('Detalles específicos del error:', error.response.data);
-        }
+        } else if (error.request) {
+          console.error('El servidor no respondió:', error.request);
+        } else {
+          console.error('Ocurrió un error al enviar la solicitud:', error.message);
+        }}
       }
     };
-
+      
   return (
 
     <Container fluid
       className="mt-3 pb-4 mb-5 pt-1">
-      {course ? (
+      
+      {course && (
 
         <ListGroup className="mt-5 pt-5">
           <Col xs={12} sm={10} md={8} lg={8} className="mx-auto ">
@@ -255,9 +263,7 @@ const CourseRegistration = ({ userId, isAuthenticated }) => {
               </Col>
       </ListGroup> 
 
-      ) : (
-        <p>Cargando curso...</p>
-    )}
+      ) }
     
     </Container>
   )

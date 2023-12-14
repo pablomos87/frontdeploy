@@ -3,12 +3,14 @@ import React from 'react';
 import { Navbar, Nav, Container, Button, Form, Dropdown } from 'react-bootstrap';
 import "./CSS/Header.css";
 import { Link } from 'react-router-dom';
-import logo from './Images/OIG.png'
+import logo from './Images/OIG.png';
+import { useAuth } from '../AuthContext';
 
 import "./CSS/Header.css";
 
-const Header = ({ isAuthenticated, adminIsAuthenticated, name, username, handleUserLogout, handleAdminLogout }) => {
+const Header = () => {
 
+  const { isAuthenticated, adminIsAuthenticated, name, username, handleUserLogout, handleAdminLogout } = useAuth();
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary p-4 container-fluid">
@@ -41,15 +43,13 @@ const Header = ({ isAuthenticated, adminIsAuthenticated, name, username, handleU
                     @{name}
                   </Dropdown.Toggle>
                   <Dropdown.Menu style={{ minWidth: 'auto' }}>
-                    <Dropdown.Item href="#/action-1" active>
-                      Perfil Admin
+                  <Dropdown.Item as= {Link} to='/admin'>
+                      Panel
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Admin Cursos</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Admin Something</Dropdown.Item>
                     <Dropdown.Divider />
                     <Dropdown.Item onClick={handleAdminLogout}>Cerrar sesión</Dropdown.Item>
                   </Dropdown.Menu>
-                </Dropdown>
+                  </Dropdown>
               ) : (
                 <>
                   <Nav.Link as={Link} to="/signup" className="me-3" title="Sign Up"> <FaUserPlus/> <span className="d-none d-sm-inline">Sign Up</span></Nav.Link>

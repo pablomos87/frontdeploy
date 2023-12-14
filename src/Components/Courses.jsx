@@ -65,7 +65,7 @@ const Courses = () => {
             <Col md={6} sm={5} xs={5} className="ps- container-fluid">
               <p className="mb-3 pb-2 h3 fw-bold text-end text-md-start">Detalles del curso</p>
               <p className="fw-bold text-end text-md-start"> Duración: {course.duracion}.</p> 
-              <p className="fw-bold text-end text-md-start"> Rgularidad: {course.regularidad}.</p>
+              <p className="fw-bold text-end text-md-start"> Regularidad: {course.regularidad}.</p>
               <p className="fw-bold text-end text-md-start">Certificación: {course.certificacion}.</p>
               <p className="fw-bold text-end text-md-start"> Inicio del curso: {course.inicio}.</p> 
               <Row className="mt-4 mb-4">

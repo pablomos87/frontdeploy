@@ -3,7 +3,8 @@ import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const NewCourse = (adminIsAuthenticated, adminId) => {
+
+const NewCourse = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         nombre: '',

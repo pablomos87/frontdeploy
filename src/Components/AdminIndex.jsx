@@ -6,7 +6,10 @@ import moment from 'moment-timezone';
 import 'moment/locale/es';
 
 
-const AdminPage = (adminIsAuthenticated) => {
+const AdminPage = () => {
+
+  
+
   const [contadorUsuarios, setContadorUsuarios] = useState(0);
   const [contadorCursos, setContadorCursos] = useState(0);
   const [contadorAdmin, setContadorAdmin] = useState(0);

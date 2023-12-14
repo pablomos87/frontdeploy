@@ -5,10 +5,14 @@ import axios from 'axios';
 import moment from 'moment-timezone';
 import 'moment/locale/es';
 import './CSS/UserProfile.css';
+import { useAuth } from '../AuthContext';
 
 
-const UserProfile = ({ loggedInUsername }) => {
+const UserProfile = () => {
 
+  const { username } = useAuth();
+  
+  console.log('username:', username);
   const [user, setUser] = useState({ registeredCourses: [] });
   const [courseDetails, setCourseDetails] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
@@ -21,7 +25,7 @@ const UserProfile = ({ loggedInUsername }) => {
       try {
         const userToken = localStorage.getItem('userToken');
         const response = await axios.get(
-          `https://back-proyecto-utn.onrender.com/users/byusername?username=${loggedInUsername}`,
+          `https://back-proyecto-utn.onrender.com/users/byusername?username=${username}`,
           {
             headers: {
               Authorization: `Bearer ${userToken}`
@@ -55,7 +59,7 @@ const UserProfile = ({ loggedInUsername }) => {
       }
     };
     fetchData();
-  }, [loggedInUsername]);
+  }, [username]);
 
 
   const handleEdit = () => {
@@ -236,7 +240,7 @@ const UserProfile = ({ loggedInUsername }) => {
         </Col>
         <Row>
           <Col className="mb-2">
-            <div className="mb-5 pb-5">
+            <div className="mb-5 p-2">
           {courseDetails.length > 0 ? (
               courseDetails.slice(0, showAll ? courseDetails.length : 3).map((courseDetail, index) => (
                 <div key={index} className="mt-4 text-center">
@@ -248,7 +252,7 @@ const UserProfile = ({ loggedInUsername }) => {
             )}
             </div>
 
-            <div>
+            <div className="mb-5 pb-3">
               <p className="text-center fw-bold pt-3">Puedes explorar otras secciones</p>
               <Col className="optionsContainer text-center mt-">
                 <li><Link to="/home" >Home</Link> </li>

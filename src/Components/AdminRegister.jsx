@@ -101,12 +101,11 @@ const AdminRegister = () => {
             </FormGroup>
           </Col>
         </Row>
-        <Row className="d-flex justify-content-center">
-          <Button variant="secondary" className="w-25 h-50" type='submit'>
+        <Col lg={4} md={6} sm={10} xs={10} className="d-flex justify-content-center container-sm">
+          <Button variant="secondary" className="w-100 h-50" type='submit'>
             Registrarse
           </Button>
-        </Row>
-
+        </Col>
       </Form>
     </Container >
   );

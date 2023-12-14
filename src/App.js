@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import React from 'react'
 import './App.css';
 import { Container } from 'react-bootstrap';
 import ScrollToTop from './ScrollToTop';
@@ -26,87 +27,19 @@ import NewCourse from './Components/NewCourse';
 import UserProfile from './Components/UserProfile';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import React, { useState,  useEffect } from 'react'
-import { useLocation, Navigate, useNavigate } from 'react-router-dom';
+import { ProtectedUserRoute, ProtectedAdminRoute } from'./ProtectedRoute';
+import { AuthProvider } from './AuthContext';
+import { useLocation } from 'react-router-dom';
 
 
 function App() {
 
-  const [adminIsAuthenticated, setAdminIsAuthenticated] = useState(false);
-  const [username, setUsername] = useState('');
-  const [name, setName] = useState('');
+  
   const location = useLocation();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [userId, setUserId] = useState('');
-  const [adminId, setAdminId] = useState('');
-  const navigate = useNavigate();
-
   
-
-  useEffect(() => {
-    const userToken = localStorage.getItem('userToken');
-    const storedUserId = localStorage.getItem('userId');
-    const storedUsername = localStorage.getItem('username');
-  
-    if (userToken) {
-      setIsAuthenticated(true);
-      setAdminIsAuthenticated(false);
-      setUserId(storedUserId);
-      setUsername(storedUsername);
-      setName('')
-      setAdminId('')
-      localStorage.removeItem('adminToken');
-    } else {
-      setIsAuthenticated(false);
-      setUserId('');
-      setUsername('');
-    }
-  }, []);
-  
-  useEffect(() => {
-    const adminToken = localStorage.getItem('adminToken');
-    const storedAdminId = localStorage.getItem('adminId');
-    const storedName = localStorage.getItem('name');
-    
-  
-    if (adminToken) {
-      setAdminIsAuthenticated(true);
-      setIsAuthenticated(false);
-      setUserId('');
-      setUsername('');
-      setAdminId(storedAdminId);
-      setName(storedName);
-      localStorage.removeItem('userToken');
-    } else {
-      setAdminIsAuthenticated(false);
-      setAdminId('');
-      setName('');
-    }
-  }, []);
-
-  
-  const handleUserLogout = () => {
-    
-    localStorage.removeItem('userToken');
-    
-    setIsAuthenticated(false);
-    setUserId('');
-    setUsername('');
-  };
-
-  const handleAdminLogout = () => {
-    
-    localStorage.removeItem('adminToken');
-    
-    setAdminIsAuthenticated(false);
-    setAdminId('');
-    setName('');
-    navigate('/');   
-  };
-
 
   return (
-    <>
+    <AuthProvider>
       <ScrollToTop />
       <Routes>
         <Route
@@ -114,15 +47,7 @@ function App() {
           element={
             <>
               <Header
-                  isAuthenticated={isAuthenticated}
-                  adminIsAuthenticated={adminIsAuthenticated}
-                  name={name}
-                  username={username}
-                  userId={userId}
-                  adminId={adminId}
-                  handleUserLogout={handleUserLogout}
-                  handleAdminLogout={handleAdminLogout}
-                setName={setName}
+                
               />
 
               <div className='app'>
@@ -137,10 +62,7 @@ function App() {
                       path='/login'
                       element={
                         <Login
-                        setUsername={setUsername}
                         location={location}
-                        setIsAuthenticated={setIsAuthenticated} 
-                        setUserId ={setUserId}
                         />
                       }
                     />
@@ -149,52 +71,40 @@ function App() {
                     <Route
                       path='/user-profile'
                       element={
-                        isAuthenticated ? (
-                          <UserProfile 
-                          
-                          loggedInUsername={username} />
-                          ) : (
-                            <Navigate to='/login' />
-                          )
+                        <ProtectedUserRoute>
+                          <UserProfile />
+                          </ProtectedUserRoute>
+
                       }
                     />
                     
                     <Route
                       path='/user-courses'
                       element={
-                        isAuthenticated ? (
-                        <UserCourses
-                          
-                          loggedInUsername={username}
-                          />
-                        ) : (
-                          <Navigate to='/login' />
-                        )
+                      <ProtectedUserRoute>
+                        <UserCourses/>
+                        </ProtectedUserRoute>
+
                       }
                     />
+                    
                     <Route
                       path='/courses/registration'
                       element={
                         <CourseRegistration
-                          userId={userId}
-                          isAuthenticated={isAuthenticated}
                         />
                       }
                     />
                     <Route
                       path='/courses/registration/confirmation'
                       element={
-                        isAuthenticated ? (
+                        <ProtectedUserRoute>
                         <ConfirmCourseRegistration
-                          userId={userId}
-                          isAuthenticated={isAuthenticated}
-                          username={username}
                         />
-                        ) : (
-                          <Navigate to='/login' />
-                        )
+                        </ProtectedUserRoute>
                       }
                     />
+                    <Route path='/admin-login' element={<AdminLogin />} />
                   </Routes>
                 </Container>
               </div>
@@ -207,107 +117,35 @@ function App() {
           path='/admin/*'
           element={
             <>
-              <Header
-                isAuthenticated={isAuthenticated}
-                adminIsAuthenticated={adminIsAuthenticated}
-                name={name}
-                username={username}
-                userId={userId}
-                adminId={adminId}
-                handleUserLogout={handleUserLogout}
-                handleAdminLogout={handleAdminLogout}
-                setName={setName}
-              />
-
-              {adminIsAuthenticated ? (
+              <ProtectedAdminRoute>
+                <Header />
                 <div className='app'>
                   <div className='sidebar border border-top-0 border-bottom-0 border-tertiary ps-4 pe-2'>
                     <SidebarAdmin />
                   </div>
                   <Container fluid className='content'>
                     <Routes>
-                      <Route
-                        index
-                        element={  
-                            <Admin/>
-                        }
-                      />
-                      <Route
-                        path='/crear-cursos'
-                        element={
-                          
-                          <NewCourse/>
-                        }
-                      />
-
-                      <Route
-                        path='/editcourse/'
-                        element={
-                          
-                          <EditCourse/>
-                        }
-                      />
-                      <Route
-                        path='/registro'
-                        element={
-                          
-                          <AdminRegister />
-                        }
-                      />
-                      <Route
-                        path='/usuarios'
-                        element={
-                          
-                          <AdminUsers/>
-                        }
-                      />
-                      <Route
-                        path='/cursos'
-                        element={
-                          
-                          <AdminCourses/>
-                        }
-                      />
-                      <Route
-                        path='/administradores'
-                        element={
-                        
-                          <AdminAdministrators/>
-                        
-                        }
-                      />
-                      <Route
-                        path='/course-registration'
-                        element={
-                          <AdminCourseRegistration/>
-                        }
-                      />
+                      <Route index element={<Admin />} />
+                      <Route path='/crear-cursos' element={<NewCourse />} />
+                      <Route path='/editcourse/' element={<EditCourse />} />
+                      <Route path='/registro' element={<AdminRegister />} />
+                      <Route path='/usuarios' element={<AdminUsers />} />
+                      <Route path='/cursos' element={<AdminCourses />} />
+                      <Route path='/administradores' element={<AdminAdministrators />} />
+                      <Route path='/course-registration' element={<AdminCourseRegistration />} />
                     </Routes>
                   </Container>
                 </div>
-              ) : (
-                <Routes>
-                  <Route path='/*' element={<Navigate to='/admin/login' />} />
-                  <Route
-                    path='/login'
-                    element={
-                      <AdminLogin
-                        setAdminIsAuthenticated={setAdminIsAuthenticated}
-                        setName={setName}
-                        setAdminId={setAdminId}
-                      />
-                    }
-                  />
-                </Routes>
-              )}
-
+              </ProtectedAdminRoute>
               <Footer />
             </>
           }
         />
+            
       </Routes>
-    </>
+    </AuthProvider>
   );
 }
+
 
 export default App;

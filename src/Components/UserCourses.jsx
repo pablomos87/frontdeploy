@@ -3,9 +3,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './CSS/UserCourses.css'
+import { useAuth } from '../AuthContext';
 
-const UserCourses = ({ loggedInUsername, isAuthenticated }) => {
-
+const UserCourses = () => {
+  
+  const { username } = useAuth();
 
   const [user, setUser] = useState({ registeredCourses: [] });
   const [courseDetails, setCourseDetails] = useState([]);
@@ -17,7 +19,7 @@ const UserCourses = ({ loggedInUsername, isAuthenticated }) => {
         const userToken = localStorage.getItem('userToken');
         console.log('EL token es: ', userToken);
         const response = await axios.get(
-          `https://back-proyecto-utn.onrender.com/users/byusername?username=${loggedInUsername}`,
+          `https://back-proyecto-utn.onrender.com/users/byusername?username=${username}`,
           {
             headers: {
               Authorization: `Bearer ${userToken}`
@@ -53,14 +55,12 @@ const UserCourses = ({ loggedInUsername, isAuthenticated }) => {
       }
     };
     fetchData();
-  }, [loggedInUsername]);
-
-
+  }, [username]);
 
 
   return (
 
-    <Container fluid>
+    <Container fluid className="pb-5">
 <Col md={12} className="mt-5 mb-5">
 {user && ( 
 <h3 className="mb-2 pb-3 fw-bold">{user.firstName}, estos son los cursos en los que te inscribiste:</h3>
@@ -82,13 +82,12 @@ const UserCourses = ({ loggedInUsername, isAuthenticated }) => {
 
 
           </div>
-          <div className="h-100">
+          <div className="d-flex justify-content-center align-items-center ">
           <img src={courseDetail.course.imagen}  alt="Course"
-                className="img-fluid w-100 custom-user-courses-image-2 mt-4"
+                className="img-fluid custom-user-courses-image-2"
                 style={{ maxWidth: '150px', maxHeight: '150px' }}  />
           </div>
         </div>
-        <small> </small>
           
         <p className="mb-1">{/* Contenido del curso: courseDetail.contenido */}</p>
         <small>{/* Otros detalles del curso: courseDetail.otroDetalle */}</small>
