@@ -4,8 +4,8 @@ import './App.css';
 import { Container } from 'react-bootstrap';
 import ScrollToTop from './ScrollToTop';
 import Home from './Components/Home';
-import Footer from './Components/Footer';
-import Header from './Components/Header';
+/* import Footer from './Components/Footer';
+import Header from './Components/Header'; */
 import Sidebar from './Components/Sidebar';
 import Signup from './Components/Signup.jsx';
 import SignupSuccess from './Components/SignupSuccess';
@@ -35,6 +35,8 @@ import { useLocation } from 'react-router-dom';
 function App() {
 
 const location = useLocation();
+const LazyHeader = React.lazy(() => import('./Components/Header'));
+const LazyFooter = React.lazy(() => import('./Components/Footer'));
 
   return (
     <AuthProvider>
@@ -45,7 +47,7 @@ const location = useLocation();
           path='/*'
           element={
             <>
-          <Header />  
+          <LazyHeader  />  
           
               <div className='app'>
                 <div className='sidebar border border-top-0 border-bottom-0 border-tertiary ps-4 pe-2'>
@@ -102,7 +104,7 @@ const location = useLocation();
                   </Routes>
                 </Container>
               </div>
-              <Footer />
+              <LazyFooter  />
             </>
           }
         />
@@ -112,7 +114,7 @@ const location = useLocation();
           element={
             <>
               <ProtectedAdminRoute>
-                <Header />
+                <LazyHeader  />
                 <div className='app'>
                   <div className='sidebar border border-top-0 border-bottom-0 border-tertiary ps-4 pe-2'>
                     <SidebarAdmin />
@@ -133,7 +135,7 @@ const location = useLocation();
                   
                 </div>
               </ProtectedAdminRoute>
-              <Footer />
+              <LazyFooter  />
             </>
           }
         />
