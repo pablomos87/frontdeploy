@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import React, {Suspense} from 'react';
+import React from 'react';
 import './App.css';
 import { Container } from 'react-bootstrap';
 import ScrollToTop from './ScrollToTop';
@@ -35,116 +35,57 @@ import { useLocation } from 'react-router-dom';
 function App() {
 
 const location = useLocation();
-const LazyHeader = React.lazy(() => import('./Components/Header'));
-const LazyFooter = React.lazy(() => import('./Components/Footer'));
 
-  return (
-    <AuthProvider>
-      <ScrollToTop />
-      
-      <Routes>
-      
-        <Route
-          path='/*'
-          element={
-            <Suspense fallback={null}>
-            <React.Fragment>
-              <LazyHeader />
 
-              <div className='app'>
-                <div className='sidebar border border-top-0 border-bottom-0 border-tertiary ps-4 pe-2'>
-                  <Sidebar />
-                </div>
-                <Container fluid className='content'>
-                  <Routes>
-                    <Route index element={<Home />} />
-                    <Route path='/courses/detail' element={<Courses />} />
-                    <Route
-                      path='/login'
-                      element={
-                        <Login
-                        location={location}
-                        />
-                      }
-                    />
-                    <Route path='/signup' element={<Signup />} />
-                    <Route path='/signup-success' element={<SignupSuccess />} />
-                    <Route
-                      path='/user-profile'
-                      element={
-                        <ProtectedUserRoute>
-                          <UserProfile />
-                          </ProtectedUserRoute>
-                      }
-                    />
-                    
-                    <Route
-                      path='/user-courses'
-                      element={
-                      <ProtectedUserRoute>
-                        <UserCourses/>
-                        </ProtectedUserRoute>
-                      }
-                    />
-                    <Route
-                      path='/courses/registration'
-                      element={
-                        <CourseRegistration
-                        />
-                      }
-                    />
-                    <Route
-                      path='/courses/registration/confirmation'
-                      element={
+return (
+
+  <AuthProvider>
+    <ScrollToTop />
+    <Header />
+    <div className='app'>
+      <div className='sidebar border border-top-0 border-bottom-0 border-tertiary ps-4 pe-2'>
+      <Sidebar />
+      </div>
+      <Container fluid className='content'>
+        <Routes>
+          <Route path='/*'>
+            <Route index element={<Home />} />
+            <Route path='courses/detail' element={<Courses />} />
+            <Route path='login' element={<Login location={location}/>}/>
+            <Route path='signup' element={<Signup />} />
+            <Route path='signup-success' element={<SignupSuccess />} />
+            <Route path='user-profile' element={ 
+              <ProtectedUserRoute>
+                  <UserProfile />
+              </ProtectedUserRoute>}/>
+            <Route path='user-courses' element={
+              <ProtectedUserRoute>
+                <UserCourses/>
+              </ProtectedUserRoute>}/>
+            <Route path='courses/registration' element={<CourseRegistration/>}/>
+            <Route path='courses/registration/confirmation'element={
                         <ProtectedUserRoute>
                         <ConfirmCourseRegistration
                         />
-                        </ProtectedUserRoute>
-                      }
-                    />
-                    <Route path='/admin-login' element={<AdminLogin />} />
-                  </Routes>
-                </Container>
-              </div>
-               <LazyFooter />
-              </React.Fragment>
-            </Suspense>
-          }
-        />
-        <Route
-          path='/admin/*'
-          element={
-            <>
-              <ProtectedAdminRoute>
-                <Header  />
-                <div className='app'>
-                  <div className='sidebar border border-top-0 border-bottom-0 border-tertiary ps-4 pe-2'>
-                    <SidebarAdmin />
-                  </div>
-                  <Container fluid className='content'>
-                    <Routes>
-                      <Route index element={<Admin />} />
-                      <Route path='/crear-cursos' element={<NewCourse />} />
-                      <Route path='/editcourse/' element={<EditCourse />} />
-                      <Route path='/registro' element={<AdminRegister />} />
-                      <Route path='/usuarios' element={<AdminUsers />} />
-                      <Route path='/cursos' element={<AdminCourses />} />
-                      <Route path='/administradores' element={<AdminAdministrators />} />
-                      <Route path='/course-registration' element={<AdminCourseRegistration />} />
-                  </Routes>
-                  </Container>
-                </div>
-              </ProtectedAdminRoute>
-              <Footer  />
-            </>
-          }
-        />
-            
-      </Routes>
-      
+                        </ProtectedUserRoute>}/>
+                    <Route path='admin-login' element={<AdminLogin />} />
+                </Route>
+
+        <Route path='/admin/*'>
+        
+                      <Route index element={ <ProtectedAdminRoute> <Admin /> </ProtectedAdminRoute>} />
+                      <Route path='crear-cursos' element={<ProtectedAdminRoute> <NewCourse /> </ProtectedAdminRoute>} />
+                      <Route path='editcourse/' element={<ProtectedAdminRoute> <EditCourse /> </ProtectedAdminRoute>} />
+                      <Route path='registro' element={<ProtectedAdminRoute> <AdminRegister /> </ProtectedAdminRoute>} />
+                      <Route path='usuarios' element={<ProtectedAdminRoute> <AdminUsers /> </ProtectedAdminRoute>} />
+                      <Route path='cursos' element={<ProtectedAdminRoute> <AdminCourses /> </ProtectedAdminRoute>} />
+                      <Route path='administradores' element={<ProtectedAdminRoute> <AdminAdministrators /></ProtectedAdminRoute>} />
+                      <Route path='course-registration' element={<ProtectedAdminRoute> <AdminCourseRegistration /></ProtectedAdminRoute>} />
+                  </Route>
+              </Routes>
+        </Container>
+      </div>
+      <Footer />
     </AuthProvider>
-  );
-}
-
-
+    );}
 export default App;
