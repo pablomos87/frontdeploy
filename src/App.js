@@ -133,9 +133,10 @@ function App() {
                       <Route path='/cursos' element={<AdminCourses />} />
                       <Route path='/administradores' element={<AdminAdministrators />} />
                       <Route path='/course-registration' element={<AdminCourseRegistration />} />
-                    </Routes>
-                  </Container>
+                  </Routes>
                   <Outlet />
+                  </Container>
+                  
                 </div>
               </ProtectedAdminRoute>
               <Footer />
