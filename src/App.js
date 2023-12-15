@@ -22,7 +22,6 @@ import Courses from './Components/Courses';
 import CourseRegistration from './Components/CourseRegistration';
 import ConfirmCourseRegistration from './Components/ConfirmCourseRegistration';
 import EditCourse from './Components/EditCourse';
-import SidebarAdmin from './Components/SidebarAdmin';
 import NewCourse from './Components/NewCourse';
 import UserProfile from './Components/UserProfile';
 import 'bootstrap/dist/css/bootstrap.min.css';
