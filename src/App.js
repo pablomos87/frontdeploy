@@ -1,11 +1,11 @@
-import { Route, Routes, Outlet } from 'react-router-dom';
-import React, { Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import React, {Suspense} from 'react';
 import './App.css';
 import { Container } from 'react-bootstrap';
 import ScrollToTop from './ScrollToTop';
 import Home from './Components/Home';
-/* import Footer from './Components/Footer';
-import Header from './Components/Header'; */
+import Footer from './Components/Footer';
+import Header from './Components/Header';
 import Sidebar from './Components/Sidebar';
 import Signup from './Components/Signup.jsx';
 import SignupSuccess from './Components/SignupSuccess';
@@ -41,14 +41,16 @@ const LazyFooter = React.lazy(() => import('./Components/Footer'));
   return (
     <AuthProvider>
       <ScrollToTop />
-      <Suspense fallback={null}>
+      
       <Routes>
+      
         <Route
           path='/*'
           element={
-            <>
-          <LazyHeader  />  
-          
+            <Suspense fallback={null}>
+            <React.Fragment>
+              <LazyHeader />
+
               <div className='app'>
                 <div className='sidebar border border-top-0 border-bottom-0 border-tertiary ps-4 pe-2'>
                   <Sidebar />
@@ -104,17 +106,17 @@ const LazyFooter = React.lazy(() => import('./Components/Footer'));
                   </Routes>
                 </Container>
               </div>
-              <LazyFooter  />
-            </>
+               <LazyFooter />
+              </React.Fragment>
+            </Suspense>
           }
         />
-
         <Route
           path='/admin/*'
           element={
             <>
               <ProtectedAdminRoute>
-                <LazyHeader  />
+                <Header  />
                 <div className='app'>
                   <div className='sidebar border border-top-0 border-bottom-0 border-tertiary ps-4 pe-2'>
                     <SidebarAdmin />
@@ -130,18 +132,16 @@ const LazyFooter = React.lazy(() => import('./Components/Footer'));
                       <Route path='/administradores' element={<AdminAdministrators />} />
                       <Route path='/course-registration' element={<AdminCourseRegistration />} />
                   </Routes>
-                  <Outlet />
                   </Container>
-                  
                 </div>
               </ProtectedAdminRoute>
-              <LazyFooter  />
+              <Footer  />
             </>
           }
         />
             
       </Routes>
-      </Suspense>
+      
     </AuthProvider>
   );
 }
