@@ -1,5 +1,5 @@
 import { Route, Routes, Outlet } from 'react-router-dom';
-import React from 'react'
+import React, { Suspense } from 'react';
 import './App.css';
 import { Container } from 'react-bootstrap';
 import ScrollToTop from './ScrollToTop';
@@ -34,22 +34,19 @@ import { useLocation } from 'react-router-dom';
 
 function App() {
 
-  
-  const location = useLocation();
-  
+const location = useLocation();
 
   return (
     <AuthProvider>
       <ScrollToTop />
+      <Suspense fallback={null}>
       <Routes>
         <Route
           path='/*'
           element={
             <>
-              <Header
-                
-              />
-
+          <Header />  
+          
               <div className='app'>
                 <div className='sidebar border border-top-0 border-bottom-0 border-tertiary ps-4 pe-2'>
                   <Sidebar />
@@ -74,7 +71,6 @@ function App() {
                         <ProtectedUserRoute>
                           <UserProfile />
                           </ProtectedUserRoute>
-
                       }
                     />
                     
@@ -84,10 +80,8 @@ function App() {
                       <ProtectedUserRoute>
                         <UserCourses/>
                         </ProtectedUserRoute>
-
                       }
                     />
-                    
                     <Route
                       path='/courses/registration'
                       element={
@@ -145,6 +139,7 @@ function App() {
         />
             
       </Routes>
+      </Suspense>
     </AuthProvider>
   );
 }
