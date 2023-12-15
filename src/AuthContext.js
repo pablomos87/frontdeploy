@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
-import { Navigate } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 const AuthContext = createContext();
 
 export const useAuth = () => {
@@ -16,56 +15,56 @@ export const AuthProvider = ({ children }) => {
   const [adminId, setAdminId] = useState('');
   const [userToken, setUserToken] = useState('');
   const [adminToken, setAdminToken] = useState('');
-  
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const userToken = localStorage.getItem('userToken');
-    console.log('Usertoken:', userToken);
     const storedUserId = localStorage.getItem('userId');
     const storedUsername = localStorage.getItem('username');
-
+  
     if (userToken) {
       setIsAuthenticated(true);
-      setAdminIsAuthenticated(false);
       setUserId(storedUserId);
       setUsername(storedUsername);
-      setName('');
-      setAdminId('');
-      setUserToken (userToken)
-      localStorage.removeItem('adminToken');
+      setUserToken(userToken);
+      
     } else {
       setIsAuthenticated(false);
       setUserId('');
       setUsername('');
     }
-  }, []);
+  }, [setIsAuthenticated]);
+  
+  
 
- useEffect(() => {
+  useEffect(() => {
     const adminToken = localStorage.getItem('adminToken');
     const storedAdminId = localStorage.getItem('adminId');
     const storedName = localStorage.getItem('name');
-
+  
     if (adminToken) {
       setAdminIsAuthenticated(true);
-      setIsAuthenticated(false);
-      setUserId('');
-      setUsername('');
       setAdminId(storedAdminId);
       setName(storedName);
-      setAdminToken (adminToken)
-      localStorage.removeItem('userToken');
+      setAdminToken(adminToken);
     } else {
       setAdminIsAuthenticated(false);
       setAdminId('');
       setName('');
     }
-  }, []);
- 
+  }, [setAdminIsAuthenticated]);
+
+
+  console.log('IsAuthenticated:', isAuthenticated);
+  console.log('AdminIsAuthenticated:', adminIsAuthenticated);
+  
   const handleUserLogout = () => {
     localStorage.removeItem('userToken');
     setIsAuthenticated(false);
     setUserId('');
     setUsername('');
+    window.location.reload();
   };
 
   const handleAdminLogout = () => {
@@ -73,7 +72,7 @@ export const AuthProvider = ({ children }) => {
     setAdminIsAuthenticated(false);
     setAdminId('');
     setName('');
-    <Navigate to="/"/>
+    navigate('/'); 
   };
 
   const authContextValue = {

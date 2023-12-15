@@ -4,6 +4,7 @@ import { FaUser, FaRegEye, FaBookOpen, FaTools } from 'react-icons/fa';
 import axios from 'axios';
 import moment from 'moment-timezone';
 import 'moment/locale/es';
+import './CSS/AdminIndex.css'
 
 
 const AdminPage = () => {
@@ -17,7 +18,6 @@ const AdminPage = () => {
   const [courses, setCourses] = useState([]);
   const [users, setUsers] = useState([]);
   const [recentRegistrations, setRecentRegistrations] = useState([]);
-
 
 
 
@@ -70,19 +70,19 @@ const AdminPage = () => {
 
 
   useEffect(() => {
-    const adminToken = localStorage.getItem('adminToken');
-    axios.get('https://back-proyecto-utn.onrender.com/counter', {
+    /* const adminToken = localStorage.getItem('adminToken'); */
+    axios.get('https://back-proyecto-utn.onrender.com/visits/count', /* {
       headers: {
         Authorization: `Bearer ${adminToken}`
       }
-    })
+    } */)
     .then(response => {
-      setVisits(response.data.count);
+      setVisits(response.data.visitas);
     })
     .catch(error => {
       console.error('Error al obtener el contador de visitas:', error);
     });
-  }, []);
+}, []);
 
 
   useEffect(() => {
@@ -182,7 +182,7 @@ const AdminPage = () => {
                   <FaRegEye className="" />
                 </div>
               </div>
-              <div className="">
+              <div>
                 <div className="text-center">
                   <p className="">{visits}</p>
                   <p className="">Visitas</p>
@@ -233,10 +233,10 @@ const AdminPage = () => {
 
 
       <Container className="mt-5 container-sm mb-5">
-        <Row className="">
+        <Row>
           <Col md={12} className="mb-5 mx-auto">
-            <Card className="">
-              <div className="">
+            <Card>
+              <div>
                 <Card.Header className="">
 
                   <h3> Updates </h3>
@@ -250,9 +250,9 @@ const AdminPage = () => {
 
                   <ListGroup className="border-1" key={course._id}>
                     <ListGroupItem>
-                      <div className="d-flex flex-row justify-content-between">
-                        <p className="fw-bold"> {course.nombre} ({course.certificacion})</p>
-                        <p className="">{convertToBuenosAiresTime(course.fechaInclusion)}</p>
+                      <div className="d-flex flex-row justify-content-between custom-admin-font-size">
+                        <p className="fw-bold m-0"> {course.nombre} ({course.certificacion})</p>
+                        <p className="text-end">{convertToBuenosAiresTime(course.fechaInclusion)}</p>
                       </div>
                     </ListGroupItem>
                   </ListGroup>
@@ -278,7 +278,7 @@ const AdminPage = () => {
 
                   <ListGroup className="border-1" key={users._id}>
                     <ListGroupItem>
-                      <div className="d-flex flex-row justify-content-between">
+                      <div className="d-flex flex-row justify-content-between custom-admin-font-size">
                         <p > {users.username}</p>
                         <p className="">{convertToBuenosAiresTime(users.fechaInclusion)}</p>
                       </div>
@@ -305,7 +305,7 @@ const AdminPage = () => {
               <ListGroup>
                 <ListGroupItem className="fs-5">Usuario: <span className="fw-bold">{registration.username}</span></ListGroupItem>
                 <ListGroupItem>
-                  <div className="d-flex justify-content-between">
+                  <div className="d-flex justify-content-between custom-admin-font-size">
                     <p>{registration.nombre}</p>
                     <p>{convertToBuenosAiresTime(registration.fechaInscripcion)}</p>
                   </div>

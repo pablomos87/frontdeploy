@@ -9,7 +9,7 @@ import { useAuth } from '../AuthContext';
 
 const AdminLogin = () => {
 
-  const { setAdminIsAuthenticated, setName: setParentName, setAdminId } = useAuth();
+  const { setAdminIsAuthenticated, setIsAuthenticated, setName: setParentName, setAdminId, setUsername, setUserId } = useAuth();
 
   const navigate = useNavigate();
 
@@ -28,13 +28,17 @@ const AdminLogin = () => {
         const { adminToken, adminId } = response.data;
   
         console.log('El token es:', adminToken);
+        setUserId('');
+        setUsername('');
         setAdminId(adminId);
         setParentName(localName);
         setAdminIsAuthenticated(true);
+        setIsAuthenticated (false);
+      
+        localStorage.removeItem('userToken');
         localStorage.setItem('adminToken', adminToken);
         localStorage.setItem('adminId', adminId);
         localStorage.setItem('name', localName);
-        alert('Inicio existoso');
         navigate('/admin/');
       } else {
         alert('Nombre de usuario o contraseña incorrectos');

@@ -11,7 +11,7 @@ import { useAuth } from '../AuthContext';
 
 const Login = () => {
 
-  const { setUsername: setParentUsername, setUserId, setIsAuthenticated } = useAuth();
+  const { setUsername: setParentUsername, setUserId, setIsAuthenticated, setAdminIsAuthenticated, setName, setAdminId} = useAuth();
   
   const location = useLocation();
   const navigate = useNavigate();
@@ -33,10 +33,14 @@ const Login = () => {
         const { userToken, userId } = response.data;
         
         console.log('El userToken es:', userToken);
+        setAdminId('');
+        setName('');
         setUserId(userId);
         setParentUsername(localUsername);
         setIsAuthenticated(true);
-  
+        setAdminIsAuthenticated(false);
+
+        localStorage.removeItem('adminToken');
         localStorage.setItem('userToken', userToken);
         localStorage.setItem('userId', userId);
         localStorage.setItem('username', localUsername);

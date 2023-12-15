@@ -28,7 +28,7 @@ const ConfirmCourseRegistration =  () => {
       <ListGroup.Item className="ms-4 me-4 bg-light">
         <Container className="pt-3 pb-3">
         <div className="d-flex w-100 flex-column">
-          <h4 className="pb-3 pt-3 fw-bold">¡Gracias! {username}! </h4>
+          <h4 className="pb-3 pt-3 fw-bold">¡Gracias {username}! </h4>
           <p className="mb-2 fs-6">Recibirás un correo con los datos para completar el pago (...)</p>
           <div className="d-flex justify-content-between">
           <p className="mb-2 fs-6 fw-bold">Monto a abonar</p>

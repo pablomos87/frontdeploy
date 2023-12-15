@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Outlet } from 'react-router-dom';
 import React from 'react'
 import './App.css';
 import { Container } from 'react-bootstrap';
@@ -135,6 +135,7 @@ function App() {
                       <Route path='/course-registration' element={<AdminCourseRegistration />} />
                     </Routes>
                   </Container>
+                  <Outlet />
                 </div>
               </ProtectedAdminRoute>
               <Footer />

@@ -1,0 +1,27 @@
+.custom-admin-users-font-size {
+
+        font-size: 0.4rem;
+        }
+       
+        @media (min-width: 384px) {
+            .custom-admin-users-font-size {
+            font-size: 0.6rem;
+            }
+        }
+
+        @media (min-width: 576px) {
+            .custom-admin-users-font-size {
+            font-size: 0.8rem;
+            }
+        }
+        @media (min-width: 768px) {
+            .custom-admin-users-font-size {
+            font-size: 0.9rem;
+            }
+        }
+        
+        @media (min-width: 992px) { 
+            .custom-admin-users-font-size {
+            font-size: 1rem;
+        }
+        };

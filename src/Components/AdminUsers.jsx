@@ -2,6 +2,7 @@
 import { React, useState, useEffect } from 'react';
 import axios from 'axios';
 import { Container, Row, Col, Table, Button } from 'react-bootstrap';
+import './CSS/AdminUsers.css';
 
 
 const UsersAdmin = () => {
@@ -69,20 +70,20 @@ const UsersAdmin = () => {
         <Col>
           <Table bordered className="mx-auto w-75 text-center">
             <tbody>
-              <tr className="fw-bold">
-                <td>Nombre</td>
-                <td>Apellido</td>
-                <td>Usuario</td>
-                <td>Email</td>
-                <td>Edición</td>
+              <tr className="fw-bold custom-admin-users-font-size">
+                <td className="custom-admin-users-font-size">Nombre</td>
+                <td className="custom-admin-users-font-size">Apellido</td>
+                <td className="custom-admin-users-font-size">Usuario</td>
+                <td className="custom-admin-users-font-size">Email</td>
+                <td className="custom-admin-users-font-size">Edición</td>
               </tr>
               {users.map((user) => (
                 <tr key={user._id}>
-                  <td>{user.firstName}</td>
-                  <td>{user.lastName}</td>
-                  <td>{user.username}</td>
-                  <td>{user.email}</td>
-                  <td>  <Button onClick={() => handleDeleteUser(user._id)} variant="light border border-dark" >Eliminar usuario </Button></td>
+                  <td className="custom-admin-users-font-size">{user.firstName}</td>
+                  <td className="custom-admin-users-font-size">{user.lastName}</td>
+                  <td className="custom-admin-users-font-size">{user.username}</td>
+                  <td className="custom-admin-users-font-size">{user.email}</td>
+                  <td className="custom-admin-users-font-size m-0">  <Button onClick={() => handleDeleteUser(user._id)} variant="light border border-dark custom-admin-users-font-size" >Eliminar usuario </Button></td>
                 </tr>
               ))}
             </tbody>
