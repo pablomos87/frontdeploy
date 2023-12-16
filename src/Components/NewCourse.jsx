@@ -9,6 +9,7 @@ const NewCourse = () => {
     const [formData, setFormData] = useState({
         nombre: '',
         resumen: '',
+        palabrasClave: '',
         inicio: '',
         requisitos: '',
         precio: 0,
@@ -31,9 +32,11 @@ const NewCourse = () => {
         e.preventDefault();
     
         try {
+            const adminToken = localStorage.getItem('adminToken');
             const response = await axios.post('https://back-proyecto-utn.onrender.com/courses/newcourse', formData, {
                 headers: {
                     'Content-Type': 'application/json',
+                    Authorization: `Bearer ${adminToken}`
                 },
             });
             navigate ('/admin')
@@ -78,6 +81,18 @@ const NewCourse = () => {
                                         />
                                     </Form.Group>
 
+                                    
+                                    <Form.Group controlId="requisitos">
+                                        <Form.Label>Palabras clave:</Form.Label>
+                                        <Form.Control
+                                            className="text-center mb-2"
+                                            type="text"
+                                            name="palabrasClave"
+                                            value={formData.palabrasClave}
+                                            onChange={handleChange}
+                                            required
+                                        />
+                                    </Form.Group>
 
                                     <Form.Group controlId="requisitos">
                                         <Form.Label>Requisitos:</Form.Label>

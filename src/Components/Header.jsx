@@ -1,17 +1,29 @@
 import { FaSearch, FaSignInAlt, FaUserPlus } from 'react-icons/fa';
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar, Nav, Container, Button, Form, Dropdown } from 'react-bootstrap';
 import "./CSS/Header.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from './Images/OIG.png';
 import { useAuth } from '../AuthContext';
+import axios from 'axios';
 
 import "./CSS/Header.css";
 
 const Header = () => {
-
+  
+  const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
   const { isAuthenticated, adminIsAuthenticated, name, username, handleUserLogout, handleAdminLogout } = useAuth();
-
+  
+  const handleSearch = async () => {
+    try {
+      const response = await axios.get(`https://back-proyecto-utn.onrender.com/courses/search?query=${searchQuery}`); 
+      navigate(`/courses/search?query=${searchQuery}`, { searchResults: response.data.courses });
+    } catch (error) {
+      console.error('Error al buscar cursos:', error);
+    }
+  };
+  
   return (
     <Navbar expand="lg" className="bg-body-tertiary p-4 container-fluid">
       <Container fluid>
@@ -72,8 +84,11 @@ const Header = () => {
                 placeholder="Buscar"
                 className="me-2 fs-6"
                 aria-label="Search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
               />
-              <Button variant="outline-dark">
+            
+              <Button variant="secondary" onClick={handleSearch}>
                 <FaSearch />
               </Button>
             </Form>

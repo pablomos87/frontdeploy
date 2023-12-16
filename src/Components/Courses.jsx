@@ -59,7 +59,7 @@ const Courses = () => {
       </section>
 
       
-      <section className="my-5">
+      <section>
         <Container fluid className="border-2">
           <Row>
             <Col md={6} sm={5} xs={5} className="ps- container-fluid">
@@ -93,18 +93,18 @@ const Courses = () => {
       <section className="my-5 mb-5">
         <Container>
           <Row>
-            <Col md={6} className="mb-4">
+            <Col md={7} sm={12} xs={12} className="mb-3">
             <p className="mb-3 h3 fw-bold">Sobre el curso</p>
               <p style={{ textAlign: 'justify' }}>
               {course.descripcion}
               </p>
             </Col>
-            <Col md={6} className="mx-autor">
-              <Card className="border-2 w-75 me-4 ms-4 text-center">
+            <Col md={5} sm={12} xs={12} className="justify-content-center d-flex flex-column align-content-center">
+              <Card className="border-2 w-100  text-center pb-4 pe-4 ps-4 pt-3">
                <Card.Body>
                   <Card.Title className="fw-bold">Requisitos para inscribirte al curso </Card.Title>
                   <hr/>
-                  <Card.Text className="pt-3 pb-3 fs-6 fw-medium">
+                  <Card.Text className="pb-3 fs-6 fw-medium">
                     {course.requisitos} <FaCheckCircle/>
                   </Card.Text>
                   

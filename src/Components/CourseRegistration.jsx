@@ -252,10 +252,10 @@ const CourseRegistration = () => {
                   <div className="d-flex justify-content-center flex-column align-items-center">
 
                     <Button variant="transparent" onClick={handleLoginRedirect} className="text-primary text-center">
-                      Si ya sos usuario, inicia sesión para inscribirte en este curso
+                      Si ya sos usuario, <span style={{ textDecoration: 'underline' }}> inicia sesión para inscribirte en este curso </span>
                     </Button>
                     <Button variant="transparent" onClick={handleRegisterRedirect} className="text-primary mx-auto-text-cnter">
-                      Si no estás registrado, registrate aquí
+                      Si no estás registrado, <span style={{ textDecoration: 'underline' }}> registrate aquí </span>
                     </Button>
                   </div>
                 </>

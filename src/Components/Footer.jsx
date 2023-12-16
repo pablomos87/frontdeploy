@@ -9,7 +9,7 @@ const Footer = () => {
         <Row className="d-flex justify-content-between">
           <Col xs={12} md={4} className="text-center mb-4 mb-md-0 container-sm">
             <h5 className="textTitleFooter">Información de contacto</h5>
-            <p className="textFooter">Correo: info@.....com</p>
+            <p className="textFooter">Correo: info@cursosonlne.com</p>
             
           </Col>
           
@@ -39,7 +39,7 @@ const Footer = () => {
         </Row>
         <hr className="mt-4" />
         <p className="textFooter text-center">
-          © {new Date().getFullYear()} .... Todos los derechos reservados.
+          © {new Date().getFullYear()} Cursos Online. Todos los derechos reservados.
         </p>
         
       </Container>

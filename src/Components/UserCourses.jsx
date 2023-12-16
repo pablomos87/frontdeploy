@@ -88,9 +88,7 @@ const UserCourses = () => {
                 style={{ maxWidth: '150px', maxHeight: '150px' }}  />
           </div>
         </div>
-          
-        <p className="mb-1">{/* Contenido del curso: courseDetail.contenido */}</p>
-        <small>{/* Otros detalles del curso: courseDetail.otroDetalle */}</small>
+        
       </ListGroup.Item>
         </ListGroup>
          </Link>

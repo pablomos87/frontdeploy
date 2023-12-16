@@ -13,6 +13,7 @@ const EditCourse = () => {
   const [course, setCourse] = useState({
     nombre: '',
     resumen: '',
+    palabrasClave: '',
     precio: '',
     requisitos: '',
     duracion: '',
@@ -30,7 +31,7 @@ const EditCourse = () => {
     if (id) {
       const fetchCourse = async () => {
         try {
-          const response = await axios.get(`https://back-proyecto-utn.onrender.com/courses/detail?courseId=${id}`);
+          const response = await axios.get(`https://back-proyecto-utn.onrender.com/courses/detail?courseId=${id}`)
           setCourse(response.data.course);
         } catch (error) {
           console.error('Error al obtener detalles del curso:', error);
@@ -44,15 +45,19 @@ const EditCourse = () => {
   }, [id]);
   
   const handleUpdateCourse = async () => {
-    console.log('ID capturado de la URL:', id);
     try {
-      const response = await axios.post('https://back-proyecto-utn.onrender.com/courses/edit', {
-        ...course,
-        id,
-      });
-
+      const adminToken = localStorage.getItem('adminToken');
+      const response = await axios.post(
+        `https://back-proyecto-utn.onrender.com/courses/edit`,
+        { ...course, id },
+  {
+    headers: {
+      Authorization: `Bearer ${adminToken}`,
+    },
+  }
+);
       if (response.data.message === `Curso con ID ${id} editado exitosamente`) {
-        navigate(`/courses/detail?courseId=${id}`); 
+        navigate(`/courses/detail?courseId=${id}`);
       } else {
         console.log('Error al actualizar el curso', response.data.message);
       }
@@ -60,7 +65,7 @@ const EditCourse = () => {
       console.error('Error al actualizar el curso:', error);
     }
   };
-  
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setCourse((prevCourse) => ({
@@ -70,26 +75,39 @@ const EditCourse = () => {
   };
   
   const handleDeleteCourse = async () => {
-    try {
-      const confirmation = window.confirm('¿Estás seguro de que quieres eliminar este curso?');
-  
-      if (confirmation) {
-        const response = await axios.delete('https://back-proyecto-utn.onrender.com/courses/delete', {
-          data: { courseId: id }
-        });
-  
-        if (response.data.message === `Curso con ID ${id} eliminado exitosamente`) {
-          navigate('../'); 
-        } else {
-          console.log('Error al eliminar el curso', response.data.message);
+  try {
+    const confirmation = window.confirm(
+      '¿Estás seguro de que quieres eliminar este curso?'
+    );
+
+    if (confirmation) {
+      const adminToken = localStorage.getItem('adminToken');
+      const response = await axios.delete(
+        `https://back-proyecto-utn.onrender.com/courses/delete`,
+        {
+          headers: {
+            Authorization: `Bearer ${adminToken}`,
+          },
+          data: {
+            courseId: id,
+          },
         }
+      );
+
+      if (
+        response.data.message === `Curso con ID ${id} eliminado exitosamente`
+      ) {
+        navigate('../');
       } else {
-        console.log('Eliminación cancelada.');
+        console.log('Error al eliminar el curso', response.data.message);
       }
-    } catch (error) {
-      console.error('Error al eliminar el curso:', error);
+    } else {
+      console.log('Eliminación cancelada.');
     }
-  };
+  } catch (error) {
+    console.error('Error al eliminar el curso:', error);
+  }
+};
 
   return (
    <>
@@ -99,7 +117,7 @@ const EditCourse = () => {
       <h2 className="h3 ">EDITAR CURSO</h2>
       </Row>
       <Form className="mt-4 p-4 bg-light mb-5">
-        <Row className="mb-3">
+      <Row className="mb-3 pb-3">
           <Col md={6} xs={12}>
           <Form.Group as={Col} controlId="formNombre">
             <Form.Label>Nombre:</Form.Label>
@@ -107,6 +125,15 @@ const EditCourse = () => {
           </Form.Group>
           </Col>
           <Col md={6} xs={12}>
+          <Form.Group as={Col} controlId="formResumen">
+            <Form.Label>Palabras clave:</Form.Label>
+            <Form.Control type="text" name="palabrasClave" value={course.palabrasClave} onChange={handleInputChange} />
+          </Form.Group>
+          </Col>
+          </Row>
+
+          <Row className="mb-3 pb-3">
+          <Col md={12} xs={12}>
           <Form.Group as={Col} controlId="formResumen">
             <Form.Label>Resumen:</Form.Label>
             <Form.Control type="text" name="resumen" value={course.resumen} onChange={handleInputChange} />
@@ -116,29 +143,29 @@ const EditCourse = () => {
       
         <Row className="mb-3 PB-3">
         <Col md={6} xs={12}>
-           <Form.Group as={Col} controlId="formPrecio">
-            <Form.Label>Precio:</Form.Label>
-            <Form.Control type="text" name="precio" value={course.precio} onChange={handleInputChange} />
+        <Form.Group as={Col} controlId="formInicio">
+            <Form.Label>Inicio:</Form.Label>
+            <Form.Control type="text" name="inicio" value={course.inicio} onChange={handleInputChange} />
           </Form.Group>
           </Col>
+          <Col md={6} xs={12}>
+          <Form.Group as={Col} controlId="formRequisitos">
+            <Form.Label>Requisitos:</Form.Label>
+            <Form.Control type="text" name="requisitos" value={course.requisitos} onChange={handleInputChange} />
+          </Form.Group>
+          </Col>
+          </Row>
+          <Row className="mb-3 pb-3">
           <Col md={6} xs={12}>
           <Form.Group as={Col} controlId="formDuracion">
             <Form.Label>Duración:</Form.Label>
             <Form.Control type="text" name="duracion" value={course.duracion} onChange={handleInputChange} />
           </Form.Group>
           </Col>
-          </Row>
-          <Row className="mb-3">
           <Col md={6} xs={12}>
           <Form.Group as={Col} controlId="formRegularidad">
             <Form.Label>Regularidad:</Form.Label>
             <Form.Control type="text" name="regularidad" value={course.regularidad} onChange={handleInputChange} />
-          </Form.Group>
-          </Col>
-          <Col md={6} xs={12}>
-          <Form.Group as={Col} controlId="formRegularidad">
-            <Form.Label>Requisitos:</Form.Label>
-            <Form.Control type="text" name="requisitos" value={course.requisitos} onChange={handleInputChange} />
           </Form.Group>
           </Col>
           </Row>
@@ -161,9 +188,9 @@ const EditCourse = () => {
         <Row className="mb-3 pb-3">
 
         <Col md={6} xs={12}>
-        <Form.Group as={Col} controlId="formInicio">
-            <Form.Label>Inicio:</Form.Label>
-            <Form.Control type="text" name="inicio" value={course.inicio} onChange={handleInputChange} />
+           <Form.Group as={Col} controlId="formPrecio">
+            <Form.Label>Precio:</Form.Label>
+            <Form.Control type="text" name="precio" value={course.precio} onChange={handleInputChange} />
           </Form.Group>
           </Col>
           <Col md={6} xs={12}>
@@ -175,7 +202,7 @@ const EditCourse = () => {
 
         
         </Row>
-        <Col md={6} xs={12}>
+        <Col md={12} xs={12} className="mb-3 pb-3">
         <Form.Group className="mb-2 pt-2 pb-5" controlId="formDescripcion">
           <Form.Label>Descripción:</Form.Label>
           <Form.Control as="textarea"  rows={6} name="descripcion" className="pt-2 pb-2 h-10" value={course.descripcion} onChange={handleInputChange} />
