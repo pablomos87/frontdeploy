@@ -1,12 +1,11 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation, Link  } from 'react-router-dom';
 import { Container, Row, Col, Button, Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom'; 
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaCheckCircle } from 'react-icons/fa';
 import "./CSS/Courses.css";
+
 
 
 const Courses = () => {
@@ -15,41 +14,39 @@ const Courses = () => {
   const [randomCourses, setRandomCourses] = useState([]);
   const location = useLocation();
 
-
   useEffect(() => {
-    window.scrollTo(0, 0);
-    const urlParams = new URLSearchParams(location.search);
-    const courseId = urlParams.get('courseId');
-
-    const fetchCourse = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(`https://back-proyecto-utn.onrender.com/courses/detail?courseId=${courseId}`);
-        console.log('data:', response.data);
-        setCourse(response.data.course);
+        window.scrollTo(0, 0);
+        const urlParams = new URLSearchParams(location.search);
+        const courseId = urlParams.get('courseId');
+
+        if (courseId) {
+          const courseResponse = await axios.get(`https://back-proyecto-utn.onrender.com/courses/detail?courseId=${courseId}`);
+          console.log('Curso obtenido:', courseResponse.data.course);
+          setCourse(courseResponse.data.course);
+        }
+
+        const randomCoursesResponse = await axios.get('https://back-proyecto-utn.onrender.com/courses/random');
+        console.log('Cursos aleatorios obtenidos:', randomCoursesResponse.data.randomCourses);
+        setRandomCourses(randomCoursesResponse.data.randomCourses);
+      
       } catch (error) {
-        console.error('Error al obtener detalles del curso:', error);
+        console.error('Error:', error);
       }
     };
 
-    if (courseId) {
-      fetchCourse();
-    }
-  }, [location.search]);
-
- useEffect(() => {
-    const fetchRandomCourses = async () => {
-      try {
-        const response = await axios.get('https://back-proyecto-utn.onrender.com/courses/random');
-        setRandomCourses(response.data.randomCourses);
-      } catch (error) {
-        console.error('Error al obtener cursos aleatorios:', error);
-      }
-    };
-
-    fetchRandomCourses();
-  }, []);
+    fetchData();
+  }, [location.search, course._id]);
+  
+ 
 
 
+  if ( !course._id) {
+    return null;
+  }
+
+  
   return (
     <Container fluid className="pb-5">
   

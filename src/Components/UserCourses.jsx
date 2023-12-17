@@ -12,50 +12,52 @@ const UserCourses = () => {
   const [user, setUser] = useState({ registeredCourses: [] });
   const [courseDetails, setCourseDetails] = useState([]);
 
-
   useEffect(() => {
-    const fetchData = async () => {      
+    const fetchData = async () => {
       try {
         const userToken = localStorage.getItem('userToken');
-        console.log('EL token es: ', userToken);
-        const response = await axios.get(
+        const userResponse = axios.get(
           `https://back-proyecto-utn.onrender.com/users/byusername?username=${username}`,
-          {
-            headers: {
-              Authorization: `Bearer ${userToken}`
-            }
-          }
+          { headers: { Authorization: `Bearer ${userToken}` } }
         );
-        console.log(response.data);
-        setUser(response.data.user);
-        
-        console.log('IDs de los cursos:', response.data.user.registeredCourses);
 
-        const coursesDetails = await Promise.all(response.data.user.registeredCourses.map(async courseId => {
-          try {
-            const courseResponse = await axios.get(`https://back-proyecto-utn.onrender.com/courses/detail?courseId=${courseId}`);
-            if (courseResponse.data) {
-              return courseResponse.data;
-            } else {
-              console.error(`No se encontraron detalles para el curso con ID ${courseId}`);
-              return { nombre: 'Nombre no disponible', };
-            }
-          } catch (error) {
-            console.error('Error al obtener detalles del curso:', error);
-            return { nombre: 'Error al cargar detalles', };
-          }
-        }));
+        const userCoursesResponse = userResponse.then(async (response) => {
+          setUser(response.data.user);
 
-        setCourseDetails(coursesDetails);
+          const coursesDetails = await Promise.all(
+            response.data.user.registeredCourses.map(async (courseId) => {
+              try {
+                const courseResponse = await axios.get(
+                  `https://back-proyecto-utn.onrender.com/courses/detail?courseId=${courseId}`
+                );
+                if (courseResponse.data) {
+                  return courseResponse.data;
+                } else {
+                  console.error(`No se encontraron detalles para el curso con ID ${courseId}`);
+                  return { nombre: 'Nombre no disponible' };
+                }
+              } catch (error) {
+                console.error('Error al obtener detalles del curso:', error);
+                return { nombre: 'Error al cargar detalles' };
+              }
+            })
+          );
 
-        console.log("Detalles de los cursos:", coursesDetails);
+          setCourseDetails(coursesDetails);
+        });
 
+        await Promise.all([userCoursesResponse]);
       } catch (error) {
         console.error('Error al obtener los datos del usuario:', error);
       }
     };
+
     fetchData();
   }, [username]);
+
+  if (!user || !courseDetails.length) {
+    return null;
+  }
 
 
   return (

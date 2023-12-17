@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
-import React,  { useState, useEffect, Suspense } from 'react';
+import React  from 'react';
 import './App.css';
-import { Container, Spinner } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import ScrollToTop from './ScrollToTop';
 import Home from './Components/Home';
 import Footer from './Components/Footer';
@@ -19,17 +19,18 @@ import AdminAdministrators from './Components/AdminAdministrators';
 import AdminCourseRegistration from './Components/AdminCourseRegistration';
 import Login from './Components/Login';
 import SearchCourses from './Components/SearchCourses.jsx'
-/* import Courses from './Components/Courses'; */
-/* import CourseRegistration from './Components/CourseRegistration'; */
+import Courses from './Components/Courses'; 
+import CourseRegistration from './Components/CourseRegistration';
 import ConfirmCourseRegistration from './Components/ConfirmCourseRegistration';
 import EditCourse from './Components/EditCourse';
 import NewCourse from './Components/NewCourse';
-/* import UserProfile from './Components/UserProfile'; */
+import UserProfile from './Components/UserProfile';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { ProtectedUserRoute, ProtectedAdminRoute } from'./ProtectedRoute';
 import { AuthProvider } from './AuthContext';
 import { useLocation } from 'react-router-dom';
+import { LoadingContextProvider } from './LoadingContext.js'
 
 
 
@@ -37,13 +38,12 @@ function App() {
 
   const location = useLocation();
 
-  const Courses = React.lazy(() => import('./Components/Courses'));
-const CourseRegistration = React.lazy(() => import('./Components/CourseRegistration'));
-const UserProfile = React.lazy(() => import('./Components/UserProfile'));
+
 
 return (
 
   <AuthProvider>
+    
     <ScrollToTop />
           <div>
             <Header/>
@@ -53,8 +53,6 @@ return (
       <Sidebar />
       </div>
       <Container fluid className='content'>
-      
-            <Suspense fallback={<Spinner animation='border' role='status' />}>
         <Routes>
           <Route path='/*'>
             <Route index element={<Home />} />
@@ -92,12 +90,12 @@ return (
                       <Route path='course-registration' element={<ProtectedAdminRoute> <AdminCourseRegistration /></ProtectedAdminRoute>} />
                   </Route>
               </Routes>
-          </Suspense>
         </Container>
     </div>
           <div>
             <Footer />
         </div>
+      
     </AuthProvider>
   );
 }

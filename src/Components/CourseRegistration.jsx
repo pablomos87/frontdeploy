@@ -5,7 +5,9 @@ import axios from 'axios';
 import TermsModal from './TermsModal';
 import { useNavigate } from 'react-router-dom';
 import "./CSS/CourseRegistration.css";
-import { useAuth } from '../AuthContext'
+import { useAuth } from '../AuthContext';
+
+
 
 const CourseRegistration = () => {
 
@@ -20,6 +22,7 @@ const CourseRegistration = () => {
   const handleTermsShow = () => setShowTermsModal(true);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [isRegistrationDisabled, setIsRegistrationDisabled] = useState(true);
+  
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -33,12 +36,11 @@ const CourseRegistration = () => {
         console.error('Error al obtener detalles del curso:', error);
       }
     };
-  
+
     if (courseId) {
       fetchCourse();
     }
   }, [courseId]);
-
 
   useEffect(() => {
 
@@ -123,6 +125,10 @@ const CourseRegistration = () => {
       }
     };
       
+    if ( !course) {
+      return null;
+    };
+
   return (
 
     <Container fluid

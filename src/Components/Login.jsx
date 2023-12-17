@@ -1,5 +1,5 @@
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import axios from "axios";
 import { Container, Col, Form, FormControl, FormGroup, Button, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,14 +12,14 @@ import { useAuth } from '../AuthContext';
 const Login = () => {
 
   const { setUsername: setParentUsername, setUserId, setIsAuthenticated, setAdminIsAuthenticated, setName, setAdminId} = useAuth();
-  
   const location = useLocation();
   const navigate = useNavigate();
   const [localUsername, setLocalUsername] = useState('');
   const [password, setPassword] = useState('');
-
   axios.defaults.withCredentials = true;
   
+
+
   const handleLogin = async (e) => {
     e.preventDefault();
   

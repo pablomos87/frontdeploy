@@ -7,6 +7,7 @@ import image from "./Images/Image2.jpeg";
 
 const Home = () => {
   const [courses, setCourses] = useState([]);
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -14,9 +15,11 @@ const Home = () => {
         const response = await axios.get('https://back-proyecto-utn.onrender.com/courses');
         console.log(response.data); 
         setCourses(response.data.courses);
+        console.log('Antes de setLoadingFalse');
       } catch (error) {
         console.error('Error al obtener la lista de cursos:', error);
       }
+     
     };
     fetchData();
   }, []);
@@ -24,8 +27,13 @@ const Home = () => {
   const lastThreeCourses = courses.slice(-3);
   const remainingCourses = courses.slice(0, -3);
 
+  if (courses.length === 0) {
+    return null; 
+  }
 
+ 
   return (
+
     <div className="justify-content-center align-self-center m-2 pb-5">
     <Row className="home-title-row mt-5 pb-5 mb-5 p-1 mx-auto">
   <Col className="image-container p-0">

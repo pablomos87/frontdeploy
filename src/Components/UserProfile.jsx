@@ -8,10 +8,10 @@ import './CSS/UserProfile.css';
 import { useAuth } from '../AuthContext';
 
 
+
 const UserProfile = () => {
 
-  const { username } = useAuth();
-  
+  const { username } = useAuth();  
   console.log('username:', username);
   const [user, setUser] = useState({ registeredCourses: [] });
   const [courseDetails, setCourseDetails] = useState([]);
@@ -19,7 +19,7 @@ const UserProfile = () => {
   const [formData, setFormData] = useState({});
   const [showAll, setShowAll] = useState(false);
 
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,33 +32,41 @@ const UserProfile = () => {
             }
           }
         );
-        
+  
         setUser(response.data.user);
-
-        const coursesDetails = await Promise.all(response.data.user.registeredCourses.map(async courseId => {
-          try {
-            const courseResponse = await axios.get(`https://back-proyecto-utn.onrender.com/courses/detail?courseId=${courseId}`);
-            if (courseResponse.data) {
-              return courseResponse.data;
-            } else {
-              console.error(`No se encontraron detalles para el curso con ID ${courseId}`);
-              return { nombre: 'Nombre no disponible', };
+  
+        const coursesDetails = await Promise.all(
+          response.data.user.registeredCourses.map(async (courseId) => {
+            try {
+              const courseResponse = await axios.get(`https://back-proyecto-utn.onrender.com/courses/detail?courseId=${courseId}`);
+              if (courseResponse.data) {
+                return courseResponse.data;
+              } else {
+                console.error(`No se encontraron detalles para el curso con ID ${courseId}`);
+                return { nombre: 'Nombre no disponible' };
+              }
+            } catch (error) {
+              console.error('Error al obtener detalles del curso:', error);
+              return { nombre: 'Error al cargar detalles' };
             }
-          } catch (error) {
-            console.error('Error al obtener detalles del curso:', error);
-            return { nombre: 'Error al cargar detalles', };
-          }
-        }));
-
+          })
+        );
+  
         setCourseDetails(coursesDetails);
         setFormData(response.data.user);
-
       } catch (error) {
         console.error('Error al obtener los datos del usuario:', error);
       }
     };
+  
     fetchData();
   }, [username]);
+
+
+  if (!user || !courseDetails.length) {
+    return null;
+  }
+
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -100,111 +108,110 @@ const UserProfile = () => {
   return (
 
     <Container fluid>
-      <Col className="container-fluid w-100 mb-5 mt-5 pb-4 container-fluid">
-        <p className="fs-4 ms-1 mt-4 mb-5 fw-bold ps-2">Mi perfil</p>
+      <Col className="container-fluid w-100 mb-5 mt-5 pb-4">
+        <p className="fs-4 mt-4 mb-5 fw-bold ps-2">Mi perfil</p>
         {user && (
-          <Row className="container-fluid justify-content-md-center">
-            <Col md={8}>
+          <Row className="container-fluid justify-content-md-center m-0">
+            <Col md={8} className="container-fluid m-0">
               <div className="fs-6">
-                <>
                   <Row className="mb-3">
                     <Col xs={6} className="text-start">
                       Nombre:
                     </Col>
-                <Col xs={6}>
-                    {isEditing ? (
-                <input
-                  type="text"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  onBlur={handleSave}
-                  className="border-0 text-end w-100"
-                />
-              ) : (
-                <div className="text-end">
-                <span onClick={handleEdit}>{formData.firstName}</span>
-                </div>
-              )}
-            </Col>
+                    <Col xs={6}>
+                      {isEditing ? (
+                        <input
+                          type="text"
+                          name="firstName"
+                          value={formData.firstName}
+                          onChange={handleChange}
+                          onBlur={handleSave}
+                          className="border-0 text-end w-100"
+                        />
+                      ) : (
+                        <div className="text-end">
+                          <span onClick={handleEdit}>{formData.firstName}</span>
+                        </div>
+                      )}
+                    </Col>
                   </Row>
                   <Row className="mb-3">
                     <Col xs={6}>Apellido:</Col>
                     <Col xs={6}>
-                    {isEditing ? (
-                <input
-                  type="text"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  onBlur={handleSave}
-                  className="border-0 text-end w-100"
-                />
-              ) : (
-                <div className="text-end">
-                <span  className="align-content-end" onClick={handleEdit}>{formData.lastName}</span>
-                </div>
-              )}
-            </Col>
+                      {isEditing ? (
+                        <input
+                          type="text"
+                          name="lastName"
+                          value={formData.lastName}
+                          onChange={handleChange}
+                          onBlur={handleSave}
+                          className="border-0 text-end w-100"
+                        />
+                      ) : (
+                        <div className="text-end">
+                          <span className="align-content-end" onClick={handleEdit}>{formData.lastName}</span>
+                        </div>
+                      )}
+                    </Col>
                   </Row>
                   <Row className="mb-3">
                     <Col xs={6}>Nombre de usuario:</Col>
                     <Col xs={6}>
-                    {isEditing ? (
-                <input
-                  type="text"
-                  name="username"
-                  value={formData.username}
-                  onChange={handleChange}
-                  onBlur={handleSave}
-                  className="border-0 text-end w-100"
-                />
-              ) : (
-                <div className="text-end">
-                <span  onClick={handleEdit}>{formData.username}</span>
-                </div>
-              )}
-            </Col>
+                      {isEditing ? (
+                        <input
+                          type="text"
+                          name="username"
+                          value={formData.username}
+                          onChange={handleChange}
+                          onBlur={handleSave}
+                          className="border-0 text-end w-100"
+                        />
+                      ) : (
+                        <div className="text-end">
+                          <span onClick={handleEdit}>{formData.username}</span>
+                        </div>
+                      )}
+                    </Col>
                   </Row>
                   <Row className="mb-3">
                     <Col xs={6}>Correo electrónico:</Col>
                     <Col xs={6}>
-                    {isEditing ? (
-                <input
-                  type="text"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  onBlur={handleSave}
-                  className="border-0 text-end w-100"
-                />
-              ) : (
-                <div className="text-end">
-                <span  className="border-0 text-end w-100" onClick={handleEdit}>{formData.email}</span>
-                </div>
-              )}
-            </Col>
+                      {isEditing ? (
+                        <input
+                          type="text"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          onBlur={handleSave}
+                          className="border-0 text-end w-100"
+                        />
+                      ) : (
+                        <div className="text-end">
+                          <span className="border-0 text-end w-100" onClick={handleEdit}>{formData.email}</span>
+                        </div>
+                      )}
+                    </Col>
                   </Row>
                   <Row className="mb-3">
                     <Col xs={6}>Género:</Col>
                     <Col xs={6} >
-                    {isEditing ? (
-                    <select
-                        name="gender"
-                        value={formData.gender}
-                        onChange={handleChange}
-                        onBlur={handleSave}
-                        className="border-0 text-end w-100"
-                        
-                      >
-                        <option value="">Elige una opción</option>
-                        <option value="masculino">Masculino</option>
-                        <option value="femenino">Femenino</option>
-                        <option value="otro">Otro</option>
-                      </select>
-                       ) : (
+                      {isEditing ? (
+                        <select
+                          name="gender"
+                          value={formData.gender}
+                          onChange={handleChange}
+                          onBlur={handleSave}
+                          className="border-0 text-end w-100"
+
+                        >
+                          <option value="">Elige una opción</option>
+                          <option value="masculino">Masculino</option>
+                          <option value="femenino">Femenino</option>
+                          <option value="otro">Otro</option>
+                        </select>
+                      ) : (
                         <div className="text-end">
-                        <span  className="border-0 text-end w-100" onClick={handleEdit}>{formData.gender}</span>
+                          <span className="border-0 text-end w-100" onClick={handleEdit}>{formData.gender}</span>
                         </div>
                       )}
                     </Col>
@@ -212,61 +219,60 @@ const UserProfile = () => {
                   <Row className="mb-3">
                     <Col xs={6}>Fecha de nacimiento:</Col>
                     <Col xs={6}>
-                    {isEditing ? (
-                <input
-                  type="text"
-                  name="birthDate"
-                  value={formData.birthDate}
-                  onChange={handleChange}
-                  onBlur={handleSave}
-                  className="border-0 text-end w-100"
-                />
-              ) : (
-                <div className="text-end">
-                <span  className="border-0 text-end w-100" onClick={handleEdit}>{formData.birthDate}</span>
-                </div>
-              )}
-            </Col>
+                      {isEditing ? (
+                        <input
+                          type="text"
+                          name="birthDate"
+                          value={formData.birthDate}
+                          onChange={handleChange}
+                          onBlur={handleSave}
+                          className="border-0 text-end w-100"
+                        />
+                      ) : (
+                        <div className="text-end">
+                          <span className="border-0 text-end w-100" onClick={handleEdit}>{formData.birthDate}</span>
+                        </div>
+                      )}
+                    </Col>
                   </Row>
                   <Row className="mb-3">
                     <Col xs={6}>Ciudad:</Col>
                     <Col xs={6}>
-                    {isEditing ? (
-                <input
-                  type="text"
-                  name="city"
-                  value={formData.city}
-                  onChange={handleChange}
-                  onBlur={handleSave}
-                  className="border-0 text-end w-100"
-                />
-              ) : (
-                <div className="text-end">
-                <span  className="border-0 text-end w-100" onClick={handleEdit}>{formData.city}</span>
-                </div>
-              )}
-            </Col>
+                      {isEditing ? (
+                        <input
+                          type="text"
+                          name="city"
+                          value={formData.city}
+                          onChange={handleChange}
+                          onBlur={handleSave}
+                          className="border-0 text-end w-100"
+                        />
+                      ) : (
+                        <div className="text-end">
+                          <span className="border-0 text-end w-100" onClick={handleEdit}>{formData.city}</span>
+                        </div>
+                      )}
+                    </Col>
                   </Row>
                   <Row className="mb-5">
                     <Col xs={6}>País:</Col>
                     <Col xs={6}>
-                    {isEditing ? (
-                <input
-                  type="text"
-                  name="country"
-                  value={formData.country}
-                  onChange={handleChange}
-                  onBlur={handleSave}
-                  className="border-0 text-end w-100"
-                />
-              ) : (
-                <div className="text-end">
-                <span  className="border-0 text-end w-100" onClick={handleEdit}>{formData.country}</span>
-              </div>
-              )}
-            </Col>
+                      {isEditing ? (
+                        <input
+                          type="text"
+                          name="country"
+                          value={formData.country}
+                          onChange={handleChange}
+                          onBlur={handleSave}
+                          className="border-0 text-end w-100"
+                        />
+                      ) : (
+                        <div className="text-end">
+                          <span className="border-0 text-end w-100" onClick={handleEdit}>{formData.country}</span>
+                        </div>
+                      )}
+                    </Col>
                   </Row>
-                </>
                 <div className="text-center mt-4">
                   <Button variant="secondary" className="w-50" onClick={isEditing ? handleSave : handleEdit}>
                     {isEditing ? 'Guardar' : 'Editar'}
@@ -283,21 +289,21 @@ const UserProfile = () => {
         <Col xs="12" className="d-flex justify-content-between  align-items-center mb-2  pb-4">
           <p className="mt-3 fw-normal mb-0 fw-bold">Actividad reciente</p>
           <p className="mb-0 mt-3 text-muted link-text" onClick={() => setShowAll(!showAll)}>
-          {showAll ? 'Mostrar menos' : 'Mostrar más'}
-        </p>
+            {showAll ? 'Mostrar menos' : 'Mostrar más'}
+          </p>
         </Col>
         <Row>
           <Col className="mb-2">
             <div className="mb-5 p-2">
-          {courseDetails.length > 0 ? (
-              courseDetails.slice(0, showAll ? courseDetails.length : 3).map((courseDetail, index) => (
-                <div key={index} className="mt-4 text-center">
-                  <p className="fst-italic">Hace {convertToBuenosAiresTime(courseDetail.course.fechaInscripcion)} te inscribiste al curso: {courseDetail.course.nombre} que comienza el {courseDetail.course.inicio} </p>
-                </div>
-              ))
-            ) : (
-              <p className="text-center">No hay actividad reciente para mostrar.</p>
-            )}
+              {courseDetails.length > 0 ? (
+                courseDetails.slice(0, showAll ? courseDetails.length : 3).map((courseDetail, index) => (
+                  <div key={index} className="mt-4 text-center">
+                    <p className="fst-italic">Hace {convertToBuenosAiresTime(courseDetail.course.fechaInscripcion)} te inscribiste al curso: {courseDetail.course.nombre} que comienza el {courseDetail.course.inicio} </p>
+                  </div>
+                ))
+              ) : (
+                <p className="text-center">No hay actividad reciente para mostrar.</p>
+              )}
             </div>
 
             <div className="mb-5 pb-3">
