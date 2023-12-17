@@ -202,7 +202,7 @@ const EditCourse = () => {
         
         </Row>
         <Col md={12} xs={12} className="mb-4">
-        <Form.Group className="mb-2 pt-2 pb-5" controlId="formDescripcion" className="mb-4">
+        <Form.Group className="mb-2 pt-2 pb-5" controlId="formDescripcion">
           <Form.Label>Descripción</Form.Label>
           <Form.Control as="textarea"  rows={6} name="descripcion" className="pt-2 pb-2 h-10" value={course.descripcion} onChange={handleInputChange} />
         </Form.Group>
