@@ -174,8 +174,8 @@ const UserProfile = () => {
                     </Col>
                   </Row>
                   <Row className="mb-3">
-                    <Col xs={6}>Correo electrónico:</Col>
-                    <Col xs={6}>
+                    <Col xs={5}>Correo electrónico:</Col>
+                    <Col xs={7}>
                       {isEditing ? (
                         <input
                           type="text"
