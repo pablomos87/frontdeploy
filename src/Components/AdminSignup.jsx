@@ -51,7 +51,7 @@ const AdminRegister = () => {
     <Container className="d-flex flex-column justify-content-center m-1">
 
       <div className="d-flex flex-column justify-content-center align-items-left container-fluid w-100">
-        <h3 className="display-6 fw-bold pt-5">Registro de Administrador</h3>
+        <h3 className="display-6 fw-bold pt-5">SIGNUP Admin</h3>
       </div>
 
       <Form onSubmit={handleAdminRegister} className="mt-5 bg-light p-4 w-100 mx-auto mb-5 ms-3 me-3">

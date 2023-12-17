@@ -12,7 +12,7 @@ import SignupSuccess from './Components/SignupSuccess';
 import UserCourses from './Components/UserCourses';
 import Admin from './Components/AdminIndex';
 import AdminLogin from './Components/AdminLogin';
-import AdminRegister from './Components/AdminRegister';
+import AdminRegister from './Components/AdminSignup.jsx';
 import AdminUsers from './Components/AdminUsers';
 import AdminCourses from './Components/AdminCourses';
 import AdminAdministrators from './Components/AdminAdministrators';
@@ -23,7 +23,7 @@ import Courses from './Components/Courses';
 import CourseRegistration from './Components/CourseRegistration';
 import ConfirmCourseRegistration from './Components/ConfirmCourseRegistration';
 import EditCourse from './Components/EditCourse';
-import NewCourse from './Components/NewCourse';
+import NewCourse from './Components/AddCourse.jsx';
 import UserProfile from './Components/UserProfile';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -76,12 +76,12 @@ return (
         <Route path='/admin/*'>
         
                       <Route index element={ <ProtectedAdminRoute> <Admin /> </ProtectedAdminRoute>} />
-                      <Route path='crear-cursos' element={<ProtectedAdminRoute> <NewCourse /> </ProtectedAdminRoute>} />
-                      <Route path='editcourse/' element={<ProtectedAdminRoute> <EditCourse /> </ProtectedAdminRoute>} />
-                      <Route path='registro' element={<ProtectedAdminRoute> <AdminRegister /> </ProtectedAdminRoute>} />
-                      <Route path='usuarios' element={<ProtectedAdminRoute> <AdminUsers /> </ProtectedAdminRoute>} />
-                      <Route path='cursos' element={<ProtectedAdminRoute> <AdminCourses /> </ProtectedAdminRoute>} />
-                      <Route path='administradores' element={<ProtectedAdminRoute> <AdminAdministrators /></ProtectedAdminRoute>} />
+                      <Route path='add-course' element={<ProtectedAdminRoute> <NewCourse /> </ProtectedAdminRoute>} />
+                      <Route path='edit-course' element={<ProtectedAdminRoute> <EditCourse /> </ProtectedAdminRoute>} />
+                      <Route path='signup' element={<ProtectedAdminRoute> <AdminRegister /> </ProtectedAdminRoute>} />
+                      <Route path='users' element={<ProtectedAdminRoute> <AdminUsers /> </ProtectedAdminRoute>} />
+                      <Route path='courses' element={<ProtectedAdminRoute> <AdminCourses /> </ProtectedAdminRoute>} />
+                      <Route path='administrators' element={<ProtectedAdminRoute> <AdminAdministrators /></ProtectedAdminRoute>} />
                       <Route path='course-registration' element={<ProtectedAdminRoute> <AdminCourseRegistration /></ProtectedAdminRoute>} />
                   </Route>
               </Routes>

@@ -77,7 +77,7 @@ const AdminAdministrators = () => {
               ))}
               <tr>
               <td colSpan="2" className="fw-bold text-dark pt-3 pb-3">               
-    <Link to="/admin/registro" className="text-dark"> Añadir administrador</Link>
+    <Link to="/admin/signup" className="text-dark"> Añadir administrador</Link>
   </td>
               
               </tr>

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Form, Button, Row, Col, Card } from 'react-bootstrap';
+import { Form, Button, Row, Col, Card, Container } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 
 const NewCourse = () => {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({
+    const initialFormData = {
         nombre: '',
         resumen: '',
         palabrasClave: '',
@@ -19,7 +19,8 @@ const NewCourse = () => {
         inscriptos: 0,
         imagen: '',
         descripcion: '',
-    });
+      };
+      const [formData, setFormData] = useState(initialFormData);
 
     const handleChange = (e) => {
         setFormData({
@@ -47,18 +48,22 @@ const NewCourse = () => {
         }
     };
 
-
+    const handleReset = () => {
+        setFormData(initialFormData); 
+      };
     return (
-        <div className="container mt-5 text-center">
-            <h1>Nuevo curso</h1>
-            
+        <Container>
+        <div className="d-flex flex-column justify-content-center align-items-left container-fluid w-100">
+        <h4 className="display-6 fw-bold pt-5">AÑADIR CURSO</h4>
+      </div>
+        <div className="container mt-5 text-start">
                         <Card className="card bg-light mt-5 border-0 mb-5 ms-5 me-5">
                             <Card.Body className="card-body bg-light">
                                 <Form onSubmit={handleSubmit} className="p-4">
                                     <Row className="mb-3 pb-3">
                                         <Col md={6} xs={12}>
                                             <Form.Group as={Col} controlId="formNombre">
-                                                <Form.Label>Nombre:</Form.Label>
+                                                <Form.Label>Nombre</Form.Label>
                                                 <Form.Control className="text-center mb-2"
                                                     type="text"
                                                     name="nombre"
@@ -69,7 +74,7 @@ const NewCourse = () => {
                                         </Col>
                                         <Col md={6} xs={12}>
                                             <Form.Group as={Col} controlId="formResumen">
-                                                <Form.Label>Palabras clave:</Form.Label>
+                                                <Form.Label>Palabras clave</Form.Label>
                                                 <Form.Control  className="text-center mb-2"
                                                     type="text"
                                                     name="palabrasClave"
@@ -83,7 +88,7 @@ const NewCourse = () => {
                                     <Row className="mb-3 pb-3">
                                         <Col md={12} xs={12}>
                                             <Form.Group as={Col} controlId="formResumen">
-                                                <Form.Label>Resumen:</Form.Label>
+                                                <Form.Label>Resumen</Form.Label>
                                                 <Form.Control className="text-center mb-2"
                                                     type="text"
                                                     name="resumen"
@@ -97,7 +102,7 @@ const NewCourse = () => {
                                     <Row className="mb-3 PB-3">
                                         <Col md={6} xs={12}>
                                             <Form.Group as={Col} controlId="formInicio">
-                                                <Form.Label>Inicio:</Form.Label>
+                                                <Form.Label>Inicio</Form.Label>
                                                 <Form.Control className="text-center mb-2"
                                                     type="text"
                                                     name="inicio"
@@ -108,7 +113,7 @@ const NewCourse = () => {
                                         </Col>
                                         <Col md={6} xs={12}>
                                             <Form.Group as={Col} controlId="formRequisitos">
-                                                <Form.Label>Requisitos:</Form.Label>
+                                                <Form.Label>Requisitos</Form.Label>
                                                 <Form.Control className="text-center mb-2"
                                                     type="text"
                                                     name="requisitos"
@@ -121,7 +126,7 @@ const NewCourse = () => {
                                     <Row className="mb-3 pb-3">
                                         <Col md={6} xs={12}>
                                             <Form.Group as={Col} controlId="formDuracion">
-                                                <Form.Label>Duración:</Form.Label>
+                                                <Form.Label>Duración</Form.Label>
                                                 <Form.Control className="text-center mb-2"
                                                     type="text"
                                                     name="duracion"
@@ -132,7 +137,7 @@ const NewCourse = () => {
                                         </Col>
                                         <Col md={6} xs={12}>
                                             <Form.Group as={Col} controlId="formRegularidad">
-                                                <Form.Label>Regularidad:</Form.Label>
+                                                <Form.Label>Regularidad</Form.Label>
                                                 <Form.Control className="text-center mb-2"
                                                     type="text"
                                                     name="regularidad"
@@ -146,7 +151,7 @@ const NewCourse = () => {
                                     <Row className="mb-3 pb-3">
                                         <Col md={6} xs={12}>
                                             <Form.Group as={Col} controlId="formCertificacion">
-                                                <Form.Label>Certificación:</Form.Label>
+                                                <Form.Label>Certificación</Form.Label>
                                                 <Form.Control className="text-center mb-2"
                                                     type="text"
                                                     name="certificacion"
@@ -157,7 +162,7 @@ const NewCourse = () => {
                                         </Col>
                                         <Col md={6} xs={12}>
                                             <Form.Group as={Col} controlId="formInscriptos">
-                                                <Form.Label>Inscriptos:</Form.Label>
+                                                <Form.Label>Inscriptos</Form.Label>
                                                 <Form.Control className="text-center mb-2"
                                                     type="number"
                                                     name="inscriptos"
@@ -171,7 +176,7 @@ const NewCourse = () => {
                                     <Row className="mb-3 pb-3">
                                         <Col md={6} xs={12}>
                                             <Form.Group as={Col} controlId="formPrecio">
-                                                <Form.Label>Precio:</Form.Label>
+                                                <Form.Label>Precio</Form.Label>
                                                 <Form.Control className="text-center mb-2"
                                                     type="number"
                                                     name="precio"
@@ -182,7 +187,7 @@ const NewCourse = () => {
                                         </Col>
                                         <Col md={6} xs={12}>
                                             <Form.Group as={Col} controlId="formImagen">
-                                                <Form.Label>Imagen:</Form.Label>
+                                                <Form.Label>Imagen</Form.Label>
                                                 <Form.Control className="text-center mb-2"
                                                     type="text"
                                                     name="imagen"
@@ -195,7 +200,7 @@ const NewCourse = () => {
                                     <Row className="mb-3 pb-3">
                                     <Col md={12} xs={12} className="mb-3 pb-3">
                                         <Form.Group controlId="formDescripcion">
-                                            <Form.Label>Descripción:</Form.Label>
+                                            <Form.Label>Descripción</Form.Label>
                                             <Form.Control as="textarea" rows={5}
                                                 name="descripcion"
                                                 value={formData.descripcion}
@@ -208,7 +213,7 @@ const NewCourse = () => {
                                     <Button type="submit" className="btn btn-secondary mt-5">
                                         Crear Curso
                                     </Button>
-                                    <Button type="reset" className="btn btn-secondary mt-5">
+                                    <Button type="reset" className="btn btn-secondary mt-5" onClick={handleReset}>
                                         Reset
                                     </Button>
                                     </Col>
@@ -216,6 +221,7 @@ const NewCourse = () => {
                     </Card.Body>
                 </Card>
             </div>
+            </Container>
     );
 };
 

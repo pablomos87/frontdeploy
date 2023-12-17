@@ -114,19 +114,19 @@ const Header = () => {
                   <Nav.Link as={Link} to="/admin/" className="text-dark text-sm pb-3 mt-2 pt-4">
                     Panel de Administración
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/admin/crear-cursos" className="text-dark text-sm pb-3">
+                  <Nav.Link as={Link} to="/admin/add-course" className="text-dark text-sm pb-3">
                     Añadir cursos
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/admin/cursos" className="text-dark text-sm pb-3">
+                  <Nav.Link as={Link} to="/admin/edit-course" className="text-dark text-sm pb-3">
                     Editar cursos
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/admin/usuarios" className="text-dark text-sm pb-3">
+                  <Nav.Link as={Link} to="/admin/users" className="text-dark text-sm pb-3">
                     Administrar usuarios
                   </Nav.Link>
                   <Nav.Link as={Link} to="/admin/course-registration" className="text-dark text-sm pb-3">
                     Administrar inscripciones
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/admin/administradores" className="text-dark text-sm pb-3">
+                  <Nav.Link as={Link} to="/admin/administrators" className="text-dark text-sm pb-3">
                     Administradores
                   </Nav.Link>
                 </>
