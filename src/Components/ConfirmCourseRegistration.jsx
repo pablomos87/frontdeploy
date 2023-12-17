@@ -9,14 +9,6 @@ const ConfirmCourseRegistration =  () => {
   const location = useLocation();
   const { courseId, selectedPaymentMethod, selectedCourseName, selectedCoursePrice, registrationId  } = location.state || {};
 
-  
-  console.log('Location State:', location.state);
-
-  
-  console.log('User ID:', userId);
-  console.log('Course ID:', courseId);
-  console.log('Selected Payment Method:', selectedPaymentMethod);
-  console.log('Selected Course Name:', selectedCourseName);
 
   if (!isAuthenticated) {
     return null; 

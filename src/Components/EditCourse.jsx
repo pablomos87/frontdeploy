@@ -26,7 +26,6 @@ const EditCourse = () => {
   });
 
   useEffect(() => {
-    console.log('ID capturado de la URL:', id);
     
     if (id) {
       const fetchCourse = async () => {

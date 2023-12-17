@@ -25,7 +25,6 @@ const AdminPage = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get('https://back-proyecto-utn.onrender.com/courses');
-        console.log(response.data);
         setCourses(response.data.courses);
       } catch (error) {
         console.error('Error al obtener la lista de cursos:', error);
@@ -46,7 +45,6 @@ const AdminPage = () => {
           }
         });
         
-        console.log(response.data);
         setUsers(response.data.users);
       } catch (error) {
         console.error('Error al obtener la lista de cursos:', error);

@@ -20,7 +20,6 @@ const AdminAdministrators = () => {
           }
         }
       );
-        console.log(response.data); 
         setAdmins(response.data.admins);
       } catch (error) {
         console.error('Error al obtener la lista de adminsitradores:', error);

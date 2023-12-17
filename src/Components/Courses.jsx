@@ -23,12 +23,10 @@ const Courses = () => {
 
         if (courseId) {
           const courseResponse = await axios.get(`https://back-proyecto-utn.onrender.com/courses/detail?courseId=${courseId}`);
-          console.log('Curso obtenido:', courseResponse.data.course);
           setCourse(courseResponse.data.course);
         }
 
         const randomCoursesResponse = await axios.get('https://back-proyecto-utn.onrender.com/courses/random');
-        console.log('Cursos aleatorios obtenidos:', randomCoursesResponse.data.randomCourses);
         setRandomCourses(randomCoursesResponse.data.randomCourses);
       
       } catch (error) {

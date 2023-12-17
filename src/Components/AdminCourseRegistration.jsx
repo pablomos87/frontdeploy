@@ -19,7 +19,6 @@ const AdminCourseRegistration = () => {
           }
         }
       );
-        console.log(response.data);
         setUsers(response.data.users);
       } catch (error) {
         console.error('Error al obtener la lista de usuarios:', error);

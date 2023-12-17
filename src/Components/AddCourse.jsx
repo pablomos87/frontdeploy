@@ -41,7 +41,6 @@ const NewCourse = () => {
                 },
             });
             navigate('/admin')
-            console.log('El curso ha sido creado', response.data);
 
         } catch (error) {
             console.error('Error:', error);

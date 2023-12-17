@@ -30,7 +30,6 @@ const CourseRegistration = () => {
       try {
         const response = await axios.get(
           `https://back-proyecto-utn.onrender.com/courses/detail?courseId=${courseId}`);
-        console.log('data:', response.data);
         setCourse(response.data.course);
       } catch (error) {
         console.error('Error al obtener detalles del curso:', error);
@@ -66,9 +65,6 @@ const CourseRegistration = () => {
 
   const handleCourseRegistration = async () => {
 
-    console.log('ID de usuario recibido:', userId);
-    console.log('ID de curso recibido:', courseId);
-
     if (!isAuthenticated) {
       console.log('El usuario no ha iniciado sesión. Redirigiendo...');
       return;
@@ -86,14 +82,11 @@ const CourseRegistration = () => {
 
     try {
       const userToken = localStorage.getItem('userToken');
-      console.log('userToken:', userToken);
       const response = await axios.post(`https://back-proyecto-utn.onrender.com/courses/inscripcion/${userId}/${courseId}`, null, {
             headers: {
               Authorization: `Bearer ${userToken}`
             }
           });
-        
-          console.log(response.data.message);
 
       if (response.status === 200) {
         alert ('Incripción exitosa')
