@@ -12,7 +12,6 @@ import { useAuth } from '../AuthContext';
 const UserProfile = () => {
 
   const { username } = useAuth();  
-  console.log('username:', username);
   const [user, setUser] = useState({ registeredCourses: [] });
   const [courseDetails, setCourseDetails] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
@@ -198,7 +197,7 @@ const UserProfile = () => {
                       {isEditing ? (
                         <select
                           name="gender"
-                          value={formData.gender.charAt(0).toUpperCase() + formData.gender.slice(1)}
+                          value={formData.gender}
                           onChange={handleChange}
                           onBlur={handleSave}
                           className="border-0 text-end w-100"
@@ -213,7 +212,7 @@ const UserProfile = () => {
                         <div className="text-end">
                           <span className="border-0 text-end w-100" onClick={handleEdit}>
                       {formData.gender.charAt(0).toUpperCase() + formData.gender.slice(1)}
-                      </span>
+                  </span>
                         </div>
                       )}
                     </Col>
