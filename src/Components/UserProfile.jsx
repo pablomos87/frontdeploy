@@ -174,8 +174,8 @@ const UserProfile = () => {
                     </Col>
                   </Row>
                   <Row className="mb-3">
-                    <Col xs={5}>Correo electrónico:</Col>
-                    <Col xs={7}>
+                    <Col xs={4}>Correo electrónico:</Col>
+                    <Col xs={8}>
                       {isEditing ? (
                         <input
                           type="text"
@@ -198,7 +198,7 @@ const UserProfile = () => {
                       {isEditing ? (
                         <select
                           name="gender"
-                          value={formData.gender}
+                          value={formData.gender.charAt(0).toUpperCase() + formData.gender.slice(1)}
                           onChange={handleChange}
                           onBlur={handleSave}
                           className="border-0 text-end w-100"
@@ -211,7 +211,9 @@ const UserProfile = () => {
                         </select>
                       ) : (
                         <div className="text-end">
-                          <span className="border-0 text-end w-100" onClick={handleEdit}>{formData.gender}</span>
+                          <span className="border-0 text-end w-100" onClick={handleEdit}>
+                      {formData.gender.charAt(0).toUpperCase() + formData.gender.slice(1)}
+                      </span>
                         </div>
                       )}
                     </Col>

@@ -26,8 +26,7 @@ const AdminLogin = () => {
   
       if (response.data && response.data.adminToken) {
         const { adminToken, adminId } = response.data;
-  
-        console.log('El token es:', adminToken);
+
         setUserId('');
         setUsername('');
         setAdminId(adminId);

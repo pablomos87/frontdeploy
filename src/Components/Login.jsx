@@ -32,7 +32,6 @@ const Login = () => {
       if (response.data && response.data.userToken) {
         const { userToken, userId } = response.data;
         
-        console.log('El userToken es:', userToken);
         setAdminId('');
         setName('');
         setUserId(userId);
@@ -45,8 +44,6 @@ const Login = () => {
         localStorage.setItem('userId', userId);
         localStorage.setItem('username', localUsername);
   
-        console.log('Username actualizado:', localUsername);
-        console.log('userId:', userId);
   
         navigate(location.state?.from || '/');
       } else {
@@ -58,7 +55,7 @@ const Login = () => {
     }
   };
 
-console.log('location.state:',  location.state);
+
   return (
 
     <Container fluid className="d-flex flex-column justify-content-center m-2">
