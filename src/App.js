@@ -30,20 +30,15 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { ProtectedUserRoute, ProtectedAdminRoute } from'./ProtectedRoute';
 import { AuthProvider } from './AuthContext';
 import { useLocation } from 'react-router-dom';
-import { LoadingContextProvider } from './LoadingContext.js'
-
 
 
 function App() {
 
   const location = useLocation();
 
-
-
 return (
 
   <AuthProvider>
-    
     <ScrollToTop />
           <div>
             <Header/>
@@ -95,7 +90,6 @@ return (
           <div>
             <Footer />
         </div>
-      
     </AuthProvider>
   );
 }

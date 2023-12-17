@@ -7,7 +7,7 @@ const ConfirmCourseRegistration =  () => {
 
   const { userId, isAuthenticated, username } = useAuth();
   const location = useLocation();
-  const { courseId, selectedPaymentMethod, selectedCourseName, selectedCoursePrice } = location.state || {};
+  const { courseId, selectedPaymentMethod, selectedCourseName, selectedCoursePrice, registrationId  } = location.state || {};
 
   
   console.log('Location State:', location.state);
@@ -52,7 +52,7 @@ const ConfirmCourseRegistration =  () => {
       <Container className="pt-3 pb-3">
         <div className="d-flex w-100 flex-column">
           <h4 className="pb-3 pt-3 fw-bold">Resumen de tu inscripción</h4>
-          <p className="mb-2 fs-6">Nº (...)</p>
+          <p className="mb-2 fs-6">Nº  {registrationId && registrationId.substring(0, 15)} </p>
           <p className="mb-2 fs-6 fw-bold">Medio de pago: {selectedPaymentMethod}</p>
           <p className="mb-2 fs-6 fw-bold">Estado del pago: en proceso.</p>
         </div>

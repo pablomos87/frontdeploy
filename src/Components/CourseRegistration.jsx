@@ -105,6 +105,7 @@ const CourseRegistration = () => {
             selectedPaymentMethod: document.querySelector('input[name="metodoPago"]:checked').id,
             selectedCourseName: course.nombre,
             selectedCoursePrice: course.precio,
+            registrationId: response.data.registrationId,
 
           },
         });

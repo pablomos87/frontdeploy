@@ -65,7 +65,7 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(false);
     setUserId('');
     setUsername('');
-    window.location.reload();
+    /* window.location.reload(); */
   };
 
   const handleAdminLogout = () => {
