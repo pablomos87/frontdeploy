@@ -22,6 +22,7 @@ const CourseRegistration = () => {
   const [isRegistrationDisabled, setIsRegistrationDisabled] = useState(true);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchCourse = async () => {
       try {
         const response = await axios.get(

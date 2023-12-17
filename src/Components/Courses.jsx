@@ -36,7 +36,7 @@ const Courses = () => {
     }
   }, [location.search]);
 
-  useEffect(() => {
+ useEffect(() => {
     const fetchRandomCourses = async () => {
       try {
         const response = await axios.get('https://back-proyecto-utn.onrender.com/courses/random');
@@ -100,7 +100,7 @@ const Courses = () => {
               </p>
             </Col>
             <Col md={5} sm={12} xs={12} className="justify-content-center d-flex flex-column align-content-center">
-              <Card className="border-2 w-100  text-center pb-4 pe-4 ps-4 pt-3">
+              <Card className="border-2 w-100  text-center pb-4 pe-3 ps-3 pt-3">
                <Card.Body>
                   <Card.Title className="fw-bold">Requisitos para inscribirte al curso </Card.Title>
                   <hr/>

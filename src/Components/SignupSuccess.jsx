@@ -21,7 +21,7 @@ const SignupSuccess = () => {
         <Col md={6} className='text-center pt-5'>
           <FaCheckCircle style={{ fontSize: '4.5em'}} />
           <h3 className='mt-4'>¡Registro exitoso!</h3>
-          <p className='lead'>Muchas gracias por registrarte. Procede a iniciar sesión.</p>
+          <p className='lead'>Muchas gracias por registrarte. Procede a iniciar sesión</p>
         </Col>
       </Row>
     </Container>

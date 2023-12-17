@@ -82,7 +82,7 @@ const UserCourses = () => {
 
 
           </div>
-          <div className="d-flex justify-content-center align-items-center ">
+          <div className="d-flex justify-content-center align-items-center ms-1">
           <img src={courseDetail.course.imagen}  alt="Course"
                 className="img-fluid custom-user-courses-image-2"
                 style={{ maxWidth: '150px', maxHeight: '150px' }}  />

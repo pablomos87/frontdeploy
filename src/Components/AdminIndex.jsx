@@ -239,20 +239,20 @@ const AdminPage = () => {
               <div>
                 <Card.Header className="">
 
-                  <h3> Updates </h3>
+                  <h4> Updates </h4>
 
                 </Card.Header>
                 <ListGroup className="">
-                  <ListGroupItem className="fs-5 fw-bold pb-4">Cursos añadidos</ListGroupItem>
+                  <ListGroupItem className="custom-admin-font-size-1 fw-bold pb-4">Cursos añadidos</ListGroupItem>
                 </ListGroup>
 
                 {lastThreeCourses.map((course) => (
 
                   <ListGroup className="border-1" key={course._id}>
                     <ListGroupItem>
-                      <div className="d-flex flex-row justify-content-between custom-admin-font-size">
+                      <div className="d-flex flex-row justify-content-between custom-admin-font-size-2">
                         <p className="fw-bold m-0"> {course.nombre} ({course.certificacion})</p>
-                        <p className="text-end">{convertToBuenosAiresTime(course.fechaInclusion)}</p>
+                        <p className="text-end ms-1">{convertToBuenosAiresTime(course.fechaInclusion)}</p>
                       </div>
                     </ListGroupItem>
                   </ListGroup>
@@ -265,22 +265,22 @@ const AdminPage = () => {
             <Card >
               <div >
                 <Card.Header>
-                  <h3>
-                    <span><i className="fa fa-comments-o"></i> Usuarios </span>
+                  <h4>
+                    <span><i className="fa fa-comments-o custom-admin-font-size-"></i> Usuarios </span>
                     <span className="plus_green_bt">
                     </span>
-                  </h3>
+                  </h4>
                 </Card.Header>
                 <ListGroup >
-                  <ListGroupItem className="fs-5 fw-bold pb-4">Usuarios registrados</ListGroupItem>
+                  <ListGroupItem className="custom-admin-font-size-1 fw-bold pb-4">Usuarios registrados</ListGroupItem>
                 </ListGroup>
                 {lastThreeUsers.map((users) => (
 
                   <ListGroup className="border-1" key={users._id}>
                     <ListGroupItem>
-                      <div className="d-flex flex-row justify-content-between custom-admin-font-size">
+                      <div className="d-flex flex-row justify-content-between custom-admin-font-size-2">
                         <p > {users.username}</p>
-                        <p className="">{convertToBuenosAiresTime(users.fechaInclusion)}</p>
+                        <p className="ms-1 text-end ">{convertToBuenosAiresTime(users.fechaInclusion)}</p>
                       </div>
                     </ListGroupItem>
 
@@ -295,19 +295,19 @@ const AdminPage = () => {
           <Col md={12} className="mb-5">
           <Card>
           <Card.Header>
-            <h3>
+            <h4>
               <span><i className="fa fa-comments-o"></i> Inscripciones </span>
               <span className="plus_green_bt"></span>
-            </h3>
+            </h4>
           </Card.Header>
           {recentRegistrations.map((registration, index) => (
             <div key={index}>
               <ListGroup>
-                <ListGroupItem className="fs-5">Usuario: <span className="fw-bold">{registration.username}</span></ListGroupItem>
+                <ListGroupItem> Usuario: <span className="fw-bold">{registration.username}</span></ListGroupItem>
                 <ListGroupItem>
-                  <div className="d-flex justify-content-between custom-admin-font-size">
+                  <div className="d-flex justify-content-between custom-admin-font-size-2">
                     <p>{registration.nombre}</p>
-                    <p>{convertToBuenosAiresTime(registration.fechaInscripcion)}</p>
+                    <p className="text-end ms-1">{convertToBuenosAiresTime(registration.fechaInscripcion)}</p>
                   </div>
                 </ListGroupItem>
               </ListGroup>

@@ -37,17 +37,17 @@ const UsersAdmin = () => {
   
       if (confirmation) {
         const adminToken = localStorage.getItem('adminToken');
-        const response = await axios.delete('https://back-proyecto-utn.onrender.com/users/delete', {
-          data: { userId }
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${adminToken}`
+        const response = await axios.delete(
+          `https://back-proyecto-utn.onrender.com/users/delete`,
+          {
+            headers: {
+              Authorization: `Bearer ${adminToken}`,
+            },
+            data: { userId },
           }
-        }
-      );
+        );
   
-        if (response.data.message === `Usuario con ID ${userId} eliminado exitosamente`) {
+        if (response.data.message === `User con ID ${userId} eliminado exitosamente`) {
           alert('Usuario eliminado correctamente.');
           window.location.reload();
         } else {

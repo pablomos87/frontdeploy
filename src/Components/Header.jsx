@@ -13,14 +13,17 @@ const Header = () => {
   
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
-  const { isAuthenticated, adminIsAuthenticated, name, username, handleUserLogout, handleAdminLogout } = useAuth();
+  const { setSearchResults, isAuthenticated, adminIsAuthenticated, name, username, handleUserLogout, handleAdminLogout } = useAuth();
   
-  const handleSearch = async () => {
+  const handleSearch = async (e) => {
+    e.preventDefault();
     try {
       const response = await axios.get(`https://back-proyecto-utn.onrender.com/courses/search?query=${searchQuery}`); 
-      navigate(`/courses/search?query=${searchQuery}`, { searchResults: response.data.courses });
+      setSearchResults(response.data.courses);
+      navigate(`/courses/search?query=${searchQuery}`);
     } catch (error) {
       console.error('Error al buscar cursos:', error);
+      
     }
   };
   
@@ -78,7 +81,7 @@ const Header = () => {
             style={{ maxHeight: '400px' }}
             navbarScroll
           >
-            <Form className="d-flex">
+            <Form className="d-flex" onSubmit={handleSearch} >
               <Form.Control
                 type="search"
                 placeholder="Buscar"
@@ -86,9 +89,10 @@ const Header = () => {
                 aria-label="Search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                id="search"
               />
             
-              <Button variant="secondary" onClick={handleSearch}>
+              <Button variant="secondary" onClick={handleSearch} type='submit'>
                 <FaSearch />
               </Button>
             </Form>

@@ -1,6 +1,9 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-const AuthContext = createContext();
+
+
+export const AuthContext = createContext();
+
 
 export const useAuth = () => {
   return useContext(AuthContext);
@@ -16,6 +19,7 @@ export const AuthProvider = ({ children }) => {
   const [userToken, setUserToken] = useState('');
   const [adminToken, setAdminToken] = useState('');
   const navigate = useNavigate();
+  const [searchResults, setSearchResults] = useState([]);
 
 
   useEffect(() => {
@@ -55,9 +59,6 @@ export const AuthProvider = ({ children }) => {
     }
   }, [setAdminIsAuthenticated]);
 
-
-  console.log('IsAuthenticated:', isAuthenticated);
-  console.log('AdminIsAuthenticated:', adminIsAuthenticated);
   
   const handleUserLogout = () => {
     localStorage.removeItem('userToken');
@@ -92,6 +93,8 @@ export const AuthProvider = ({ children }) => {
     setAdminId,
     handleUserLogout,
     handleAdminLogout,
+    searchResults,
+    setSearchResults,
   };
 
   return (

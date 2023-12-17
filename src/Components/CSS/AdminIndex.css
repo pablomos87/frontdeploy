@@ -1,21 +1,45 @@
-.custom-admin-font-size {
+.custom-admin-font-size-1 {
 
-    font-size: 0.7rem;
+    font-size: 1.15rem;
     }
     
     @media (min-width: 576px) {
-        .custom-admin-font-size {
-        font-size: 0.8rem;
+        .custom-admin-font-size-1 {
+        font-size: 1.2rem;
         }
     }
     @media (min-width: 768px) {
-        .custom-admin-font-size {
-        font-size: 0.9rem;
+        .custom-admin-font-size-1 {
+        font-size: 1.25rem;
         }
     }
     
     @media (min-width: 992px) { 
-        .custom-admin-font-size {
+        .custom-admin-font-size-2 {
+        font-size: 1.3rem;
+    }
+    };
+
+
+
+.custom-admin-font-size-2 {
+
+    font-size: 0.9rem;
+    }
+    
+    @media (min-width: 576px) {
+        .custom-admin-font-size-2 {
+        font-size: 0.95rem;
+        }
+    }
+    @media (min-width: 768px) {
+        .custom-admin-font-size-2 {
         font-size: 1rem;
+        }
+    }
+    
+    @media (min-width: 992px) { 
+        .custom-admin-font-size-2 {
+        font-size: 1.05rem;
     }
     };
