@@ -117,7 +117,7 @@ const Header = () => {
                   <Nav.Link as={Link} to="/admin/add-course" className="text-dark text-sm pb-3">
                     Añadir cursos
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/admin/edit-course" className="text-dark text-sm pb-3">
+                  <Nav.Link as={Link} to="/admin/courses" className="text-dark text-sm pb-3">
                     Editar cursos
                   </Nav.Link>
                   <Nav.Link as={Link} to="/admin/users" className="text-dark text-sm pb-3">

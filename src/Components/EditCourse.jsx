@@ -116,9 +116,9 @@ const EditCourse = () => {
       <h2 className="h3 ">EDITAR CURSO</h2>
       </Row>
       <Form className="mt-4 p-4 bg-light mb-5">
-      <Row className="mb-3 pb-3">
+      <Row className="mb-4">
           <Col md={6} xs={12}>
-          <Form.Group as={Col} controlId="formNombre">
+          <Form.Group as={Col} controlId="formNombre" className="mb-4">
             <Form.Label>Nombre</Form.Label>
             <Form.Control type="text" name="nombre" value={course.nombre} onChange={handleInputChange} />
           </Form.Group>
@@ -131,18 +131,18 @@ const EditCourse = () => {
           </Col>
           </Row>
 
-          <Row className="mb-3 pb-3">
+          <Row className="mb-4">
           <Col md={12} xs={12}>
-          <Form.Group as={Col} controlId="formResumen">
+          <Form.Group as={Col} controlId="formResumen" className="mb-4">
             <Form.Label>Resumen</Form.Label>
             <Form.Control type="text" name="resumen" value={course.resumen} onChange={handleInputChange} />
           </Form.Group>
           </Col>
           </Row>
       
-        <Row className="mb-3 PB-3">
+        <Row className="mb-4">
         <Col md={6} xs={12}>
-        <Form.Group as={Col} controlId="formInicio">
+        <Form.Group as={Col} controlId="formInicio" className="mb-4">
             <Form.Label>Inicio</Form.Label>
             <Form.Control type="text" name="inicio" value={course.inicio} onChange={handleInputChange} />
           </Form.Group>
@@ -154,9 +154,9 @@ const EditCourse = () => {
           </Form.Group>
           </Col>
           </Row>
-          <Row className="mb-3 pb-3">
+          <Row className="mb-4">
           <Col md={6} xs={12}>
-          <Form.Group as={Col} controlId="formDuracion">
+          <Form.Group as={Col} controlId="formDuracion"className="mb-4">
             <Form.Label>Duración</Form.Label>
             <Form.Control type="text" name="duracion" value={course.duracion} onChange={handleInputChange} />
           </Form.Group>
@@ -169,9 +169,9 @@ const EditCourse = () => {
           </Col>
           </Row>
 
-        <Row className="mb-3 pb-3">
+        <Row className="mb-4">
         <Col md={6} xs={12}>
-          <Form.Group as={Col} controlId="formCertificacion">
+          <Form.Group as={Col} controlId="formCertificacion" className="mb-4">
             <Form.Label>Certificación</Form.Label>
             <Form.Control type="text" name="certificacion" value={course.certificacion} onChange={handleInputChange} />
           </Form.Group>
@@ -184,10 +184,10 @@ const EditCourse = () => {
           </Col>
         </Row>
 
-        <Row className="mb-3 pb-3">
+        <Row className="mb-4">
 
         <Col md={6} xs={12}>
-           <Form.Group as={Col} controlId="formPrecio">
+           <Form.Group as={Col} controlId="formPrecio" className="mb-4">
             <Form.Label>Precio</Form.Label>
             <Form.Control type="text" name="precio" value={course.precio} onChange={handleInputChange} />
           </Form.Group>
@@ -201,8 +201,8 @@ const EditCourse = () => {
 
         
         </Row>
-        <Col md={12} xs={12} className="mb-3 pb-3">
-        <Form.Group className="mb-2 pt-2 pb-5" controlId="formDescripcion">
+        <Col md={12} xs={12} className="mb-4">
+        <Form.Group className="mb-2 pt-2 pb-5" controlId="formDescripcion" className="mb-4">
           <Form.Label>Descripción</Form.Label>
           <Form.Control as="textarea"  rows={6} name="descripcion" className="pt-2 pb-2 h-10" value={course.descripcion} onChange={handleInputChange} />
         </Form.Group>
