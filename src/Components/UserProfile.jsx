@@ -101,10 +101,10 @@ const UserProfile = () => {
 
     <Container fluid>
       <Col className="container-fluid w-100 mb-5 mt-5 pb-4 container-fluid">
-        <p className="fs-4 ms-4 mt-4 mb-5 fw-bold ps-5">Mi perfil</p>
+        <p className="fs-4 ms-1 mt-4 mb-5 fw-bold ps-2">Mi perfil</p>
         {user && (
-          <Row className="justify-content-center d-flex align-content-center container-fluid">
-            <Col md={6}>
+          <Row className="container-fluid justify-content-md-center">
+            <Col md={8}>
               <div className="fs-6">
                 <>
                   <Row className="mb-3">

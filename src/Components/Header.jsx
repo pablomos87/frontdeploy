@@ -20,6 +20,7 @@ const Header = () => {
     try {
       const response = await axios.get(`https://back-proyecto-utn.onrender.com/courses/search?query=${searchQuery}`); 
       setSearchResults(response.data.courses);
+      setSearchQuery('');
       navigate(`/courses/search?query=${searchQuery}`);
     } catch (error) {
       console.error('Error al buscar cursos:', error);
