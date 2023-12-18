@@ -1,43 +1,30 @@
-Proyecto Final: Plataforma de Cursos Online
-Este proyecto consta de un backend desarrollado en Node.js, una base de datos MongoDB, y un frontend desarrollado en React.
+# Proyecto Final
+### Plataforma de Cursos Online
+#
 
-Backend (Node.js)
-
-Dependencias:
-
-bcrypt: para el hashing de contraseñas.
-cors: para permitir el intercambio de recursos entre distintos orígenes.
-dotenv: para la configuración de variables de entorno.
-express: para la creación de la API REST.
-jsonwebtoken: para la autenticación basada en tokens JWT.
-moment-timezone: para la gestión de zonas horarias.
-mongoose: para la conexión y manipulación de la base de datos MongoDB.
-morgan: para el logging de las solicitudes HTTP.
-path: para la gestión de rutas de archivo y directorio.
-
-Base de Datos (MongoDB)
-
-Utilizada para almacenar datos relacionados con usuarios, cursos, inscripciones y administradores.
-
-Frontend (React)
-
-Dependencias:
-
-axios: para realizar peticiones HTTP al backend.
-bootstrap: para el diseño y estilos de la interfaz.
-moment: para el manejo de fechas y horas.
-react-bootstrap, react-fontawesome, react-icons: para componentes y estilos adicionales.
-react-router-dom: para la navegación entre distintas vistas en la aplicación.
+¡Bienvenido/a al Proyecto Final!  Este proyecto consta de un backend desarrollado en Node.js, una base de datos MongoDB, y un frontend desarrollado en React.
 
 
-Descripción del Proyecto
+#
+### Autores 
 
-Sitio web para publicación e inscripción a cursos online.
+##### Pablo Moscón
+
+#
+
+### Descripción del Proyecto
+
+Sitio web para la publicación de cursos online y para el registro e inscripción a ellos.
 Permite a los usuarios registrarse, acceder, buscar e inscribirse a cursos.
-Ofrece un perfil para que los usuarios gestionen sus datos y actividad.
-Los administradores pueden gestionar cursos, usuarios, inscripciones y otros administradores.
+Les ofrece un perfil a los usuarios registrados para que puedan gestionar sus datos y actividad.
+Los administradores pueden gestionar cursos, usuarios, inscripciones y administradores.
 
-Características
+#
+
+
+### Características
+
+#### La aplicación cuenta con las siguientes funciones: 
 
 La aplicación cuenta con las siguientes funciones: 
 - Descubrir cursos online y acceder a sus características.
@@ -49,30 +36,80 @@ La aplicación cuenta con las siguientes funciones:
 - Eliminar usuarios. 
 - Añadir y eliminar adminsitradores.
 
+#
 
-Tecnologías Utilizadas
+Base de Datos 
 
-React, React Router Dom, Bootstrap, FontAwesome, React Icons.
+1. (MongoDB): Utilizada para almacenar datos relacionados con usuarios, cursos, inscripciones y administradores.
 
-Uso
+Backend (Node.js)
 
-Clona este repositorio en tu máquina local usando el siguiente comando:
-bash
-Copy code
-git clone https://github.com/pablomos87/proyecto-final-app
+1. Express: Framework web de Node.js para crear API de forma rápida y sencilla.
+3. Mongoose.
+4. Bcrypt: Librería para el cifrado de contraseñas.
+5. Jsonwebtoken: Implementación de JSON Web Tokens (JWT) para autenticación.
+6. Cors:Middleware de Express para habilitar el intercambio de recursos de origen cruzado (CORS).
+7. Dotenv:  Módulo para cargar variables de entorno desde un archivo .env.
+8. Moment-timezone: Manejo de fechas y zonas horarias en Node.js.
+9. Morgan: Middleware de logging para Express.
+10. Path: Módulo para trabajar con rutas de archivos y directorios en Node.js.
+11. MongoDB: Librería de modelado de datos para MongoDB.
+12. Node.js: Entorno de ejecución para JavaScript del lado del servidor.
 
-Instala las dependencias con el siguiente comando:
-Copy code
+
+
+Frontend (React)
+
+1. React: Biblioteca JavaScript para construir interfaces de usuario.
+2. React Router Dom: Enrutamiento para aplicaciones de React, facilitando la navegación entre diferentes vistas.
+3. Bootstrap: Framework CSS para el diseño y la maquetación de la interfaz de usuario.
+4. FontAwesome: Conjunto de íconos vectoriales.
+5. React Icons.
+6. React Bootstrap: Implementación de componentes de Bootstrap como elementos de React.
+7. Moment.js / Moment Timezone: Manipulación de fechas y zonas horarias en JavaScript.
+8. React Icons: Biblioteca de íconos para aplicaciones de React.
+9. Axios: Cliente HTTP basado en promesas para realizar solicitudes a un servidor.
+
+
+#
+
+### Instalación y uso
+
+Para usar e instaar esta aplicación, podés hacer lo siguiente:
+
+Backend
+
+1. Clona este repositorio en tu máquina local utilizando el siguiente comando. 
+
+git clone https://github.com/pablomos87/backdeploy
+
+2. Configura las variables de entorno necesarias. Crea un archivo .env en la raíz del proyecto y proporciona los valores necesarios para las variables de entorno como PORT, MONGO_URI, SECRET_KEY, etc.
+
+3.	 Ejecuta el comando npm start para iniciar el servidor en modo de producción. Para el desarrollo, utiliza npm run dev para iniciar el servidor con nodemon y así tener actualizaciones en tiempo real.	
+
+El proyecto se iniciará en tu navegador en la dirección http://localhost:3000.
+
+
+Frotend
+
+1. Clona este repositorio en tu máquina local utilizando el siguiente comando. 
+
+git clone https://github.com/pablomos87/frontdeploy
+
+2.	Instala las dependencias usando el siguiente comando:
+
 npm install
 
-Ejecuta la aplicación con el comando:
-sql
-Copy code
-npm start
+3.	Ejecuta la aplicación utilizando el siguiente comando:
+
+npm install
 
 
-El proyecto se abrirá en tu navegador en la dirección http://localhost:3000.
-También puedes acceder a la aplicación en línea en https://proyecto-final-app.vercel.app/Home.
+#
+
+También puedes acceder a la aplicación en línea en https://proyecto-final-app.vercel.app/home.
+
+
 
 
 
