@@ -34,10 +34,10 @@ const AdminCourses = () => {
           <Table bordered className="mx-auto w-75 text-center">
             <tbody className="custom-font-size-course-table align-content-center">
               <tr className="fw-bold">
-                <td>Título</td>
-                <td>Fecha de Inicio</td>
-                <td>Institución</td>
-                <td>Edición</td>
+                <td className="align-middle">Título</td>
+                <td className="align-middle">Fecha de Inicio</td>
+                <td className="align-middle">Institución</td>
+                <td className="align-middle">Edición</td>
               </tr>
               {courses.map((course) => (
                 <tr key={course._id}>
@@ -46,7 +46,7 @@ const AdminCourses = () => {
                   <td className="align-middle">{course.duracion}</td>
                   <td>  
                   <Link to={`/admin/edit-course?courseId=${course._id}`}>
-        <Button variant="light border border-dark custom-font-size-course-table" >Editar Curso</Button>
+        <Button variant="light border border-dark custom-font-size-course-table" size="sm">Editar Curso</Button>
       </Link>
                     </td>
                 </tr>

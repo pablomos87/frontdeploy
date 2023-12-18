@@ -104,7 +104,7 @@ const Login = () => {
             Ingresar
           </Button>
         </Col>
-        <p className="fs-6 mt-2 pt-4 text-end pe-3"> ¿Aún no tenés un usuario en esta página? <Link to="./signup"> Registrate aquí</Link> </p>
+        <p className="fs-6 mt-2 pt-4 text-end pe-3"> ¿Aún no tenés un usuario en esta página? <Link to="./signup/"> Registrate aquí</Link> </p>
 
       </Form>
     </Container >

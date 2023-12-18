@@ -71,7 +71,7 @@ const Home = () => {
 
     <Row className="p-4"> 
     <Col className="mt-5">
-    <h2 className="fw-bold"> Cursos recientes</h2>
+    <h2 className="fw-bold"> Cursos próximos a iniciar </h2>
     <p className="fw-bold">Explora los cursos que inician pronto</p>
     </Col>
     <Row className="mt-2 pt-5 container-sm mx-auto">

@@ -132,7 +132,7 @@ const EditCourse = () => {
           </Row>
 
           <Row className="mb-4">
-          <Col md={12} xs={12}>
+          <Col md={12} className="mb-md-4" xs={12}>
           <Form.Group as={Col} controlId="formResumen mb-md-4">
             <Form.Label>Resumen</Form.Label>
             <Form.Control type="text" name="resumen" value={course.resumen} onChange={handleInputChange} />

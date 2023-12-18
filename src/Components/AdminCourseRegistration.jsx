@@ -54,6 +54,10 @@ const AdminCourseRegistration = () => {
     }
   };
 
+  if (users.length === 0) {
+    return null; 
+  }
+
   return (
 
 
@@ -63,9 +67,9 @@ const AdminCourseRegistration = () => {
           <Table bordered className="mx-auto w-75 text-center">
             <tbody>
               <tr className="fw-bold">
-                <td>Usuario</td>
-                <td>Cursos</td>
-                <td>Eliminar Usuario del Curso</td>
+                <td className="align-middle">Usuario</td>
+                <td className="align-middle">Cursos</td>
+                <td className="align-middle">Eliminar Usuario del Curso</td>
               </tr>
               {users.map((user) => (
                 user.registeredCourses.map((course, index) => (
@@ -80,6 +84,7 @@ const AdminCourseRegistration = () => {
                       <Button
                         onClick={() => handleDeleteRegistration(user._id, course._id)}
                         variant="light border border-dark"
+                        size="xs" 
                       >
                         Eliminar inscripción
                       </Button>

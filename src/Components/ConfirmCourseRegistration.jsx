@@ -5,9 +5,9 @@ import { useAuth } from '../AuthContext';
 
 const ConfirmCourseRegistration =  () => {
 
-  const { userId, isAuthenticated, username } = useAuth();
+  const { isAuthenticated, username } = useAuth();
   const location = useLocation();
-  const { courseId, selectedPaymentMethod, selectedCourseName, selectedCoursePrice, registrationId  } = location.state || {};
+  const { selectedPaymentMethod, selectedCourseName, selectedCoursePrice, registrationId  } = location.state || {};
 
 
   if (!isAuthenticated) {

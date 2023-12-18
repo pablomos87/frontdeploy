@@ -67,7 +67,7 @@ const Signup = () => {
             <FormGroup className="mb-4">
               <Row>
                 <Col xs={6} className="justify-content-center">
-                  <FormLabel htmlFor="nombreUsuario" className="me-3 fs-6 fs-sm-7 fs-xs-8">Nombre: </FormLabel>
+                  <FormLabel htmlFor="nombreUsuario" className="me-3 fs-6 fs-sm-7 fs-xs-8">Nombre </FormLabel>
                   <FormControl
                     type="text"
                     id="firstName"
@@ -81,7 +81,7 @@ const Signup = () => {
                   />
                 </Col>
                 <Col  xs={6}>
-                  <FormLabel htmlFor="apellidoUsuario" className="me-3 fs-6 fs-sm-7 fs-xs-8">Apellido:</FormLabel>
+                  <FormLabel htmlFor="apellidoUsuario" className="me-3 fs-6 fs-sm-7 fs-xs-8">Apellido </FormLabel>
                   <FormControl
                     type="text"
                     id="lastName"
@@ -104,7 +104,7 @@ const Signup = () => {
     <FormGroup className="mb-4">
       <Col className="d-flex flex-column align-items-center">
         <Row className="w-50">        
-          <Form.Label htmlFor="username" className="me-3">Usuario:</Form.Label>
+          <Form.Label htmlFor="username" className="me-3">Usuario </Form.Label>
         <FormControl
           type="text"
           id="username"

@@ -34,7 +34,7 @@ const NewCourse = () => {
 
         try {
             const adminToken = localStorage.getItem('adminToken');
-            const response = await axios.post('https://back-proyecto-utn.onrender.com/courses/newcourse', formData, {
+            await axios.post('https://back-proyecto-utn.onrender.com/courses/newcourse', formData, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${adminToken}`
@@ -85,7 +85,7 @@ const NewCourse = () => {
                             </Row>
 
                             <Row className="mb-4">
-                                <Col md={12} xs={12}>
+                                <Col md={12} className="mb-md-4" xs={12}>
                                     <Form.Group as={Col} controlId="formResumen">
                                         <Form.Label>Resumen</Form.Label>
                                         <Form.Control className="text-center"

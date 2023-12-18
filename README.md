@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+Proyecto Final: Plataforma de Cursos Online
+Este proyecto consta de un backend desarrollado en Node.js, una base de datos MongoDB, y un frontend desarrollado en React.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Backend (Node.js)
 
-## Available Scripts
+Dependencias:
 
-In the project directory, you can run:
+bcrypt: para el hashing de contraseñas.
+cors: para permitir el intercambio de recursos entre distintos orígenes.
+dotenv: para la configuración de variables de entorno.
+express: para la creación de la API REST.
+jsonwebtoken: para la autenticación basada en tokens JWT.
+moment-timezone: para la gestión de zonas horarias.
+mongoose: para la conexión y manipulación de la base de datos MongoDB.
+morgan: para el logging de las solicitudes HTTP.
+path: para la gestión de rutas de archivo y directorio.
 
-### `npm start`
+Base de Datos (MongoDB)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Utilizada para almacenar datos relacionados con usuarios, cursos, inscripciones y administradores.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Frontend (React)
 
-### `npm test`
+Dependencias:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+axios: para realizar peticiones HTTP al backend.
+bootstrap: para el diseño y estilos de la interfaz.
+moment: para el manejo de fechas y horas.
+react-bootstrap, react-fontawesome, react-icons: para componentes y estilos adicionales.
+react-router-dom: para la navegación entre distintas vistas en la aplicación.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Descripción del Proyecto
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Sitio web para publicación e inscripción a cursos online.
+Permite a los usuarios registrarse, acceder, buscar e inscribirse a cursos.
+Ofrece un perfil para que los usuarios gestionen sus datos y actividad.
+Los administradores pueden gestionar cursos, usuarios, inscripciones y otros administradores.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Características
 
-### `npm run eject`
+La aplicación cuenta con las siguientes funciones: 
+- Descubrir cursos online y acceder a sus características.
+- Inscribirse a cursos online mediante un formulario.
+- Servirse de un buscador que permite encontrar cursos a partir de palabras clave. 
+- Registrarse en el sitio, completando un formulario, y acceder al perfil personal. 
+- Ingresar al sitio como usuario, e ingresar al perfil del usuario. 
+- Añadir, editar y eliminar cursos. 
+- Eliminar usuarios. 
+- Añadir y eliminar adminsitradores.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Tecnologías Utilizadas
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+React, React Router Dom, Bootstrap, FontAwesome, React Icons.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Uso
 
-## Learn More
+Clona este repositorio en tu máquina local usando el siguiente comando:
+bash
+Copy code
+git clone https://github.com/pablomos87/proyecto-final-app
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Instala las dependencias con el siguiente comando:
+Copy code
+npm install
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Ejecuta la aplicación con el comando:
+sql
+Copy code
+npm start
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+El proyecto se abrirá en tu navegador en la dirección http://localhost:3000.
+También puedes acceder a la aplicación en línea en https://proyecto-final-app.vercel.app/Home.
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
