@@ -22,7 +22,9 @@ const AdminCourses = () => {
     fetchData();
   }, []);
   
-  
+  if (!courses) {
+    return null;
+  }
   return (
 
     

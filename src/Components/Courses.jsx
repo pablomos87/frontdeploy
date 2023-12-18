@@ -37,12 +37,10 @@ const Courses = () => {
     fetchData();
   }, [location.search, course._id]);
   
- 
-
 
   if ( !course._id) {
     return null;
-  }
+  };
 
   
   return (
