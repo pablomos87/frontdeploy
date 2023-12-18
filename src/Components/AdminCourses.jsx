@@ -22,11 +22,11 @@ const AdminCourses = () => {
     fetchData();
   }, []);
   
-  if (!courses) {
+  if (courses.length === 0) {
     return null;
-  }
-  return (
+  };
 
+  return (
     
 <Container className="mx-auto mt-5 mb-5">
       <Row>

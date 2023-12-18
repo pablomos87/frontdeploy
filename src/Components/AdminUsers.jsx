@@ -28,8 +28,6 @@ const UsersAdmin = () => {
     };
     fetchData();
   }, []);
-
-
   
   const handleDeleteUser = async (userId) => {
     try {
@@ -61,7 +59,10 @@ const UsersAdmin = () => {
     }
   };
   
-  
+  if (users.length === 0) {
+    return null;
+  }
+
   return (
 
     
