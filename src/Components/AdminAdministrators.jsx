@@ -54,6 +54,10 @@ const AdminAdministrators = () => {
   }
 };
   
+if (admins.length === 0) {
+  return null;
+};
+
   return (
 
     
