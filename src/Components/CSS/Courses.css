@@ -14,30 +14,30 @@
 
 @media (min-width: 768px) {
   .custom-course-image-1 {
-    height: 16rem;
+    height: 17rem;
   }
 }
 
 .custom-course-image-2 {
-  height: 7rem;
+  height: 8.5rem;
   object-fit: cover;
   object-position: center;
 }
 @media (min-width: 576px) {
   .custom-course-image-2 {
-    height: 6rem;
+    height: 8rem;
   }
 }
 
 @media (min-width: 768px) {
   .custom-course-image-2 {
-    height: 7rem;
+    height: 8.5rem;
   }
 }
 
 @media (min-width: 992px) { 
   .custom-course-image-2 {
-  font-size: 9rem;
+  font-size: 11rem;
 }
 }
 
