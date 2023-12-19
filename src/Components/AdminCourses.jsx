@@ -43,7 +43,7 @@ const AdminCourses = () => {
                 <tr key={course._id}>
                   <td className="align-middle">{course.nombre}</td>
                   <td className="align-middle">{course.inicio}</td>
-                  <td className="align-middle">{course.duracion}</td>
+                  <td className="align-middle">{course.certificacion}</td>
                   <td>  
                   <Link to={`/admin/edit-course?courseId=${course._id}`}>
         <Button variant="light border border-dark custom-font-size-course-table" size="sm">Editar Curso</Button>
