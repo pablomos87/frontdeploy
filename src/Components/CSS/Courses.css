@@ -1,7 +1,7 @@
 
 .custom-course-image-1 {
-  height: 16rem;
-  width: 14rem;
+  height: 19rem;
+  width: 19rem;
   object-fit: cover;
   object-position: center;
   margin-top: 0.5rem;
@@ -20,25 +20,25 @@
 }
 
 .custom-course-image-2 {
-  height: 8.5rem;
+  height: 7rem;
   object-fit: cover;
   object-position: center;
 }
 @media (min-width: 576px) {
   .custom-course-image-2 {
-    height: 7.5rem;
+    height: 6.5rem;
   }
 }
 
 @media (min-width: 768px) {
   .custom-course-image-2 {
-    height: 8.5rem;
+    height: 7.5rem;
   }
 }
 
 @media (min-width: 992px) { 
   .custom-course-image-2 {
-  height: 11rem;
+  height: 9rem;
 }
 }
 
