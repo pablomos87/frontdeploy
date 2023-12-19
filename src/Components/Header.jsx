@@ -39,7 +39,7 @@ const Header = () => {
   };
 
   return (
-    <Navbar expand="lg" expanded={expanded} onToggle={handleToggle} className="bg-body-tertiary p-4 container-fluid">
+    <Navbar expand="lg" expanded={expanded} onToggle={handleToggle} className="bg-body-tertiary p-4 container-fluid fixed=top">
       <Container fluid>
         <div className="d-flex align-items-center w-100 justify-content-between ">
           <Navbar.Brand as={Link} to="/" className="fs-4">
