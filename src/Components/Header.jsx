@@ -155,7 +155,7 @@ const Header = () => {
 
                   </Nav>
 
-                  <Nav className="flex-column">
+                  <Nav className="flex-column w-75 container-fluid">
                     <div className="d-flex">
                       <h4 className="pt-4 text-sm text-start pb-3">Suscripciones</h4>
                     </div>
