@@ -44,8 +44,8 @@ const Home = () => {
 </Row>
         <Row className="p-4">
         <Col>
-          <h2 className="fw-bold fs-3"> Novedades</h2>
-          <p className="fw-bold f-4">Explora los cursos más nuevos.</p>
+          <h2 className="fw-bold"> Novedades</h2>
+          <p className="fw-bold f-4">Explora los cursos más nuevos</p>
         </Col>
   
       
@@ -71,7 +71,7 @@ const Home = () => {
 
     <Row className="p-4"> 
     <Col className="mt-5">
-    <h2 className="fw-bold"> Cursos próximos a iniciar </h2>
+    <h3 className="fw-bold"> Cursos próximos a iniciar </h3>
     <p className="fw-bold">Explora los cursos que inician pronto</p>
     </Col>
     <Row className="mt-2 pt-5 container-sm mx-auto">
