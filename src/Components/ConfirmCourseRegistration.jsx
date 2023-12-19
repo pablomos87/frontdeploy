@@ -48,10 +48,10 @@ const ConfirmCourseRegistration = () => {
             <p className="mb-2 fs-6 fw-bold">Medio de pago: {selectedPaymentMethod}</p>
             <p className="mb-2 fs-6 fw-bold">Estado del pago: en proceso.</p>
           </div>
-          <div className="d-flex justify-content-center align-content-center">
-            <Button as={Link} to="/home">Volver</Button>
-          </div>
         </Container>
+        <div className="d-flex justify-content-center align-content-center">
+            <Button variant="secondary" as={Link} to="/home">Volver</Button>
+          </div>
       </ListGroup.Item>
     </ListGroup>
   );
