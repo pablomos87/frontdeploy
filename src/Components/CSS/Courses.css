@@ -1,10 +1,11 @@
 
 .custom-course-image-1 {
-  height: 23rem;
-  width: 19rem;
+  height: 14rem;
+  width: 12rem;
   object-fit: cover;
   object-position: center;
   margin-top: 0.5rem;
+  filter: opacity(75%);
 }
 
 @media (min-width: 576px) {
@@ -23,6 +24,7 @@
   height: 7rem;
   object-fit: cover;
   object-position: center;
+  filter: opacity(75%);
 }
 @media (min-width: 576px) {
   .custom-course-image-2 {
