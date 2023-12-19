@@ -1,6 +1,6 @@
 
 .custom-course-image-1 {
-  height: 19rem;
+  height: 23rem;
   width: 19rem;
   object-fit: cover;
   object-position: center;
@@ -38,11 +38,10 @@
 
 @media (min-width: 992px) { 
   .custom-course-image-2 {
-  height: 9rem;
+  height: 8.5rem;
+  
 }
-}
-
-
+};
 
   .custom-font-size {
     font-size: 0.9rem;
