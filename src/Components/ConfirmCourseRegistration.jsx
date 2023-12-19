@@ -50,7 +50,7 @@ const ConfirmCourseRegistration = () => {
           </div>
         </Container>
         <div className="d-flex justify-content-center align-content-center">
-            <Button variant="secondary" as={Link} to="/home">Volver</Button>
+            <Button variant="secondary" as={Link} to="/">Volver</Button>
           </div>
       </ListGroup.Item>
     </ListGroup>
