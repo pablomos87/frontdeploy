@@ -93,11 +93,11 @@ const Courses = () => {
               </p>
             </Col>
             <Col md={5} sm={12} xs={12} className="justify-content-center d-flex flex-column align-content-center">
-              <Card className="border-2 w-100  text-center pb-4 pe-3 ps-3 pt-3">
+              <Card className="border-2 w-100  text-center pb-4 pe-2 ps-2 pt-3">
                <Card.Body>
                   <Card.Title className="fw-bold">Requisitos para inscribirte al curso </Card.Title>
                   <hr/>
-                  <Card.Text className="pb-3 fs-6 fw-medium">
+                  <Card.Text className="pb-3 fs-6 fw-medium w-100">
                     {course.requisitos} <FaCheckCircle/>
                   </Card.Text>
                   
