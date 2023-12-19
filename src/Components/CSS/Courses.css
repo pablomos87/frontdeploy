@@ -2,7 +2,6 @@
 .custom-course-image-1 {
   height: 15rem;
   width: 12rem;
-  object-fit: cover;
   object-position: center;
   margin-top: 0.5rem;
   filter: opacity(75%);
