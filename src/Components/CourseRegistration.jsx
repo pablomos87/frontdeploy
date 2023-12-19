@@ -162,7 +162,7 @@ const CourseRegistration = () => {
                   </Col>
                     <Col>
 
-                      <h6 className="mb-4 fw-medium text-center" > ¿Cómo es la modalidad de cursada en este curso virtual?</h6>
+                      <h5 className="mb-4 fw-medium text-center" > ¿Cómo es la modalidad de cursada en este curso virtual?</h5>
 
                       <p style={{ textAlign: 'justify' }} className="fs-6 fw-medium">En los cursos que ofrecemos, la modalidad de cursada es completamente virtual, lo que te permite acceder al contenido desde cualquier lugar y a tu propio ritmo. Las clases están grabadas y disponibles en distintas plataformas educativas, lo que te brinda la flexibilidad de aprender según tu disponibilidad.</p>
 
