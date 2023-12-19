@@ -1,6 +1,6 @@
 
 .custom-course-image-1 {
-  height: 14rem;
+  height: 15rem;
   width: 12rem;
   object-fit: cover;
   object-position: center;
@@ -10,13 +10,12 @@
 
 @media (min-width: 576px) {
   .custom-course-image-1 {
-    height: 15.5rem;
+    height: 14.5rem;
   }
 }
-
 @media (min-width: 768px) {
   .custom-course-image-1 {
-    height: 16rem;
+    height: 15rem;
   }
 }
 
