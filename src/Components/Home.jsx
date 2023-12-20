@@ -25,9 +25,7 @@ const Home = () => {
   const lastThreeCourses = courses.slice(-3);
   const remainingCourses = courses.slice(0, -3);
 
-  if (courses.length === 0) {
-    return null; 
-  }
+
 
  
   return (
