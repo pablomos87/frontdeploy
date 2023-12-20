@@ -69,9 +69,6 @@ const Header = () => {
                     @{name}
                   </Dropdown.Toggle>
                   <Dropdown.Menu style={{ minWidth: 'auto' }}>
-                    <Dropdown.Item as={Link} to='/admin'>
-                      Panel
-                    </Dropdown.Item>
                     <Dropdown.Divider />
                     <Dropdown.Item onClick={handleAdminLogout}>Cerrar sesión</Dropdown.Item>
                   </Dropdown.Menu>
@@ -110,25 +107,31 @@ const Header = () => {
             <Nav className="hide-on-large bg-light w-50">
               {adminIsAuthenticated ? (
                 <>
+                  <Nav className="flex-column w-75 container-fluid">
 
-                  <Nav.Link as={Link} to="/admin/" className="text-dark text-sm pb-3 mt-2 pt-4">
-                    Panel de Administración
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/admin/add-course" className="text-dark text-sm pb-3">
-                    Añadir cursos
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/admin/courses" className="text-dark text-sm pb-3">
-                    Editar cursos
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/admin/users" className="text-dark text-sm pb-3">
-                    Administrar usuarios
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/admin/course-registration" className="text-dark text-sm pb-3">
-                    Administrar inscripciones
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/admin/administrators" className="text-dark text-sm pb-3">
-                    Administradores
-                  </Nav.Link>
+                    <div className="d-flex">
+                      <h4 className=" pt-5 text-start pb-3">Herramientas</h4>
+                    </div>
+                    <Nav.Link as={Link} to="/admin/" className="text-dark text-sm pb-3 mt-2 pt-4">
+                      Panel de Administración
+                    </Nav.Link>
+                    <Nav.Link as={Link} to="/admin/add-course" className="text-dark text-sm pb-3">
+                      Añadir cursos
+                    </Nav.Link>
+                    <Nav.Link as={Link} to="/admin/courses" className="text-dark text-sm pb-3">
+                      Editar cursos
+                    </Nav.Link>
+                    <Nav.Link as={Link} to="/admin/users" className="text-dark text-sm pb-3">
+                      Administrar usuarios
+                    </Nav.Link>
+                    <Nav.Link as={Link} to="/admin/course-registration" className="text-dark text-sm pb-3">
+                      Administrar inscripciones
+                    </Nav.Link>
+                    <Nav.Link as={Link} to="/admin/administrators" className="text-dark text-sm pb-3">
+                      Administradores
+                    </Nav.Link>
+
+                  </Nav>
                 </>
               ) : (
                 <>

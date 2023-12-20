@@ -62,7 +62,7 @@ const Login = () => {
 
       <div className="d-flex flex-column justify-content-center align-items-left container-fluid w-100">
         <h3 className="display-6 fw-bold mt-3 pb-0">LOGIN</h3>
-        <p className="fw-normal"> Crea una cuenta y se parte de nuestra comunidad</p>
+        <p className="fw-normal"> Ingresa a tu cuenta con tu nombre de usuario y contraseña</p>
       </div>
 
       <Form onSubmit={handleLogin} className="mt-5 bg-light pt-4 pb-3 mb-4 ps-2 pe-2">
