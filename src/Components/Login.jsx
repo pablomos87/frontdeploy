@@ -4,7 +4,6 @@ import axios from "axios";
 import { Container, Col, Form, FormControl, FormGroup, Button, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
-import './CSS/Login.css';
 import { useAuth } from '../AuthContext';
 
 
