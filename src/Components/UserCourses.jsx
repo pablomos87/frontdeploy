@@ -55,8 +55,8 @@ const UserCourses = () => {
     fetchData();
   }, [username]);
 
-  
-  if (!user) {
+
+  if (!user.firstName) {
     return null;
   }
   
