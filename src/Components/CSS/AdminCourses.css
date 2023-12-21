@@ -5,12 +5,12 @@ font-size: 0.5rem;
 
 @media (min-width: 576px) {
     .custom-font-size-course-table {
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     }
 }
 @media (min-width: 768px) {
     .custom-font-size-course-table {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     }
 }
 

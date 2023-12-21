@@ -31,7 +31,7 @@ const AdminCourses = () => {
 <Container className="mt-5 mb-5">
       <Row>
         <Col className="mx-auto">
-          <Table bordered className="text-center mx-auto">
+          <Table bordered className="text-center mx-auto w-50">
             <tbody className="custom-font-size-course-table align-content-center">
               <tr className="fw-bold">
                 <td className="align-middle">Título</td>
