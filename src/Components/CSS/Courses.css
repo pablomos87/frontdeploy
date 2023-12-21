@@ -1,6 +1,6 @@
 
 .custom-course-image-1 {
-  height: 20rem;
+  height: 13rem;
   object-position: center;
   margin-top: 0.5rem;
   filter: opacity(75%);
@@ -25,6 +25,14 @@
   object-position: center;
   filter: opacity(75%);
 }
+
+@media (min-width: 392px) {
+  .custom-course-image-2 {
+    height: 7rem;
+    width: 8rem;
+  }
+}
+
 @media (min-width: 576px) {
   .custom-course-image-2 {
     height: 6.5rem;
