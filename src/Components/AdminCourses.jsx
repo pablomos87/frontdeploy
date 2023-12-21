@@ -31,7 +31,7 @@ const AdminCourses = () => {
 <Container className="mt-5 mb-5">
       <Row>
         <Col className="d-flex flex-column justify-content-center align-content-center">
-          <Table bordered className="w-75 text-center">
+          <Table bordered className="text-center">
             <tbody className="custom-font-size-course-table align-content-center">
               <tr className="fw-bold">
                 <td className="align-middle">Título</td>
@@ -40,7 +40,7 @@ const AdminCourses = () => {
                 <td className="align-middle">Edición</td>
               </tr>
               {courses.map((course) => (
-                <tr key={course._id}>
+                <tr key={course._id} className="align-middle custom-font-size-course-table">
                   <td className="align-middle custom-font-size-course-table">{course.nombre}</td>
                   <td className="align-middle custom-font-size-course-table">{course.inicio}</td>
                   <td className="align-middle custom-font-size-course-table">{course.certificacion}</td>
