@@ -56,8 +56,16 @@ const UserCourses = () => {
   }, [username]);
 
   if (!user || !courseDetails.length) {
-    return null;
-  }
+    return (
+      <Container fluid className="pb-5">
+      <Col md={12} className="mt-5 mb-5">
+        {user && (
+          <h3 className="mb-2 pb-3 fw-bold">{user.firstName}, no te inscribiste en ningún curso</h3>
+        )}
+      </Col>
+      </Container>
+    );
+  };
 
 
   return (

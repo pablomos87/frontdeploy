@@ -62,10 +62,18 @@ const UserProfile = () => {
   }, [username]);
 
 
-  if (!user) {
+  if (
+    !formData.firstName ||
+    !formData.lastName ||
+    !formData.username ||
+    !formData.email ||
+    !formData.gender ||
+    !formData.birthDate ||
+    !formData.city ||
+    !formData.country
+  ) {
     return null;
   }
-
 
   const handleEdit = () => {
     setIsEditing(true);
