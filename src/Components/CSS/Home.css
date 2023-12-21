@@ -27,6 +27,14 @@
     object-position: center;
   }
 
+  @media (min-width: 730px) {
+    .custom-image-1 {
+      height: 140px;
+      
+    }
+  }
+  
+
   @media (max-width: 490px) {
     .custom-image-1 {
       height: 130px;
@@ -42,6 +50,15 @@
     object-fit:cover;
     object-position:center;
   }
+
+
+  @media (min-width: 730px) {
+    .custom-image-2 {
+      height: 140px;
+      
+    }
+  }
+  
 
   @media (max-width: 490px) {
     .custom-image-2 {
