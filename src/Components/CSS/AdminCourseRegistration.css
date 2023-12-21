@@ -1,0 +1,21 @@
+
+.custom-font-size-registration-table {
+    font-size: 0.7rem;
+    }
+    @media (min-width: 391px) {
+        .custom-font-size-registration-table {
+        font-size: 0.75rem;
+        }
+    }
+    @media (min-width: 576px) {
+        .custom-font-size-registration-table {
+        font-size: 0.85rem;
+        }
+    }
+    @media (min-width: 768px) {
+        .custom-font-size-registration-table {
+        font-size: 0.95rem;
+        }
+    }
+    
+    

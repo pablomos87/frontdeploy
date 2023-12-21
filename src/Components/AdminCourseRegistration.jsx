@@ -1,6 +1,7 @@
 
 import { React, useState, useEffect } from 'react';
 import axios from 'axios';
+import './CSS/AdminCourseRegistration.css'
 import { Container, Row, Col, Table, Button } from 'react-bootstrap';
 
 const AdminCourseRegistration = () => {
@@ -66,7 +67,7 @@ const AdminCourseRegistration = () => {
         <Col>
           <Table bordered className="mx-auto w-75 text-center">
             <tbody>
-              <tr className="fw-bold">
+              <tr className="fw-bold custom-font-size-registration-table align-content-center">
                 <td className="align-middle">Usuario</td>
                 <td className="align-middle">Cursos</td>
                 <td className="align-middle">Eliminar Usuario del Curso</td>
@@ -75,16 +76,18 @@ const AdminCourseRegistration = () => {
                 user.registeredCourses.map((course, index) => (
                   <tr key={`${user._id}-${course._id}`}>
                     {index === 0 && (
-                      <td rowSpan={user.registeredCourses.length}>{user.username}</td>
+                      <td className="custom-font-size-registration-table" rowSpan={user.registeredCourses.length}>{user.username}</td>
                     )}
+                    
                     <td key={course._id}>
-                      <p>{course.nombre}</p>
+                      <p className="custom-font-size-registration-table">{course.nombre}</p>
                     </td>
                     <td>
                       <Button
                         onClick={() => handleDeleteRegistration(user._id, course._id)}
                         variant="light border border-dark"
                         size="xs" 
+                        className="custom-font-size-registration-table"
                       >
                         Eliminar inscripción
                       </Button>
