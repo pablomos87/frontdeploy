@@ -104,19 +104,8 @@
       margin: 0;
     }
   
-    .custom-image-1{
-    
-      height: 240px;
-      object-fit: cover;
-      object-position: center;
-    }
   
-    .custom-image-2{
-      
-      height: 150px;
-      object-fit:cover;
-      object-position:center;
-    }
+  
    
     }
 

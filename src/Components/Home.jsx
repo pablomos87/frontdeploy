@@ -76,8 +76,8 @@ const Home = () => {
     {remainingCourses.map((course) => (
         <Col className="mb-3" md={4} key={course._id}>
            <Card className="text-center d-flex flex-column h-100">
-           <Link to={`/courses/detail?courseId=${course._id}`} className="text-dark custom-link  ">
-            <Card.Img src={course.imagen} className="custom-image-2"/>
+           <Link to={`/courses/detail?courseId=${course._id}`} className="text-dark custom-link  container-fluid">
+            <Card.Img src={course.imagen} className="img-fluid custom-image-2"/>
             <Card.Body className="d-flex flex-column justify-content-center w-auto p-1 m-1" >
               <div>
               <p className="fs-6 fw-bold card-text mt-1 mb-0 pb-0 ">{course.nombre}</p>
