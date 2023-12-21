@@ -76,7 +76,7 @@ const UserProfile = () => {
   const handleSave = async () => {
     try {
       const userToken = localStorage.getItem('userToken');
-      await axios.post('https://back-proyecto-utn.onrender.com/users/edit', {
+      await axios.post('https://backdeploy-proyectofinal-utn.up.railway.app/users/edit', {
         ...formData,
         id: user._id
       }, {
