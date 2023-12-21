@@ -114,10 +114,10 @@ const Courses = () => {
           <h4 className="mb-4 text-sm">Visitá los cursos más populares</h4>
           <Row className="w-100 container-fluid">
             {randomCourses.map((course) => (
-              <Col key={course._id} xs={8} md={4} lg={4} sm={4}>
+              <Col key={course._id} xs={8} md={4} lg={4} sm={4} className="container-fluid">
                  <Link to={`/courses/detail?courseId=${course._id}`} style={{ textDecoration: 'none' }}>
-                <Card className="h-100 ">
-                  <Card.Img variant="top" src={course.imagen} className="w-100 img-fluid custom-course-image-2" />
+                <Card className="h-100 w-100">
+                  <Card.Img variant="top" src={course.imagen} className="img-fluid custom-course-image w-100" />
                   <Card.Body className="text-center ">
                   <Card.Text className="fw-bold text-sm" style={{ fontSize: '0.95rem', lineHeight: '1.2' }}>{course.nombre}</Card.Text>
                   </Card.Body>
