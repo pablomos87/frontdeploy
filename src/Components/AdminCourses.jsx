@@ -28,10 +28,10 @@ const AdminCourses = () => {
 
   return (
     
-<Container className="mx-auto mt-5 mb-5">
+<Container className="mt-5 mb-5">
       <Row>
-        <Col>
-          <Table bordered className="mx-auto w-75 text-center">
+        <Col className="d-flex flex-column justify-content-center align-content-center">
+          <Table bordered className="w-75 text-center">
             <tbody className="custom-font-size-course-table align-content-center">
               <tr className="fw-bold">
                 <td className="align-middle">Título</td>
