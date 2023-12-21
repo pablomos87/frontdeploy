@@ -62,7 +62,7 @@ const UserProfile = () => {
   }, [username]);
 
 
-  if (!user || !courseDetails.length) {
+  if (!user) {
     return null;
   }
 
