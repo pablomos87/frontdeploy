@@ -73,16 +73,16 @@ const AdminAdministrators = () => {
               </tr>
               {admins.map((admin) => (
                 <tr key={admin._id} className='pt-3 text-center custom-admin-administrators-font-size'>
-                  <td className='pt-3'>{admin.name}</td>
+                  <td className='pt-3 custom-admin-administrators-font-size'>{admin.name}</td>
 
                   <td className='pt-3'>  
                   <Button onClick={() => handleDeleteAdmin(admin._id)}
-                    variant="light border border-dark" size="sm" className="h-50custom-admin-administrators-font-size" >Eliminar administrador </Button></td>
+                    variant="light border border-dark" size="sm" className="h-50 custom-admin-administrators-font-size" >Eliminar administrador </Button></td>
                 </tr>
               ))}
               <tr>
-                <td colSpan="2" className="fw-bold text-dark pt-3 pb-3 text-center">
-                  <Link to="/admin/signup" className="text-dark "> Añadir administrador</Link>
+                <td colSpan="2" className="fw-bold text-dark pt-3 pb-3 text-center custom-admin-administrators-font-size">
+                  <Link to="/admin/signup" className="text-dark custom-admin-administrators-font-size"> Añadir administrador</Link>
                 </td>
 
               </tr>
