@@ -66,16 +66,15 @@ const UsersAdmin = () => {
   return (
 
     
-<Container className="mx-auto mt-5 mb-5 w-sm-75">
+<Container className="mx-auto mt-5 mb-5">
       <Row>
         <Col>
           <Table bordered className="mx-auto w-75 text-center">
             <tbody>
               <tr className="fw-bold custom-admin-users-font-size">
+                <td className="custom-admin-users-font-size">Usuario </td>
                 <td className="custom-admin-users-font-size">Nombre</td>
-                <td className="custom-admin-users-font-size">Apellido</td>
-                <td className="custom-admin-users-font-size">Usuario</td>
-                <td className="custom-admin-users-font-size">Email</td>
+                <td className="custom-admin-users-font-size">Apellido </td>
                 <td className="custom-admin-users-font-size">Edición</td>
               </tr>
               {users.map((user) => (
@@ -83,7 +82,6 @@ const UsersAdmin = () => {
                   <td className="custom-admin-users-font-size">{user.firstName}</td>
                   <td className="custom-admin-users-font-size">{user.lastName}</td>
                   <td className="custom-admin-users-font-size">{user.username}</td>
-                  <td className="custom-admin-users-font-size">{user.email}</td>
                   <td className="custom-admin-users-font-size m-0">  <Button onClick={() => handleDeleteUser(user._id)} variant="light border border-dark custom-admin-users-font-size" >Eliminar usuario </Button></td>
                 </tr>
               ))}
