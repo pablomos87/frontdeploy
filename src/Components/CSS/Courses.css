@@ -36,13 +36,13 @@
 @media (min-width: 392px) {
   .custom-course-image-2 {
     height: 7rem;
-    width: 9rem;
+    width: 10rem;
   }
 }
 
 @media (min-width: 576px) {
   .custom-course-image-2 {
-    height: 6.5rem;
+    height: 6rem;
   }
 }
 
