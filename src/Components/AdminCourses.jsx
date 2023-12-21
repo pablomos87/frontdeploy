@@ -41,10 +41,10 @@ const AdminCourses = () => {
               </tr>
               {courses.map((course) => (
                 <tr key={course._id}>
-                  <td className="align-middle">{course.nombre}</td>
-                  <td className="align-middle">{course.inicio}</td>
-                  <td className="align-middle">{course.certificacion}</td>
-                  <td className="align-middle">  
+                  <td className="align-middle custom-font-size-course-table">{course.nombre}</td>
+                  <td className="align-middle custom-font-size-course-table">{course.inicio}</td>
+                  <td className="align-middle custom-font-size-course-table">{course.certificacion}</td>
+                  <td className="align-middle custom-font-size-course-table">  
                   <Link to={`/admin/edit-course?courseId=${course._id}`}>
         <Button variant="light border border-dark custom-font-size-course-table" size="sm">Editar Curso</Button>
       </Link>
