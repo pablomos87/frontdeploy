@@ -66,7 +66,7 @@ const UsersAdmin = () => {
   return (
 
     
-<Container className="mx-auto mt-5 mb-5">
+<Container className="mx-auto mt-5 mb-5 w-sm-75">
       <Row>
         <Col>
           <Table bordered className="mx-auto w-75 text-center">
