@@ -12,7 +12,7 @@ const AdminCourseRegistration = () => {
     const fetchData = async () => {
       try {
         const adminToken = localStorage.getItem('adminToken');
-        const response = await axios.get('https://back-proyecto-utn.onrender.com/users',
+        const response = await axios.get('https://backdeploy-proyectofinal-utn.up.railway.app/users',
         {
           headers: {
             Authorization: `Bearer ${adminToken}`
@@ -33,7 +33,7 @@ const AdminCourseRegistration = () => {
 
       if (confirmation) {
         const adminToken = localStorage.getItem('adminToken');
-        const response = await axios.delete(`https://back-proyecto-utn.onrender.com/courses/inscripcion/${userId}/${courseId}`,
+        const response = await axios.delete(`https://backdeploy-proyectofinal-utn.up.railway.app/courses/inscripcion/${userId}/${courseId}`,
         {
           headers: {
             Authorization: `Bearer ${adminToken}`

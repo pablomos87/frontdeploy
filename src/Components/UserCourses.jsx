@@ -17,7 +17,7 @@ const UserCourses = () => {
       try {
         const userToken = localStorage.getItem('userToken');
         const userResponse = axios.get(
-          `https://back-proyecto-utn.onrender.com/users/byusername?username=${username}`,
+          `https://backdeploy-proyectofinal-utn.up.railway.app/users/byusername?username=${username}`,
           { headers: { Authorization: `Bearer ${userToken}` } }
         );
 
@@ -28,7 +28,7 @@ const UserCourses = () => {
             response.data.user.registeredCourses.map(async (courseId) => {
               try {
                 const courseResponse = await axios.get(
-                  `https://back-proyecto-utn.onrender.com/courses/detail?courseId=${courseId}`
+                  `https://backdeploy-proyectofinal-utn.up.railway.app/courses/detail?courseId=${courseId}`
                 );
                 if (courseResponse.data) {
                   return courseResponse.data;

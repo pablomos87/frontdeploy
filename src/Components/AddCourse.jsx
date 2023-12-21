@@ -34,7 +34,7 @@ const NewCourse = () => {
 
         try {
             const adminToken = localStorage.getItem('adminToken');
-            await axios.post('https://back-proyecto-utn.onrender.com/courses/newcourse', formData, {
+            await axios.post('https://backdeploy-proyectofinal-utn.up.railway.app/courses/newcourse', formData, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${adminToken}`

@@ -19,7 +19,7 @@ const AdminLogin = () => {
   const handleAdminLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://back-proyecto-utn.onrender.com/admin/login", {
+      const response = await axios.post('https://backdeploy-proyectofinal-utn.up.railway.app/admin/login', {
         name: localName,
         password,
       });

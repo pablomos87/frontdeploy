@@ -24,7 +24,7 @@ const AdminPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://back-proyecto-utn.onrender.com/courses');
+        const response = await axios.get('https://backdeploy-proyectofinal-utn.up.railway.app/courses');
         setCourses(response.data.courses);
       } catch (error) {
         console.error('Error al obtener la lista de cursos:', error);
@@ -39,7 +39,7 @@ const AdminPage = () => {
     const fetchData = async () => {
       try {
         const adminToken = localStorage.getItem('adminToken');
-        const response = await axios.get('https://back-proyecto-utn.onrender.com/users', {
+        const response = await axios.get('https://backdeploy-proyectofinal-utn.up.railway.app/users', {
           headers: {
             Authorization: `Bearer ${adminToken}`
           }
@@ -69,7 +69,7 @@ const AdminPage = () => {
 
   useEffect(() => {
     /* const adminToken = localStorage.getItem('adminToken'); */
-    axios.get('https://back-proyecto-utn.onrender.com/visits/count', /* {
+    axios.get('https://backdeploy-proyectofinal-utn.up.railway.app/visits/count', /* {
       headers: {
         Authorization: `Bearer ${adminToken}`
       }
@@ -85,7 +85,7 @@ const AdminPage = () => {
 
   useEffect(() => {
     const adminToken = localStorage.getItem('adminToken');
-    axios.get('https://back-proyecto-utn.onrender.com/users/count', {
+    axios.get('https://backdeploy-proyectofinal-utn.up.railway.app/users/count', {
       headers: {
         Authorization: `Bearer ${adminToken}`
       }
@@ -101,7 +101,7 @@ const AdminPage = () => {
 
   useEffect(() => {
     const adminToken = localStorage.getItem('adminToken');
-    axios.get('https://back-proyecto-utn.onrender.com/courses/count',
+    axios.get('https://backdeploy-proyectofinal-utn.up.railway.app/courses/count',
     {
       headers: {
         Authorization: `Bearer ${adminToken}`
@@ -117,7 +117,7 @@ const AdminPage = () => {
 
   useEffect(() => {
     const adminToken = localStorage.getItem('adminToken');
-    axios.get('https://back-proyecto-utn.onrender.com/admin/count',
+    axios.get('https://backdeploy-proyectofinal-utn.up.railway.app/admin/count',
     {
       headers: {
         Authorization: `Bearer ${adminToken}`

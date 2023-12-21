@@ -30,7 +30,7 @@ const EditCourse = () => {
     if (id) {
       const fetchCourse = async () => {
         try {
-          const response = await axios.get(`https://back-proyecto-utn.onrender.com/courses/detail?courseId=${id}`)
+          const response = await axios.get(`https://backdeploy-proyectofinal-utn.up.railway.app/courses/detail?courseId=${id}`)
           setCourse(response.data.course);
         } catch (error) {
           console.error('Error al obtener detalles del curso:', error);
@@ -47,7 +47,7 @@ const EditCourse = () => {
     try {
       const adminToken = localStorage.getItem('adminToken');
       const response = await axios.post(
-        `https://back-proyecto-utn.onrender.com/courses/edit`,
+        `https://backdeploy-proyectofinal-utn.up.railway.app/courses/edit`,
         { ...course, id },
   {
     headers: {
@@ -82,7 +82,7 @@ const EditCourse = () => {
     if (confirmation) {
       const adminToken = localStorage.getItem('adminToken');
       const response = await axios.delete(
-        `https://back-proyecto-utn.onrender.com/courses/delete`,
+        `https://backdeploy-proyectofinal-utn.up.railway.app/courses/delete`,
         {
           headers: {
             Authorization: `Bearer ${adminToken}`,

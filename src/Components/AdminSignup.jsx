@@ -19,7 +19,7 @@ const AdminRegister = () => {
     try {
       const adminToken = localStorage.getItem('adminToken');
       const response = await axios.post(
-        'https://back-proyecto-utn.onrender.com/admin/register',
+        'https://backdeploy-proyectofinal-utn.up.railway.app/admin/register',
         {
           name,
           password,

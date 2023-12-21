@@ -25,7 +25,7 @@ const Signup = () => {
 
     e.preventDefault();
     try {
-      const response = await axios.post('https://back-proyecto-utn.onrender.com/users/register', {
+      const response = await axios.post('https://backdeploy-proyectofinal-utn.up.railway.app/users/register', {
         username,
         password,
         confirmPassword,

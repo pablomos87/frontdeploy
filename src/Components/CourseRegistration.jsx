@@ -29,7 +29,7 @@ const CourseRegistration = () => {
     const fetchCourse = async () => {
       try {
         const response = await axios.get(
-          `https://back-proyecto-utn.onrender.com/courses/detail?courseId=${courseId}`);
+          `https://backdeploy-proyectofinal-utn.up.railway.app/courses/detail?courseId=${courseId}`);
         setCourse(response.data.course);
       } catch (error) {
         console.error('Error al obtener detalles del curso:', error);
@@ -82,7 +82,7 @@ const CourseRegistration = () => {
 
     try {
       const userToken = localStorage.getItem('userToken');
-      const response = await axios.post(`https://back-proyecto-utn.onrender.com/courses/inscripcion/${userId}/${courseId}`, null, {
+      const response = await axios.post(`https://backdeploy-proyectofinal-utn.up.railway.app/courses/inscripcion/${userId}/${courseId}`, null, {
             headers: {
               Authorization: `Bearer ${userToken}`
             }

@@ -22,11 +22,11 @@ const Courses = () => {
         const courseId = urlParams.get('courseId');
 
         if (courseId) {
-          const courseResponse = await axios.get(`https://back-proyecto-utn.onrender.com/courses/detail?courseId=${courseId}`);
+          const courseResponse = await axios.get(`https://backdeploy-proyectofinal-utn.up.railway.app/courses/detail?courseId=${courseId}`);
           setCourse(courseResponse.data.course);
         }
 
-        const randomCoursesResponse = await axios.get('https://back-proyecto-utn.onrender.com/courses/random');
+        const randomCoursesResponse = await axios.get('https://backdeploy-proyectofinal-utn.up.railway.app/courses/random');
         setRandomCourses(randomCoursesResponse.data.randomCourses);
       
       } catch (error) {

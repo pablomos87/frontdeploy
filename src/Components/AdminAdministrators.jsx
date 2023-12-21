@@ -15,7 +15,7 @@ const AdminAdministrators = () => {
     const fetchData = async () => {
       try {
         const adminToken = localStorage.getItem('adminToken');
-        const response = await axios.get('https://back-proyecto-utn.onrender.com/admin', {
+        const response = await axios.get('https://backdeploy-proyectofinal-utn.up.railway.app/admin', {
           headers: {
             Authorization: `Bearer ${adminToken}`
           }
@@ -35,7 +35,7 @@ const AdminAdministrators = () => {
 
       if (confirmation) {
         const adminToken = localStorage.getItem('adminToken');
-        const response = await axios.delete(`https://back-proyecto-utn.onrender.com/admin/delete/${adminId}`, {
+        const response = await axios.delete(`https://backdeploy-proyectofinal-utn.up.railway.app/admin/delete/${adminId}`, {
           headers: {
             Authorization: `Bearer ${adminToken}`
           }

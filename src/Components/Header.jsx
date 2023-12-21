@@ -20,7 +20,7 @@ const Header = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`https://back-proyecto-utn.onrender.com/courses/search?query=${searchQuery}`);
+      const response = await axios.get(`https://backdeploy-proyectofinal-utn.up.railway.app/courses/search?query=${searchQuery}`);
       setSearchResults(response.data.courses);
       setSearchQuery('');
       navigate(`/courses/search?query=${searchQuery}`);
@@ -31,8 +31,8 @@ const Header = () => {
   };
 
   useEffect(() => {
-    setExpanded(false); // Cerrar el Navbar al cambiar de ruta
-  }, [location.pathname]); // Ejecutar efecto cuando cambia la ubicación
+    setExpanded(false); 
+  }, [location.pathname]);
 
   const handleToggle = () => {
     setExpanded(!expanded);
