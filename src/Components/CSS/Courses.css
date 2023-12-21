@@ -27,7 +27,7 @@
 }
 
 .custom-course-image-2 {
-  height: 7rem;
+  height: 6rem;
   object-fit: cover;
   object-position: center;
   filter: opacity(75%);
@@ -36,7 +36,7 @@
 @media (min-width: 392px) {
   .custom-course-image-2 {
     height: 7rem;
-    width: 8rem;
+    width: 9rem;
   }
 }
 
