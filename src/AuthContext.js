@@ -31,7 +31,6 @@ export const AuthProvider = ({ children }) => {
       setIsAuthenticated(true);
       setUserId(storedUserId);
       setUsername(storedUsername);
-      console.log("Username from localStorage:", storedUsername);
       setUserToken(userToken);
       
     } else {

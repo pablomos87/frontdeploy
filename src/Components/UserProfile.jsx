@@ -12,7 +12,6 @@ import { useAuth } from '../AuthContext';
 const UserProfile = () => {
 
   const { username } = useAuth();  
-  console.log("Username in UserProfile:", username); 
   const [user, setUser] = useState({ registeredCourses: [] });
   const [courseDetails, setCourseDetails] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
