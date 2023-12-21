@@ -12,7 +12,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('backdeploy-proyectofinal-utn.up.railway.app/courses');
+        const response = await axios.get('https://backdeploy-proyectofinal-utn.up.railway.app/courses');
         setCourses(response.data.courses);
       } catch (error) {
         console.error('Error al obtener la lista de cursos:', error);
