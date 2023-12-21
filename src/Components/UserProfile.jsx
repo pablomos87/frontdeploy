@@ -62,19 +62,6 @@ const UserProfile = () => {
   }, [username]);
 
 
-  if (
-    !formData.firstName ||
-    !formData.lastName ||
-    !formData.username ||
-    !formData.email ||
-    !formData.gender ||
-    !formData.birthDate ||
-    !formData.city ||
-    !formData.country
-  ) {
-    return null;
-  }
-
   const handleEdit = () => {
     setIsEditing(true);
     setFormData(user);
@@ -111,6 +98,19 @@ const UserProfile = () => {
     const timeAgo = date.fromNow();
     return `${timeAgo}`;
   };
+
+  if (
+    !formData.firstName ||
+    !formData.lastName ||
+    !formData.username ||
+    !formData.email ||
+    !formData.gender ||
+    !formData.birthDate ||
+    !formData.city ||
+    !formData.country
+  ) {
+    return null;
+  }
 
   return (
 
