@@ -46,7 +46,7 @@ const AdminCourses = () => {
                   <td className="align-middle">{course.certificacion}</td>
                   <td>  
                   <Link to={`/admin/edit-course?courseId=${course._id}`}>
-        <Button variant="light border border-dark custom-font-size-course-table" size="sm">Editar Curso</Button>
+        <Button variant="light border border-dark custom-font-size-course-table align-middle" size="sm">Editar Curso</Button>
       </Link>
                     </td>
                 </tr>
