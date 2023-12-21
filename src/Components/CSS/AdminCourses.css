@@ -1,7 +1,13 @@
 
-.custom-font-size-course-table{
+.custom-font-size-course-table {
 font-size: 0.6rem;
 }
+@media (min-width: 391px) {
+    .custom-font-size-course-table {
+    font-size: 0.5rem;
+    }
+}
+
 
 @media (min-width: 576px) {
     .custom-font-size-course-table {
