@@ -69,7 +69,6 @@ const Header = () => {
                     @{name}
                   </Dropdown.Toggle>
                   <Dropdown.Menu style={{ minWidth: 'auto' }}>
-                    <Dropdown.Divider />
                     <Dropdown.Item onClick={handleAdminLogout}>Cerrar sesión</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>

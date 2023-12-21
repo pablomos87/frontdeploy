@@ -63,7 +63,7 @@ const NewCourse = () => {
                                 <Col md={6} xs={12}>
                                     <Form.Group as={Col} controlId="formNombre">
                                         <Form.Label>Nombre</Form.Label>
-                                        <Form.Control className="text-center mb-4"
+                                        <Form.Control className="mb-4"
                                             type="text"
                                             name="nombre"
                                             value={formData.nombre}
@@ -74,7 +74,7 @@ const NewCourse = () => {
                                 <Col md={6} xs={12}>
                                     <Form.Group as={Col} controlId="formResumen">
                                         <Form.Label>Palabras clave</Form.Label>
-                                        <Form.Control className="text-center"
+                                        <Form.Control
                                             type="text"
                                             name="palabrasClave"
                                             value={formData.palabrasClave}
@@ -88,7 +88,7 @@ const NewCourse = () => {
                                 <Col md={12} className="mb-md-4" xs={12}>
                                     <Form.Group as={Col} controlId="formResumen">
                                         <Form.Label>Resumen</Form.Label>
-                                        <Form.Control className="text-center"
+                                        <Form.Control 
                                             type="text"
                                             name="resumen"
                                             value={formData.resumen}
@@ -102,7 +102,7 @@ const NewCourse = () => {
                                 <Col md={6} xs={12}>
                                     <Form.Group as={Col} controlId="formInicio">
                                         <Form.Label>Inicio</Form.Label>
-                                        <Form.Control className="text-center mb-4"
+                                        <Form.Control className="mb-4"
                                             type="text"
                                             name="inicio"
                                             value={formData.inicio}
@@ -113,7 +113,7 @@ const NewCourse = () => {
                                 <Col md={6} xs={12}>
                                     <Form.Group as={Col} controlId="formRequisitos">
                                         <Form.Label>Requisitos</Form.Label>
-                                        <Form.Control className="text-center"
+                                        <Form.Control
                                             type="text"
                                             name="requisitos"
                                             value={formData.requisitos}
@@ -126,7 +126,7 @@ const NewCourse = () => {
                                 <Col md={6} xs={12}>
                                     <Form.Group as={Col} controlId="formDuracion">
                                         <Form.Label>Duración</Form.Label>
-                                        <Form.Control className="text-center mb-4"
+                                        <Form.Control className="mb-4"
                                             type="text"
                                             name="duracion"
                                             value={formData.duracion}
@@ -137,7 +137,7 @@ const NewCourse = () => {
                                 <Col md={6} xs={12}>
                                     <Form.Group as={Col} controlId="formRegularidad">
                                         <Form.Label>Regularidad</Form.Label>
-                                        <Form.Control className="text-center"
+                                        <Form.Control
                                             type="text"
                                             name="regularidad"
                                             value={formData.regularidad}
@@ -151,7 +151,7 @@ const NewCourse = () => {
                                 <Col md={6} xs={12}>
                                     <Form.Group as={Col} controlId="formCertificacion">
                                         <Form.Label>Certificación</Form.Label>
-                                        <Form.Control className="text-center mb-4"
+                                        <Form.Control className="mb-4"
                                             type="text"
                                             name="certificacion"
                                             value={formData.certificacion}
@@ -162,7 +162,7 @@ const NewCourse = () => {
                                 <Col md={6} xs={12}>
                                     <Form.Group as={Col} controlId="formInscriptos">
                                         <Form.Label>Inscriptos</Form.Label>
-                                        <Form.Control className="text-center"
+                                        <Form.Control
                                             type="number"
                                             name="inscriptos"
                                             value={formData.inscriptos}
@@ -176,7 +176,7 @@ const NewCourse = () => {
                                 <Col md={6} xs={12}>
                                     <Form.Group as={Col} controlId="formPrecio">
                                         <Form.Label>Precio</Form.Label>
-                                        <Form.Control className="text-center mb-4"
+                                        <Form.Control className="mb-4"
                                             type="number"
                                             name="precio"
                                             value={formData.precio}
@@ -187,7 +187,7 @@ const NewCourse = () => {
                                 <Col md={6} xs={12}>
                                     <Form.Group as={Col} controlId="formImagen">
                                         <Form.Label>Imagen</Form.Label>
-                                        <Form.Control className="text-center"
+                                        <Form.Control 
                                             type="text"
                                             name="imagen"
                                             value={formData.imagen}
