@@ -68,7 +68,7 @@ const UserCourses = () => {
             {user.firstName}, estos son los cursos en los que te inscribiste:
           </h3>
           {courseDetails.length === 0 ? (
-            <h4 className="pt-5">No hay cursos para mostrar</h4>
+            <h4 className="fw-bold pt-5 mt-3 text-center">No hay cursos para mostrar</h4>
           ) : (
             courseDetails.map((courseDetail, index) => (
               <Link
