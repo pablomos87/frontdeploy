@@ -56,7 +56,7 @@ const Home = () => {
             <Card.Body className="d-flex flex-column">
               <div>
               <p className="text-uppercase fw-bolder m-0 p-0 mt-1 custom-font-size-image-1">{course.nombre}</p>
-              <p className="custom-font-size-image-1 mt-0 mt-1" ><span style={{ textDecoration: 'none' }}>Fecha de inicio: {course.inicio}</span></p>
+              <span className="custom-font-size-image-1 mt-0 mt-1"  style={{ textDecoration: 'none' }}>Fecha de inicio: {course.inicio}</span>
               </div>
             </Card.Body>
             </Link>
@@ -80,7 +80,7 @@ const Home = () => {
             <Card.Body className="d-flex flex-column justify-content-center w-auto p-1 m-1" >
               <div>
               <p className="custom-font-size-image-2 fw-bold card-text mt-1 mb-0 pb-0 ">{course.nombre}</p>
-              <p className="custom-font-size-image-2 card-text fw-normal mt-1 pt-0" ><span style={{ textDecoration: 'none' }}>Fecha de inicio: {course.inicio}</span></p>
+              <span className="custom-font-size-image-2 card-text fw-normal mt-1 pt-0" style={{ textDecoration: 'none' }}>Fecha de inicio: {course.inicio}</span>
               </div>
             </Card.Body>
             </Link>
