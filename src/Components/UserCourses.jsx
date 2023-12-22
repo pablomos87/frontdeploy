@@ -56,7 +56,7 @@ const UserCourses = () => {
   }, [username]);
 
 
-  if (!user.firstName || !courseDetails ) {
+  if (!user.firstName) {
     return null;
   };
 

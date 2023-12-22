@@ -53,12 +53,11 @@ const Home = () => {
           <Card className="text-center d-flex h-100 custom-card w-100">
           <Link to={`/courses/detail?courseId=${course._id}`} className="text-dark custom-link">
             <Card.Img src={course.imagen}  className="custom-image-1" />
-            <Card.Body className="d-flex flex-column justify-content-between">
+            <Card.Body className="d-flex flex-column">
               <div>
               <p className="text-uppercase fw-bolder m-0 p-0 mt-1 custom-font-size-image-1">{course.nombre}</p>
-              <p className="custom-font-size-image-1 card-text mt-0 mt-1">Fecha de inicio: {course.inicio}</p>
+              <p className="custom-font-size-image-1 mt-0 mt-1">Fecha de inicio: {course.inicio}</p>
               </div>
-              <div className="mt-auto"></div>
             </Card.Body>
             </Link>
           </Card>
@@ -67,7 +66,7 @@ const Home = () => {
     </Row>
         </Row>
 
-    <Row className="p-4"> 
+    <Row className="p-4 p-md-2"> 
     <Col className="mt-5">
     <h3 className="fw-bold"> Cursos próximos a iniciar </h3>
     <p className="fw-bold">Explora los cursos que inician pronto</p>
