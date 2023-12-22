@@ -79,9 +79,9 @@ const UsersAdmin = () => {
               </tr>
               {users.map((user) => (
                 <tr key={user._id}>
+                  <td className="custom-admin-users-font-size">{user.username}</td>
                   <td className="custom-admin-users-font-size">{user.firstName}</td>
                   <td className="custom-admin-users-font-size">{user.lastName}</td>
-                  <td className="custom-admin-users-font-size">{user.username}</td>
                   <td className="custom-admin-users-font-size m-0">  <Button onClick={() => handleDeleteUser(user._id)} variant="light border border-dark custom-admin-users-font-size" >Eliminar usuario </Button></td>
                 </tr>
               ))}
