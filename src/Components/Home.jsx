@@ -40,14 +40,14 @@ const Home = () => {
     </div>
   </Col>
 </Row>
-        <Row className="p-4">
+        <Row className="p-lg-4 ps-md-0 pe-md-0 p-sm-5">
         <Col>
           <h2 className="fw-bold"> Novedades</h2>
           <p className="fw-bold f-4">Explora los cursos más nuevos</p>
         </Col>
   
       
-      <Row className="card-container mt-2 mb-1 p-3 bg-light border border-tertiary container-sm mx-auto p-4">
+      <Row className="card-container mt-2 mb-1 p-lg-4 p-md-0 p-sm-4 bg-light border border-tertiary mx-auto w-100">
         {lastThreeCourses.map((course)  => (
         <Col lg={4} md={4} sm={12} xs={12} key={course._id} className="justify-content-center d-flex mx-auto">
           <Card className="text-center d-flex h-100 custom-card w-100">
@@ -55,8 +55,8 @@ const Home = () => {
             <Card.Img src={course.imagen}  className="custom-image-1" />
             <Card.Body className="d-flex flex-column justify-content-between">
               <div>
-              <p className="text-sm fs-6 text-uppercase fw-bolder m-0 p-0 mt-1">{course.nombre}</p>
-              <p className="fs-6 card-text mt-0 mt-1">Fecha de inicio: {course.inicio}</p>
+              <p className="text-uppercase fw-bolder m-0 p-0 mt-1 custom-font-size-image-1">{course.nombre}</p>
+              <p className="custom-font-size-image-1 card-text mt-0 mt-1">Fecha de inicio: {course.inicio}</p>
               </div>
               <div className="mt-auto"></div>
             </Card.Body>
@@ -80,8 +80,8 @@ const Home = () => {
             <Card.Img src={course.imagen} className="custom-image-2"/>
             <Card.Body className="d-flex flex-column justify-content-center w-auto p-1 m-1" >
               <div>
-              <p className="fs-6 fw-bold card-text mt-1 mb-0 pb-0 ">{course.nombre}</p>
-              <p className="fs-6 card-text fw-normal mt-1 pt-0">Fecha de inicio: {course.inicio}</p>
+              <p className="custom-font-size-image-2 fw-bold card-text mt-1 mb-0 pb-0 ">{course.nombre}</p>
+              <p className="custom-font-size-image-2 card-text fw-normal mt-1 pt-0">Fecha de inicio: {course.inicio}</p>
               </div>
             </Card.Body>
             </Link>
