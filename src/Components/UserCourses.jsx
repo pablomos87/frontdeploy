@@ -65,7 +65,7 @@ const UserCourses = () => {
 
 <Container fluid className="pb-5">
   <Col md={12} className="mt-5 mb-5">
-    {user && courseDetails.length > 0 ? (
+    {user && courseDetails (
       <>
         <h3 className="mb-2 pb-3 fw-bold">
           {user.firstName}, estos son los cursos en los que te inscribiste:
@@ -103,10 +103,6 @@ const UserCourses = () => {
           </Link>
         ))}
       </>
-    ) : (
-      <h3 className="mb-2 pb-3 fw-bold">
-        {user.firstName}, no te inscribiste en ningún curso
-      </h3>
     )}
   </Col>
 </Container>
