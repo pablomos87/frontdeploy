@@ -25,13 +25,13 @@ const Footer = () => {
           <Col xs={12} md={4} className="text-center container-sm">
             <h5 className="textTitleFooter">Síguenos en redes sociales</h5>
             <div className="footerFaIcons d-flex justify-content-center">
-              <a href="https://www.facebook.com/miproyecto" className="me-3">
+              <a href="https://www.facebook.com/miproyecto" className="me-3 icon-link">
                 <FaFacebook  color="black" />
               </a>
-              <a href="https://www.twitter.com/miproyecto" className="me-3">
+              <a href="https://www.twitter.com/miproyecto" className="me-3 icon-link">
                 <FaTwitter  color="black" />
               </a>
-              <a href="https://www.instagram.com/miproyecto">
+              <a href="https://www.instagram.com/miproyecto" className="icon-link">
                 <FaInstagram color="black" />
               </a>
             </div>
