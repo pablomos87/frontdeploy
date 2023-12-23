@@ -55,7 +55,7 @@ const Home = () => {
                   <Card.Img src={course.imagen} className="custom-image-1" />
                   <Card.Body className="d-flex flex-column">
                     <div>
-                      <Card.Text className="custom-font-size-image-2 fw-bold mt-1 mb-0 pb-0" style={{ textDecoration: 'underline' }}>
+                      <Card.Text className="text-uppercase custom-font-size-image-2 fw-bold card-text mt-1 mb-0 pb-0" style={{ textDecoration: 'underline' }}>
                         {course.nombre}
                       </Card.Text>
                       <p className="custom-font-size-image-1 mt-0 mt-1">Fecha de inicio: {course.inicio}</p>
@@ -89,6 +89,7 @@ const Home = () => {
                   </Card.Body>
                 </Link>
               </Card>
+              
             </Col>
           ))}
         </Row>
