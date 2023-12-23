@@ -31,7 +31,7 @@ const ConfirmCourseRegistration = () => {
           </Container>
       </ListGroup.Item>
       <ListGroup.Item className=" ms-4 me-4">
-      <Container> 
+      <Container className="pt-3 pb-3"> 
         <div className="d-flex w-100 justify-content-between pt-2">
           <p className="mb-2 ms-1 fs-5 fw-bold">Curso</p>
           <p className="fs-5 fw-bold">Precio</p>
