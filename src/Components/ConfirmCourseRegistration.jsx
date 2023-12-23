@@ -28,9 +28,10 @@ const ConfirmCourseRegistration = () => {
             </div>
             <p className="pb-2 mb-2 fs-6">Una vez hecho el pago, estarás recibiendo un email con el acceso al curso</p>
           </div>
-        </Container>
+          </Container>
       </ListGroup.Item>
       <ListGroup.Item className=" ms-4 me-4">
+      <Container> 
         <div className="d-flex w-100 justify-content-between pt-2">
           <p className="mb-2 ms-1 fs-5 fw-bold">Curso</p>
           <p className="fs-5 fw-bold">Precio</p>
@@ -39,6 +40,7 @@ const ConfirmCourseRegistration = () => {
           <p className="mb-1">Curso de {selectedCourseName}</p>
           <small className="text-muted">${selectedCoursePrice}</small>
         </div>
+        </Container>
       </ListGroup.Item>
       <ListGroup.Item className="ms-4 me-4 bg-light">
         <Container className="pt-3 pb-3">
