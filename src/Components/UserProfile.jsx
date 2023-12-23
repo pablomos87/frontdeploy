@@ -318,8 +318,8 @@ const UserProfile = () => {
             <div className="mb-5 pb-3">
               <p className="text-center fw-bold pt-3">Puedes explorar otras secciones</p>
               <Col className="optionsContainer text-center mt-">
-                <li><Link to="/home" >Home</Link> </li>
-                <li>  <Link to="/">Mis Cursos </Link></li>
+                <li><Link to="/" >Home</Link> </li>
+                <li>  <Link to="/user-profile/courses">Mis Cursos </Link></li>
               </Col>
             </div>
 

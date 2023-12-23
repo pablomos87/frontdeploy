@@ -60,7 +60,7 @@ return (
               <ProtectedUserRoute>
                   <UserProfile />
               </ProtectedUserRoute>}/>
-            <Route path='user-courses' element={
+            <Route path='user-profile/courses' element={
               <ProtectedUserRoute>
                 <UserCourses/>
               </ProtectedUserRoute>}/>
