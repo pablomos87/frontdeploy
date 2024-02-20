@@ -1,0 +1,8 @@
+.small-course-card {
+    transition: transform 0.9s ease;    
+  }
+
+  
+  .small-course-card:hover {
+    transform: scale(2.95);
+  }

@@ -3,32 +3,32 @@ import React  from 'react';
 import './App.css';
 import { Container } from 'react-bootstrap';
 import ScrollToTop from './ScrollToTop';
-import Home from './Components/Home';
+import Home from './Pages/Home';
 import Footer from './Components/Footer';
 import Header from './Components/Header'; 
 import Sidebar from './Components/Sidebar';
-import Signup from './Components/Signup.jsx';
-import SignupSuccess from './Components/SignupSuccess';
-import UserCourses from './Components/UserCourses';
-import Admin from './Components/AdminIndex';
-import AdminLogin from './Components/AdminLogin';
-import AdminRegister from './Components/AdminSignup.jsx';
-import AdminUsers from './Components/AdminUsers';
-import AdminCourses from './Components/AdminCourses';
-import AdminAdministrators from './Components/AdminAdministrators';
-import AdminCourseRegistration from './Components/AdminCourseRegistration';
-import Login from './Components/Login';
-import SearchCourses from './Components/SearchCourses.jsx'
-import Courses from './Components/Courses'; 
-import CourseRegistration from './Components/CourseRegistration';
-import ConfirmCourseRegistration from './Components/ConfirmCourseRegistration';
-import EditCourse from './Components/EditCourse';
-import NewCourse from './Components/AddCourse.jsx';
-import UserProfile from './Components/UserProfile';
+import Signup from './Pages/Signup.jsx';
+import SignupSuccess from './Pages/SignupSuccess';
+import UserCourses from './Pages/UserCourses';
+import Admin from './Pages/AdminIndex';
+import AdminLogin from './Pages/AdminLogin';
+import AdminSignup from './Pages/AdminSignup.jsx';
+import AdminUsers from './Pages/AdminUsers';
+import AdminCourses from './Pages/AdminCourses';
+import AdminAdministrators from './Pages/AdminAdministrators';
+import AdminCourseRegistration from './Pages/AdminCourseRegistration';
+import Login from './Pages/Login';
+import SearchCourses from './Pages/SearchCourses.jsx'
+import Courses from './Pages/Courses'; 
+import CourseRegistration from './Pages/CourseRegistration';
+import ConfirmCourseRegistration from './Pages/ConfirmCourseRegistration';
+import EditCourse from './Pages/EditCourse';
+import NewCourse from './Pages/AddCourse.jsx';
+import UserProfile from './Pages/UserProfile';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { ProtectedUserRoute, ProtectedAdminRoute } from'./ProtectedRoute';
-import { AuthProvider } from './AuthContext';
+import { AuthProvider } from './Context/AuthContext';
 import { useLocation } from 'react-router-dom';
 
 
@@ -78,7 +78,7 @@ return (
                       <Route index element={ <ProtectedAdminRoute> <Admin /> </ProtectedAdminRoute>} />
                       <Route path='add-course' element={<ProtectedAdminRoute> <NewCourse /> </ProtectedAdminRoute>} />
                       <Route path='edit-course' element={<ProtectedAdminRoute> <EditCourse /> </ProtectedAdminRoute>} />
-                      <Route path='signup' element={<ProtectedAdminRoute> <AdminRegister /> </ProtectedAdminRoute>} />
+                      <Route path='signup' element={<ProtectedAdminRoute> <AdminSignup /> </ProtectedAdminRoute>} />
                       <Route path='users' element={<ProtectedAdminRoute> <AdminUsers /> </ProtectedAdminRoute>} />
                       <Route path='courses' element={<ProtectedAdminRoute> <AdminCourses /> </ProtectedAdminRoute>} />
                       <Route path='administrators' element={<ProtectedAdminRoute> <AdminAdministrators /></ProtectedAdminRoute>} />

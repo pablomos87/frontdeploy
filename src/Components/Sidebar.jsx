@@ -1,7 +1,7 @@
 import React from 'react';
 import { Nav, Card, Col, Container} from 'react-bootstrap';
-import "./CSS/Sidebar.css";
-import { useAuth } from '../AuthContext.js';
+import "../Styles/Sidebar.css";
+import { useAuth } from '../Context/AuthContext.js';
 import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
