@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, FormControl, FormGroup, Button, Row, Col } from 'react-bootstrap';
 
-const SignupForm = ({ onSubmit, formData, formFields }) => {
+const SignupForm = ({ onSubmit, formData, formFields, isAdmin }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -10,10 +10,10 @@ const SignupForm = ({ onSubmit, formData, formFields }) => {
 
     return (
         <Form onSubmit={handleSubmit} className="bg-light p-4 w-100 mx-auto">
-            <Row>
+            <Row className="pt-4">
                 {formFields.slice(0, 4).map((field, index) => (
-                    <Col key={index} className="mb-4" md={6}>
-                        <FormGroup className="mb-4">
+                    <Col key={index} className="mb-4" md={isAdmin ? 12: 6}>
+                        <FormGroup className={isAdmin ? 'mb-2 d-flex justify-content-center': 'mb-4 '}>
                             <FormControl
                                 type={field.type || "text"}
                                 id={field.name}
@@ -21,7 +21,7 @@ const SignupForm = ({ onSubmit, formData, formFields }) => {
                                 placeholder={field.placeholder}
                                 value={formData[field.name]}
                                 onChange={(e) => field.onChange(e.target.value)}
-                                className="form-control form-control-sm"
+                                className={isAdmin ? 'w-75 form-control form-control-sm' : 'w100 form-control form-control-sm'}
                                 style={{ fontSize: '15px', '@media (max-width: 762px)': { fontSize: '12px' }, '@media (max-width: 576px)': { fontSize: '8px' } }}
                                 required={field.required}
                             />

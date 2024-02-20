@@ -45,12 +45,12 @@ const AdminSignup = () => {
 
   return (
     <Container className="d-flex flex-column justify-content-center m-1">
-      <div className="d-flex flex-column justify-content-center align-items-left container-fluid w-100 pb-2 pt-2">
-        <h3 className="display-6 fw-bold pt-5">SIGNUP Admin</h3>
-      </div>
-      <SignupForm onSubmit={handleSubmit} formData={formData} formFields={formFields} />
-    </Container>
-  );
+    <div className="d-flex flex-column justify-content-center align-items-left container-fluid w-100 pb-2 pt-2">
+      <h3 className="display-6 fw-bold pt-5">SIGNUP Admin</h3>
+    </div>
+    <SignupForm onSubmit={handleSubmit} formData={formData} formFields={formFields} isAdmin={true}/>
+  </Container>
+);
 };
 
 export default AdminSignup;
